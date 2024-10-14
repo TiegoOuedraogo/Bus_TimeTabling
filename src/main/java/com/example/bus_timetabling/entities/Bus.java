@@ -2,12 +2,18 @@ package com.example.bus_timetabling.entities;
 
 import com.example.bus_timetabling.enums.Service;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "buses")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

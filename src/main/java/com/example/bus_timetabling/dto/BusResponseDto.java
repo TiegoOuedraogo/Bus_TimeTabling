@@ -1,4 +1,6 @@
 package com.example.bus_timetabling.dto;
 
-public class BusResponseDto {
+import com.example.bus_timetabling.enums.Service;
+
+public record BusResponseDto(String busNumber, Service status) {
 }

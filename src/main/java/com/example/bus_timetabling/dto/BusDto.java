@@ -1,4 +1,3 @@
 package com.example.bus_timetabling.dto;
 
-public class BusDto {
-}
+public record BusDto(String busNumber, Integer capacity) {}

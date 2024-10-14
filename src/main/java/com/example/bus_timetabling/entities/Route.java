@@ -27,7 +27,7 @@ public class Route {
     @Column(name="distance", nullable = false)
     private Double distance;
 
-    // Relationships
+    // Relationships ///
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Stop> stops =  new ArrayList<>();
 

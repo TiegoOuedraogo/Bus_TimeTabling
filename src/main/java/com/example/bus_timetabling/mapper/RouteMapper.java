@@ -39,12 +39,6 @@ public class RouteMapper {
 
     // Entity to DTO
     public static RouteResponseDto toDTO(Route route){
-        return new RouteResponseDto(
-                route.getId(),
-                route.getRouteName(),
-                route.getRouteOrigin(),
-                route.getDestination(),
-                route.getDistance()
-        );
+        return new RouteResponseDto();
     }
 }

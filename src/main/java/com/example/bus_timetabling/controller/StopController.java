@@ -24,8 +24,8 @@ public class StopController {
         return id;
     }
 
-    @PostMapping(produces = "application/json")
-    public ResponseEntity<StopResponseDto> createStop(@RequestBody StopRequestDto request ) {
-        return "Your stop has been created";
-    }
+//    @PostMapping(produces = "application/json")
+//    public ResponseEntity<StopResponseDto> createStop(@RequestBody StopRequestDto request ) {
+//        return "Your stop has been created";
+//    }
 }

@@ -2,25 +2,31 @@ package com.example.bus_timetabling.entities;
 
 import com.example.bus_timetabling.enums.Service;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "buses")
+//@Table(name = "bus")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bus_id", nullable = false )
+    @Column(name = "bus_id")
     private Long id;
 
-    @Column(name = "number", nullable = false)
+    @Column(name = "number")
     private String busNumber;
 
-    @Column(name = "capacity", nullable = false)
+    @Column(name = "capacity")
     private Integer capacity;
 
-    @Column(name = "status", nullable = false)
+    @Column(name = "status")
     private Service status;
 
     //Relationships
@@ -32,3 +38,4 @@ public class Bus {
     private Route route;
 
 }
+

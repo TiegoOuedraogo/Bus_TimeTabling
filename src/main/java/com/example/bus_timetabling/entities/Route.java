@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "routes")
-public class Routes {
+public class Route {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +32,6 @@ public class Routes {
     private List<Stop> stops =  new ArrayList<>();
 
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Buses> buses;
+    private List<Bus> buses;
 
 }

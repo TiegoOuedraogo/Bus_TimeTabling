@@ -3,7 +3,6 @@ package com.example.bus_timetabling.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,8 +18,8 @@ public class Stop {
 
     @ManyToOne
     @JoinColumn(name = "route_id", referencedColumnName = "routes_id")
-    private Routes routes;
+    private Route routes;
 
     @OneToMany(mappedBy ="stop", cascade= CascadeType.ALL)
-    private List<TimesTables> timesTables;
+    private List<TimesTable> timesTables;
 }

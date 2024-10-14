@@ -1,7 +1,9 @@
 package com.example.bus_timetabling.controller;
 
+import com.example.bus_timetabling.dto.StopRequestDto;
+import com.example.bus_timetabling.dto.StopResponseDto;
 import com.example.bus_timetabling.entities.Stop;
-import jakarta.persistence.Entity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +25,7 @@ public class StopController {
     }
 
     @PostMapping(produces = "application/json")
-    public String createStop(@RequestBody Stop stop) {
+    public ResponseEntity<StopResponseDto> createStop(@RequestBody StopRequestDto request ) {
         return "Your stop has been created";
     }
 }

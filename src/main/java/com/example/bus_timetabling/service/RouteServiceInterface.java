@@ -6,7 +6,7 @@ import com.example.bus_timetabling.exception.RouteNotFoundException;
 
 import java.util.List;
 
-public interface RouteServiceInterface<Route ,Long> {
+public interface RouteServiceInterface <Route ,Long> {
   RouteResponseDto createRoute(RouteRequestDto routeRequestDto);
   List<RouteResponseDto> retrieveAllRoutes ();
   RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException;

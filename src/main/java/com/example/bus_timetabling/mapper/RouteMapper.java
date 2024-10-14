@@ -30,9 +30,10 @@ public class RouteMapper {
                 routeResponseDto.route_id(),
                 routeResponseDto.route_name(),
                 routeResponseDto.origin(),
-                routeResponseDto.destination()
-                buses,
-                stops
+                routeResponseDto.destination(),
+                routeResponseDto.distance(),
+                stops,
+                buses
         );
     }
 
@@ -42,7 +43,8 @@ public class RouteMapper {
                 route.getId(),
                 route.getRouteName(),
                 route.getRouteOrigin(),
-                route.getDestination()
+                route.getDestination(),
+                route.getDistance()
         );
     }
 }

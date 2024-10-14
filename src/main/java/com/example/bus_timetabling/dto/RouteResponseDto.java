@@ -9,5 +9,6 @@ public record RouteResponseDto(
         Long route_id,
         String route_name,
         String origin,
-        String destination
+        String destination,
+        Double distance
 ) { }

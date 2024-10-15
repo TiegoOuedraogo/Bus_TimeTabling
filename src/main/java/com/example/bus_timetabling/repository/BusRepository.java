@@ -10,5 +10,5 @@ public interface BusRepository extends JpaRepository<Bus, Long> {
 
     List<Bus> findBusByRouteId(Long Id);
 
-    List<Bus> findBusByStopId(Long Id);
+//    List<Bus> findBusByStopId(Long Id);
 }

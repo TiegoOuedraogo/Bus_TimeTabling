@@ -14,13 +14,18 @@ public class BusMapper {
         }
 
         var bus = new Bus();
-        bus.setBusNumber(dto.busNumber());
-        bus.setCapacity(dto.capacity());
+        bus.setId(dto.getId());
+        bus.setBusNumber(dto.getBusNumber());
+        bus.setCapacity(dto.getCapacity());
+        bus.setStatus(dto.getStatus());
+        bus.setTimesTables(dto.getTimesTables());
+        bus.setRoute(dto.getRoute());
+
 
         return bus;
     }
 
     public BusResponseDto toBusResponseDTO(Bus bus) {
-        return new BusResponseDto(bus.getBusNumber(), bus.getStatus());
+        return new BusResponseDto(bus.getId(), bus.getBusNumber(), bus.getCapacity(), bus.getStatus(), bus.getTimesTables(), bus.getRoute());
     }
 }

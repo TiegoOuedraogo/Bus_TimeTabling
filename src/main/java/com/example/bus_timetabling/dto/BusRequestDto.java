@@ -1,4 +1,7 @@
 package com.example.bus_timetabling.dto;
 
-public record BusRequestDto() {
+public class BusRequestDto {
+
+
+
 }

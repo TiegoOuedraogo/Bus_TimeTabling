@@ -38,10 +38,10 @@ public class BusController {
         return busService.findBusByRouteId(routeId);
     }
 
-    @GetMapping("/{stopId}")
-    public List<BusResponseDto> findBusByStopId(@PathVariable("stopId") Long stopId) {
-        return busService.findBusByStopId(stopId);
-    }
+//    @GetMapping("/{stopId}")
+//    public List<BusResponseDto> findBusByStopId(@PathVariable("stopId") Long stopId) {
+//        return busService.findBusByStopId(stopId);
+//    }
 
 
 }

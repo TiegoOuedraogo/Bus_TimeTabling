@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/route")
+@RequestMapping("api/route")
 @CrossOrigin
 public class RouteController {
     private final RouteService routeService;
@@ -22,14 +22,16 @@ public class RouteController {
         return routeService.retrieveAllRoutes();
 
     }
-    @GetMapping ("/route_id")
-    public RouteResponseDto findRouteById (@PathVariable Long route_id){
-        return routeService.findRouteById(route_id);
+//    @GetMapping ("/route_id")
+    @GetMapping("/{id}")
+    public RouteResponseDto findRouteById (@PathVariable Long id){
+        return routeService.findRouteById(id);
     }
 
-    @GetMapping("/route_id")
-    public RouteResponseDto deleteRouteById(@PathVariable Long route_id){
-        return routeService.deleteRouteById(route_id);
+//    @GetMapping("/route_id")
+    @DeleteMapping("/{id}")
+    public RouteResponseDto deleteRouteById (@PathVariable Long id){
+        return routeService.deleteRouteById(id);
     }
 
     @PostMapping

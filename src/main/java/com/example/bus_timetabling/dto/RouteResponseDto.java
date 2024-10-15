@@ -2,15 +2,26 @@ package com.example.bus_timetabling.dto;
 
 import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Stop;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public record RouteResponseDto(
-        Long route_id,
-        String route_name,
-        String origin,
-        String destination,
-        Double distance,
-        List <Stop> stops,
-        List<Bus> buses
-) { }
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Getter
+@Setter
+@Builder
+public class RouteResponseDto {
+
+        private Long id;
+        private String routeName;
+        private String routeOrigin;
+        private String destination;
+        private Double distance;
+        private List<Stop> stops = new ArrayList<>();
+        private List<Bus> buses = new ArrayList<>();
+
+    }

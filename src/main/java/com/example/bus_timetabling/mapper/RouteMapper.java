@@ -25,7 +25,6 @@ public class RouteMapper {
         if (entity == null) {
             return null;
         }
-
         RouteDto dto = new RouteDto();
         dto.setId(entity.getId());
         dto.setRouteName(entity.getRouteName());

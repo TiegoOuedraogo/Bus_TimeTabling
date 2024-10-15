@@ -6,7 +6,7 @@ import com.example.bus_timetabling.exception.RouteNotFoundException;
 
 import java.util.List;
 
-public class RouteServiceImplentation implements RouteService {
+public class RouteServiceImplementation implements RouteService {
     @Override
     public RouteResponseDto createRoute(RouteRequestDto routeRequestDto) {
         return null;

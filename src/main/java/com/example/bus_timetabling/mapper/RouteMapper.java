@@ -1,6 +1,8 @@
 package com.example.bus_timetabling.mapper;
 
+import com.example.bus_timetabling.dto.BusResponseDto;
 import com.example.bus_timetabling.dto.RouteResponseDto;
+import com.example.bus_timetabling.dto.StopDto;
 import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.entities.Stop;
@@ -46,7 +48,51 @@ public class RouteMapper {
                 route.getDestination(),
                 route.getDistance(),
                 route.getStops(), //convert lists entity to list dto using stop mapper
-                route.getBuses() //convert lists entity to list dto using bus mapper
+                toDto(route.getBuses()) //convert lists entity to list dto using bus mapper
         );
+    }
+
+//    public static StopDto toDTO (Stop stop){
+//        return new StopDto(
+//                stop.getId(),
+//                stop.getStopName(),
+//                stop.getRoute(),
+//                stop.getTimesTables()
+//
+//        )
+//    }
+
+    //From Entity to DTO
+    public static BusResponseDto toDto(Bus bus){
+        return new BusResponseDto(
+               bus.getBusNumber(),
+                bus.getStatus()
+        );
+    }
+
+    public static List<BusResponseDto> toDto(List<Bus> buses){
+        return buses.stream()
+                .map(bus -> new BusResponseDto(
+                        bus.getBusNumber(),
+                        bus.getStatus()
+                )).toList();
+    }
+
+    //From DTO to Entity
+    public static Bus toEntity(BusResponseDto busResponseDto){
+        return new Bus(
+                busResponseDto.busNumber(),
+                busResponseDto.status()
+
+        );
+    }
+
+    public static List<Bus> toEntity(List<BusResponseDto> buses){
+        return buses.stream()
+                .map(busResponseDto -> new Bus(
+                        busResponseDto.busNumber(),
+                        busResponseDto.status(),
+
+                )).toList();
     }
 }

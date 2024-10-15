@@ -14,10 +14,11 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+
 public class StopDto {
     private Long id;
     private String stopName;
-    private RouteDto route;
+    private Route route;
     private List<TimesTable> timesTables = new ArrayList<>();
 
 }

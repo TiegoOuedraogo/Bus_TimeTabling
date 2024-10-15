@@ -2,9 +2,7 @@ package com.example.bus_timetabling.dto;
 
 import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Stop;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +10,10 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Getter
+@Setter
+@Builder
 public class RouteResponseDto {
 
         private Long id;

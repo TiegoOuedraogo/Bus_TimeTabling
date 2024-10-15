@@ -1,4 +1,4 @@
 package com.example.bus_timetabling.dto;
 
-public class StopRequestDto {
+public record StopRequestDto(String stopName) {
 }

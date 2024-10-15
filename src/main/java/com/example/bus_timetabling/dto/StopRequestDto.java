@@ -12,7 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-
 public class StopRequestDto{
     private String stopName;
     private List<TimesTableRequestDto> timesTables;

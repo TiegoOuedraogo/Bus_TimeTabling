@@ -37,7 +37,7 @@ public class BusService {
         return busRepo.findBusByRouteId(routeId).stream().map(busMapper::toBusResponseDTO).collect(Collectors.toList());
     }
 
-    public List<BusResponseDto> findBusByStopId(Long stopId) {
-        return busRepo.findBusByStopId(stopId).stream().map(busMapper::toBusResponseDTO).collect(Collectors.toList());
-    }
+//    public List<BusResponseDto> findBusByStopId(Long stopId) {
+//        return busRepo.findBusByStopId(stopId).stream().map(busMapper::toBusResponseDTO).collect(Collectors.toList());
+//    }
 }

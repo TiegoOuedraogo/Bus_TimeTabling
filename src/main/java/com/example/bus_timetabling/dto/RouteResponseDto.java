@@ -10,5 +10,7 @@ public record RouteResponseDto(
         String route_name,
         String origin,
         String destination,
-        Double distance
+        Double distance,
+        List <Stop> stops,
+        List<Bus> buses
 ) { }

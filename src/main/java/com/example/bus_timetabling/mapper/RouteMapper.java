@@ -32,13 +32,21 @@ public class RouteMapper {
                 routeResponseDto.origin(),
                 routeResponseDto.destination(),
                 routeResponseDto.distance(),
-                stops,
-                buses
+                routeResponseDto.stops(), //convert lists dto to list entity using stop mapper
+                routeResponseDto.buses() //convert lists dto to list entity using bus mapper
         );
     }
 
     // Entity to DTO
     public static RouteResponseDto toDTO(Route route){
-        return new RouteResponseDto();
+        return new RouteResponseDto(
+                route.getId(),
+                route.getRouteName(),
+                route.getRouteOrigin(),
+                route.getDestination(),
+                route.getDistance(),
+                route.getStops(), //convert lists entity to list dto using stop mapper
+                route.getBuses() //convert lists entity to list dto using bus mapper
+        );
     }
 }

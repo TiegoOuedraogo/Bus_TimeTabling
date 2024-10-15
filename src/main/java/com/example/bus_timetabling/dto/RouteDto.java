@@ -11,7 +11,8 @@ public record RouteDto(
         String origin,
         String destination,
         Double distance,
-        List<Bus> buses,
-        List <Stop> stops
+        List <Stop> stops,
+        List<Bus> buses
+
 ) {
 }

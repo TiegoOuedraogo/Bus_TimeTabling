@@ -2,18 +2,19 @@ package com.example.bus_timetabling.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
-@Entity
-//@Table(name = "route")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Builder
+@Entity
 public class Route {
 
     @Id

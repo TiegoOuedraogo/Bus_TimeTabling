@@ -1,11 +1,16 @@
 package com.example.bus_timetabling.entities;
 
+
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @Entity
 //@Table(name = "route")
 @Data
@@ -22,7 +27,7 @@ public class Route {
     @Column(name = "origin")
     private String routeOrigin;
 
-    @Column(name = "destination")
+    @Column(name = "destintion", nullable = false)
     private String destination;
 
     @Column(name="distance")

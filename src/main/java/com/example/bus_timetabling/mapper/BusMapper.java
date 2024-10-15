@@ -21,6 +21,8 @@ public class BusMapper {
     }
 
     public BusResponseDto toBusResponseDTO(Bus bus) {
-        return new BusResponseDto(bus.getBusNumber(), bus.getStatus());
+        return new BusResponseDto(
+                bus.getBusNumber(),
+                bus.getStatus());
     }
 }

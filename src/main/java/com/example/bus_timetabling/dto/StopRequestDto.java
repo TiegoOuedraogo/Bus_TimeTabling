@@ -3,6 +3,7 @@ package com.example.bus_timetabling.dto;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,5 +15,6 @@ import java.util.List;
 @Builder
 public class StopRequestDto{
     private String stopName;
-//    private List<TimesTableRequestDto> timesTables;
+    private RouteDto route;
+    private List<TimesTableDto> timesTables = new ArrayList<>();
 }

@@ -73,4 +73,18 @@ public class BusService {
         }
         busRepository.deleteById(id);
     }
+
+    public List<BusResponseDto> getBusByNumber(String busNumber) {
+        List<Bus> buses = busRepository.findByBusNumber(busNumber);
+        return buses.stream()
+               .map(busMapper::toBusResponseDto)
+               .collect(Collectors.toList());
+    }
+
+    public List<BusResponseDto> findBusByRouteId(Long routeId) {
+        List<Bus> buses = busRepository.findBusByRouteId(routeId);
+        return buses.stream()
+               .map(busMapper::toBusResponseDto)
+               .collect(Collectors.toList());
+    }
 }

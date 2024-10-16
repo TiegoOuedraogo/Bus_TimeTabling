@@ -91,4 +91,22 @@ public class TimesTableService {
         }
         timesTableRepository.deleteById(id);
     }
+
+    public List<TimesTableResponseDto> getTimesTablesByBusId(Long busId) {
+        List<TimesTable> timesTables = timesTableRepository.findByBusId(busId);
+        return timesTables.stream()
+               .map(timesTableMapper::toTimesTableResponseDto)
+               .collect(Collectors.toList());
+    }
+
+    public List<TimesTableResponseDto> getTimesTablesByStopId(Long stopId) {
+        List<TimesTable> timesTables = timesTableRepository.findAll()
+               .stream()
+               .filter(timesTable -> timesTable.getFromStop().equals(stopId)
+                        || timesTable.getToStop().equals(stopId))
+               .collect(Collectors.toList());
+        return timesTables.stream()
+               .map(timesTableMapper::toTimesTableResponseDto)
+               .collect(Collectors.toList());
+    }
 }

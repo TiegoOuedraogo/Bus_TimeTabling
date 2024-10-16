@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface RouteService<Route ,Long> {
   RouteResponseDto createRoute(RouteRequestDto routeRequestDto);
   List<RouteResponseDto> retrieveAllRoutes ();

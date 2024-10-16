@@ -1,5 +1,6 @@
 package com.example.bus_timetabling.mapper;
 
+import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.dto.RouteDto;
 import com.example.bus_timetabling.entities.Route;
 import org.springframework.stereotype.Component;

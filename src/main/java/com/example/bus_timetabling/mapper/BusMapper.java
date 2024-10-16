@@ -24,7 +24,6 @@ public class BusMapper {
         if(dto == null) {
             return null;
         }
-
         Bus bus = new Bus();
         bus.setId(dto.getId());
         bus.setBusNumber(dto.getBusNumber());

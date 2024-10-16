@@ -31,16 +31,16 @@ public class RouteMapper {
         route.setDistance(dto.getDistance());
 
         //Convert list of Stops dtos to Stop entity
-        List<Stop> stops = route.getStops() !=null
-                ? route.getStops().stream()
+        List<Stop> stops = dto.getStops() !=null
+                ? dto.getStops().stream()
                 .map(stopMapper::toStop)
                 .collect(Collectors.toList())
                 : null;
        route.setStops(stops);
 
         //Convert list of Buses dtos to Bus Entity
-        List<Bus> buses = route.getBuses() !=null
-                ? route.getBuses().stream()
+        List<Bus> buses = dto.getBuses() !=null
+                ? dto.getBuses().stream()
                 .map(busMapper::toBus)
                 .collect(Collectors.toList())
                 : null;

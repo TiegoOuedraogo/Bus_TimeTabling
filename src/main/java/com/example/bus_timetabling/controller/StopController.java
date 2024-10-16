@@ -42,4 +42,15 @@ public class StopController {
         return ResponseEntity.ok(stopService.createStop(stopDto));
 
     }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<StopResponseDto> updateStop(@PathVariable long id, @RequestBody StopRequestDto request ) {
+//        StopDto stopDto = new StopDto();
+//        stopDto.setStopName(request.getStopName());
+//        stopDto.setRoute(request.getRoute());
+//        stopDto.setTimesTables(request.getTimesTables());
+//
+//        return ResponseEntity.ok(stopService.createStop(stopDto));
+//
+//    }
 }

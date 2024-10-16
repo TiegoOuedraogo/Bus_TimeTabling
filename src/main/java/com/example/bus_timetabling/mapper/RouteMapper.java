@@ -1,10 +1,9 @@
 package com.example.bus_timetabling.mapper;
 
-import com.example.bus_timetabling.dto.BusDto;
-import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.dto.RouteDto;
-import com.example.bus_timetabling.dto.StopDto;
+import com.example.bus_timetabling.dto.*;
+import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Route;
+import com.example.bus_timetabling.entities.Stop;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -30,36 +29,51 @@ public class RouteMapper {
         route.setRouteOrigin(dto.getRouteOrigin());
         route.setDestination(dto.getDestination());
         route.setDistance(dto.getDistance());
-        route.setStops(dto.getStops()); //convert from list of DTOs to route
-        route.setBuses(dto.getBuses()); //convert from list of DTOs to route
+
+        //Convert list of Stops dtos to Stop entity
+        List<Stop> stops = route.getStops() !=null
+                ? route.getStops().stream()
+                .map(stopMapper::toStop)
+                .collect(Collectors.toList())
+                : null;
+       route.setStops(stops);
+
+        //Convert list of Buses dtos to Bus Entity
+        List<Bus> buses = route.getBuses() !=null
+                ? route.getBuses().stream()
+                .map(busMapper::toBus)
+                .collect(Collectors.toList())
+                : null;
+
+        route.setBuses(buses); //convert from list of DTOs to route
         return route;
     }
 
-    public RouteDto toRouteResponseDto(Route route) {
+    public RouteResponseDto toRouteDto(Route route) {
         if (route == null) {
             return null;
         }
-        RouteDto dto = new RouteDto();
-        dto.setId(route.getId());
-        dto.setRouteName(route.getRouteName());
-        dto.setRouteOrigin(route.getRouteOrigin());
-        dto.setDestination(route.getDestination());
-       
        //Convert list of Stops from route to DTOs
-        List<StopDto> stopDtos = route.getStops() !=null
+        List<StopResponseDto> stopResponseDtos = route.getStops() !=null
                 ? route.getStops().stream()
                 .map(stopMapper::toStopResponseDto)
                 .collect(Collectors.toList())
                 : null;
-        dto.setStops(stopDtos); //convert route to dtos
-       
         //Convert list of Buses route to dtos
         List<BusResponseDto> busResponseDtos = route.getBuses() !=null
                 ? route.getBuses().stream()
                 .map(busMapper::toBusResponseDto)
                 .collect(Collectors.toList())
                 : null;
-        dto.setBuses(busResponseDtos); //convert route to dtos
-        return dto;
+
+        return new RouteResponseDto(
+                route.getId(),
+                route.getRouteName(),
+                route.getRouteOrigin(),
+                route.getDestination(),
+                route.getDistance(),
+                stopResponseDtos,
+                busResponseDtos
+        );
     }
 }

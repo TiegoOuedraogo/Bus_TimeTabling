@@ -7,16 +7,16 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "routes")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 @Setter
+@Getter
 @ToString
 @Builder
-@Entity
 public class Route {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "route_id")
@@ -28,7 +28,7 @@ public class Route {
     @Column(name = "origin")
     private String routeOrigin;
 
-    @Column(name = "destintion", nullable = false)
+    @Column(name = "destination", nullable = false)
     private String destination;
 
     @Column(name="distance")

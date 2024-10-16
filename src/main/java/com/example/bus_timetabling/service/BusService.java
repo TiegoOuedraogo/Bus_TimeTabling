@@ -1,10 +1,13 @@
 package com.example.bus_timetabling.service;
 
 import com.example.bus_timetabling.dto.BusDto;
+import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
 import com.example.bus_timetabling.entities.Bus;
+import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.mapper.BusMapper;
 import com.example.bus_timetabling.repository.BusRepository;
+import com.example.bus_timetabling.repository.RouteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,68 +18,59 @@ import java.util.stream.Collectors;
 @Transactional
 public class BusService {
 
-    private final BusRepository busRepo;
+    private final BusRepository busRepository;
+    private final RouteRepository routeRepository;
     private final BusMapper busMapper;
 
-    public BusService(BusRepository busRepo, BusMapper busMapper) {
-        this.busRepo = busRepo;
+    public BusService(BusRepository busRepository, RouteRepository routeRepository, BusMapper busMapper) {
+        this.busRepository = busRepository;
+        this.routeRepository = routeRepository;
         this.busMapper = busMapper;
     }
 
-    public BusResponseDto findBusById(Long id) {
-        return busRepo.findById(id)
-                .map(busMapper::toBusResponseDto)
-                .orElse(null);
-    }
-
-    public List<BusResponseDto> findBusByNumber(String busNumber) {
-        return busRepo.findByBusNumber(busNumber).stream()
-                .map(busMapper::toBusResponseDto)
-                .collect(Collectors.toList());
-    }
-
-    public List<BusResponseDto> getAllBuses() {
-        return busRepo.findAll().stream()
-                .map(busMapper::toBusResponseDto)
-                .collect(Collectors.toList());
-    }
-
-    public List<BusResponseDto> findBusByRouteId(Long routeId) {
-        return busRepo.findBusByRouteId(routeId).stream()
-                .map(busMapper::toBusResponseDto)
-                .collect(Collectors.toList());
-    }
-
-    public BusResponseDto createBus(BusDto busDto) {
-        Bus bus = busMapper.toBus(busDto);
-        Bus savedBus = busRepo.save(bus);
+    public BusResponseDto createBus(BusRequestDto busRequestDto) {
+        Bus bus = busMapper.toBus(busRequestDto);
+        Route route = routeRepository.findById(busRequestDto.getRouteId())
+                .orElseThrow(() -> new RuntimeException("Route not found"));
+        bus.setRoute(route);
+        Bus savedBus = busRepository.save(bus);
         return busMapper.toBusResponseDto(savedBus);
     }
 
-    public BusResponseDto updateBus(Long id, BusDto busDto) {
-        return busRepo.findById(id)
-                .map(existingBus -> {
-                    Bus updatedBus = busMapper.toBus(busDto);
-                    updatedBus.setId(id);
-                    return busMapper.toBusResponseDto(busRepo.save(updatedBus));
-                })
-                .orElse(null);
+    public BusResponseDto getBusById(Long id) {
+        Bus bus = busRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bus not found"));
+        return busMapper.toBusResponseDto(bus);
     }
 
-//    public boolean deleteBus(Long id) {
-//        return busRepo.findById(id)
-//                .map(bus -> {
-//                    busRepo.delete(bus);
-//                    return true;
-//                })
-//                .orElse(false);
-//    }
+    public List<BusResponseDto> getAllBuses() {
+        return busRepository.findAll().stream()
+                .map(busMapper::toBusResponseDto)
+                .collect(Collectors.toList());
+    }
 
+    public BusResponseDto updateBus(Long id, BusRequestDto busRequestDto) {
+        Bus bus = busRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Bus not found"));
 
-//    public List<BusResponseDto> findBusByStopId(Long stopId) {
-//        return busRepo.findBusByStopId(stopId).stream()
-//                .map(busMapper::toBusResponseDto)
-//                .collect(Collectors.toList());
-//    }
+        bus.setBusNumber(busRequestDto.getBusNumber());
+//        bus.setCapacity(busRequestDto.getCapacity());
+        bus.setStatus(busRequestDto.getStatus());
 
+        if (!bus.getRoute().getId().equals(busRequestDto.getRouteId())) {
+            Route newRoute = routeRepository.findById(busRequestDto.getRouteId())
+                    .orElseThrow(() -> new RuntimeException("Route not found"));
+            bus.setRoute(newRoute);
+        }
+
+        Bus updatedBus = busRepository.save(bus);
+        return busMapper.toBusResponseDto(updatedBus);
+    }
+
+    public void deleteBus(Long id) {
+        if (!busRepository.existsById(id)) {
+            throw new RuntimeException("Bus not found");
+        }
+        busRepository.deleteById(id);
+    }
 }

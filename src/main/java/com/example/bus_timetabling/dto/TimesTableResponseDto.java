@@ -1,28 +1,24 @@
 package com.example.bus_timetabling.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-import java.time.LocalDateTime;
-import java.time.Duration;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@Builder
 public class TimesTableResponseDto {
     private Long id;
-    private LocalDateTime departures;
-    private LocalDateTime arrival;
+    private LocalTime departure;
+    private LocalTime arrival;
+    private Double segmentDistance;
     private Long busId;
     private String busNumber;
-    private Long stopId;
-    private String stopName;
-    private Duration journeyDuration;
-
-    public void calculateJourneyDuration() {
-        if (departures != null && arrival != null) {
-            this.journeyDuration = Duration.between(departures, arrival);
-        }
-    }
+    private Long fromStopId;
+    private String fromStopName;
+    private Long toStopId;
+    private String toStopName;
 }

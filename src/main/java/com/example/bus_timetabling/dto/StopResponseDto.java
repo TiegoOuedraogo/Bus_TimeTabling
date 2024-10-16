@@ -18,5 +18,6 @@ public class StopResponseDto {
     private Long id;
     private String stopName;
     private RouteDto route;
-    private List<TimesTable> timesTables = new ArrayList<>();
+//    private List<TimesTable> timesTables = new ArrayList<>();
+    private List<TimesTableDto> timesTables = new ArrayList<>();
 }

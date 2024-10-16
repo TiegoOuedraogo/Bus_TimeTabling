@@ -14,5 +14,5 @@ import java.util.List;
 @Builder
 public class StopRequestDto{
     private String stopName;
-    private List<TimesTableRequestDto> timesTables;
+//    private List<TimesTableRequestDto> timesTables;
 }

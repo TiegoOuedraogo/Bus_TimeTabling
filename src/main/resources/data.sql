@@ -1,183 +1,192 @@
 -- Insert into buses
-INSERT INTO buses (bus_id, number, capacity, status, route_id)
-VALUES (1, 'Q22', 25, "INSERVICE", 1)
+INSERT INTO buses ( number, capacity, status, route_id)
+VALUES ( 'Q22', 25, "INSERVICE", 1)
 ON CONFLICT (full_name) DO NOTHING;
 
-INSERT INTO buses (bus_id, number, capacity, status, route_id)
-VALUES (2, 'B42', 25, "INSERVICE", 4)
+INSERT INTO buses ( number, capacity, status, route_id)
+VALUES ( 'B42', 25, "INSERVICE", 4)
 ON CONFLICT (full_name) DO NOTHING;
 
-INSERT INTO buses (bus_id, number, capacity, status, route_id)
-VALUES (3, 'M94', 25, "INSERVICE", 2)
+INSERT INTO buses ( number, capacity, status, route_id)
+VALUES ( 'M94', 25, "INSERVICE", 2)
 ON CONFLICT (full_name) DO NOTHING;
 
-INSERT INTO buses (bus_id, number, capacity, status, route_id)
-VALUES (4, 'S53', 25, "INSERVICE", 5)
+INSERT INTO buses ( number, capacity, status, route_id)
+VALUES ( 'S53', 25, "INSERVICE", 5)
 ON CONFLICT (full_name) DO NOTHING;
 
-INSERT INTO buses (bus_id, number, capacity, status, route_id)
-VALUES (5, 'Bx7', 25, "INSERVICE", 3)
+INSERT INTO buses ( number, capacity, status, route_id)
+VALUES ( 'Bx7', 25, "INSERVICE", 3)
 ON CONFLICT (full_name) DO NOTHING;
 
 
 -- Insert into stops
 --Queens Stops
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name, order_in_route, route_id)
 VALUES
-(1, "Lefferts BLVD", 1)
+( "Lefferts BLVD",1, 1)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(2, "Jamaica AVE", 1)
+( "Jamaica AVE",2, 1)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(3, "Rockaway BLVD", 1)
+( "Rockaway BLVD",3, 1)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(4, "111th Street", 1)
+( "111th Street",4, 1)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(5, "Steinway Street", 1)
+( "Steinway Street",5, 1)
 ON CONFLICT (account_number) DO NOTHING;
 
 --Manhattan Stops
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(6, "Lafayette Street", 2)
+( "Lafayette Street",1, 2)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(7, "Broadway", 2)
+( "Broadway",2, 2)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(8, "Lexingston AVE", 2)
+( "Lexingston AVE",3, 2)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(9, "E42 Street", 2)
+( "E42 Street",4, 2)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(10, "Park AVE", 2)
+( "Park AVE",5, 2)
 ON CONFLICT (account_number) DO NOTHING;
 
 --Bronx Stops
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(11, "Jerome AVE", 3)
+( "Jerome AVE",1, 3)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(12, "Fordham RD", 3)
+( "Fordham RD",2, 3)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(13, "Pelham PKWY", 3)
+( "Pelham PKWY",3, 3)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(14, "Westchester AVE", 3)
+( "Westchester AVE",4, 3)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(15, "White Plains RD", 3)
+( "White Plains RD",5, 3)
 ON CONFLICT (account_number) DO NOTHING;
 
 --Brooklyn Stops
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(16, "Bedford AVE", 4)
+( "Bedford AVE",1, 4)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(17, "Flatbush AVE", 4)
+( "Flatbush AVE",2, 4)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(18, "Canal Street", 4)
+( "Canal Street",3, 4)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(19, "Myrtle AVE", 4)
+( "Myrtle AVE",4, 4)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(20, "Malcolm X BLVD", 4)
+( "Malcolm X BLVD",5, 4)
 ON CONFLICT (account_number) DO NOTHING;
 
 --Staten Island Stops
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(21, "Ocean Terrace", 5)
+( "Ocean Terrace",1, 5)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(22, "Richmond RD", 5)
+( "Richmond RD",2, 5)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(23, "Tysens LN", 5)
+( "Tysens LN",3, 5)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name,order_in_route, route_id)
 VALUES
-(24, "Ebbitts Street", 5)
+( "Ebbitts Street",4, 5)
 ON CONFLICT (account_number) DO NOTHING;
 
-INSERT INTO stops (stop_id, stop_name, route_id)
+INSERT INTO stops ( stop_name, order_in_route,route_id)
 VALUES
-(25, "Olympia BLVD", 5)
+( "Olympia BLVD",5, 5)
 ON CONFLICT (account_number) DO NOTHING;
 
 -- Insert into routes
-INSERT INTO routes (route_id, route_name, origin, destination, distance)
+INSERT INTO routes ( route_name, origin, destination, distance)
 VALUES
-(1, "Ozone Park-Astoria", "Lefferts BLVD", "Steinway Street", 23)
+( "Ozone Park-Astoria", "Lefferts BLVD", "Steinway Street", 23)
 ON CONFLICT DO NOTHING;
 
-INSERT INTO routes (route_id, route_name, origin, destination, distance)
+INSERT INTO routes ( route_name, origin, destination, distance)
 VALUES
-(2, "Central Park Tour", "Lafayette Street", "Park AVE", 14)
+( "Central Park Tour", "Lafayette Street", "Park AVE", 14)
 ON CONFLICT DO NOTHING;
 
-INSERT INTO routes (route_id, route_name, origin, destination, distance)
+INSERT INTO routes ( route_name, origin, destination, distance)
 VALUES
-(3, "Belmont Express", "Jerome AVE", "White Plains RD", 10)
+( "Belmont Express", "Jerome AVE", "White Plains RD", 10)
 ON CONFLICT DO NOTHING;
 
-INSERT INTO routes (route_id, route_name, origin, destination, distance)
+INSERT INTO routes ( route_name, origin, destination, distance)
 VALUES
-(4, "Central Brooklyn Drive", "Bedford AVE", "Malcolm X BLVD", 7)
+( "Central Brooklyn Drive", "Bedford AVE", "Malcolm X BLVD", 7)
 ON CONFLICT DO NOTHING;
 
-INSERT INTO routes (route_id, route_name, origin, destination, distance)
+INSERT INTO routes ( route_name, origin, destination, distance)
 VALUES
-(5, "South TODT Hill Way", "Ocean Terrace", "Olympia BLVD", 3)
+( "South TODT Hill Way", "Ocean Terrace", "Olympia BLVD", 3)
 ON CONFLICT DO NOTHING;
 
 -- Insert into times_tables
-INSERT INTO times_tables (times_tables_id, departures, arrival, bus_id, stop_id)
-VALUES()
-ON CONFLICT DO NOTHING;
+-- times_tables dummy data
+INSERT INTO times_tables ( departure, arrival, segment_distance, bus_id, from_stop_id, to_stop_id) VALUES
+      ('08:00:00', '08:15:00', 5.2, 1, 1, 2),
+      ('08:15:00', '08:35:00', 6.1, 1, 2, 3),
+      ('08:35:00', '08:50:00', 4.2, 1, 3, 4),
+      ('09:00:00', '09:20:00', 5.2, 2, 1, 2),
+      ('09:20:00', '09:40:00', 6.1, 2, 2, 3),
+      ('09:40:00', '09:55:00', 4.2, 2, 3, 4),
+      ('08:30:00', '08:45:00', 3.5, 3, 5, 6),
+      ('08:45:00', '09:05:00', 3.7, 3, 6, 7),
+      ('10:00:00', '10:15:00', 2.8, 4, 8, 9),
+      ('10:15:00', '10:30:00', 2.9, 4, 9, 10);

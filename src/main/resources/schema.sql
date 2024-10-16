@@ -37,18 +37,18 @@ CREATE TABLE IF NOT EXISTS times_tables (
 );
 
 -- IF NOT EXISTS
--- ALTER TABLE times_tables ADD CONSTRAINT
---     fk_bus_id FOREIGN KEY (bus_id) REFERENCES buses (bus_id) ON DELETE CASCADE;
---
--- ALTER TABLE times_tables ADD CONSTRAINT
---     fk_from_stop_id FOREIGN KEY (from_stop_id) REFERENCES stops (stop_id) ON DELETE CASCADE;
---
--- ALTER TABLE times_tables ADD CONSTRAINT
---     fk_to_stop_id FOREIGN KEY (to_stop_id) REFERENCES stops (stop_id) ON DELETE CASCADE;
---
--- ALTER TABLE stops ADD CONSTRAINT
---     fk_route_id FOREIGN KEY (route_id) REFERENCES routes (route_id) ON DELETE CASCADE;
--- ALTER TABLE routes ADD CONSTRAINT
---     fk_origin_stop_id FOREIGN KEY (origin) REFERENCES stops (stop_id) ON DELETE CASCADE;
--- ALTER TABLE routes ADD CONSTRAINT
---     fk_destination_stop_id FOREIGN KEY (destination) REFERENCES stops (stop_id) ON DELETE CASCADE;
+ ALTER TABLE times_tables ADD CONSTRAINT
+     fk_bus_id FOREIGN KEY (bus_id) REFERENCES buses (bus_id) ON DELETE CASCADE;
+
+ ALTER TABLE times_tables ADD CONSTRAINT
+     fk_from_stop_id FOREIGN KEY (from_stop_id) REFERENCES stops (stop_id) ON DELETE CASCADE;
+
+ ALTER TABLE times_tables ADD CONSTRAINT
+     fk_to_stop_id FOREIGN KEY (to_stop_id) REFERENCES stops (stop_id) ON DELETE CASCADE;
+
+ ALTER TABLE stops ADD CONSTRAINT
+     fk_route_id FOREIGN KEY (route_id) REFERENCES routes (route_id) ON DELETE CASCADE;
+ ALTER TABLE routes ADD CONSTRAINT
+     fk_origin_stop_id FOREIGN KEY (origin) REFERENCES stops (stop_id) ON DELETE CASCADE;
+ ALTER TABLE routes ADD CONSTRAINT
+     fk_destination_stop_id FOREIGN KEY (destination) REFERENCES stops (stop_id) ON DELETE CASCADE;

@@ -28,14 +28,17 @@ public class StopMapper {
         Stop stop = new Stop();
         stop.setId(stopDto.getId());
         stop.setStopName(stopDto.getStopName());
-        stop.setRoute(routeMapper.toRoute(stopDto.getRoute()));
+//        stop.setRoute(routeMapper.toRoute(stopDto.getRoute()));
+        stop.setOrderInRoute(stopDto.getOrderInRoute());
+        // set routeName & routeID later -- stop.setRoute();
+
 
         //??
-        if (stopDto.getTimesTables() != null) {
-            stop.setTimesTables(stopDto.getTimesTables().stream()
-                    .map(timesTableMapper::toTimesTable)
-                    .collect(Collectors.toList()));
-        }
+//        if (stopDto.getTimesTables() != null) {
+//            stop.setTimesTables(stopDto.getTimesTables().stream()
+//                    .map(timesTableMapper::toTimesTable)
+//                    .collect(Collectors.toList()));
+//        }
         return stop;
     }
 
@@ -44,17 +47,21 @@ public class StopMapper {
             return null;
         }
         //??
-        List<TimesTableDto> timesTableDtos = stop.getTimesTables() != null
-                ? stop.getTimesTables().stream()
-                .map(timesTableMapper::toTimesTableDto)
-                .collect(Collectors.toList())
-                : null;
+//        List<TimesTableDto> timesTableDtos = stop.getTimesTables() != null
+//                ? stop.getTimesTables().stream()
+//                .map(timesTableMapper::toTimesTableDto)
+//                .collect(Collectors.toList())
+//                : null;
 
+        //fix this later
         return new StopResponseDto(
-                stop.getId(),
-                stop.getStopName(),
-                routeMapper.toRouteDto(stop.getRoute()),
-                timesTableDtos
+//                stop.getId(),
+//                stop.getStopName(),
+//                stop.getOrderInRoute(),
+//                routeMapper.toRouteDto(stop.getRoute()),
+//                routeMapper.toRouteDto(stop.getRoute())
+//                routeMapper.toRouteDto(stop.getRoute()),
+//                timesTableDtos
         );
     }
 

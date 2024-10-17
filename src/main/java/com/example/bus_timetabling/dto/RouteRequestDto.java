@@ -12,8 +12,12 @@ import java.util.List;
 @Setter
 @Builder
 public class RouteRequestDto {
+    private Long id;
     private String routeName;
-    private String busNumber;
-
+    private String routeOrigin;
+    private String destination;
+    private Double distance;
+    private List <StopRequestDto> stops;
+    private List<BusRequestDto> buses;
 
 }

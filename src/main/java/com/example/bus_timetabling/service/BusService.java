@@ -76,9 +76,9 @@ public class BusService {
     }
 
     public void deleteBus(Long id) {
-        if (!busRepository.existsById(id)) {
+        if (!busRepo.existsById(id)) {
             throw new RuntimeException("Bus not found");
         }
-        busRepository.deleteById(id);
+        busRepo.deleteById(id);
     }
 }

@@ -39,16 +39,17 @@ public class BusMapper {
         return bus;
     }
 
-    public Bus toBus(BusRequestDto dto) {
-        if(dto == null) {
-            return null;
-        }
-
-        Bus bus = new Bus();
-        bus.setBusNumber(dto.getBusNumber());
-        bus.setStatus(dto.getStatus());
-        return bus;
-    }
+//
+//    public Bus toBus(BusRequestDto dto) {
+//        if(dto == null) {
+//            return null;
+//        }
+//
+//        Bus bus = new Bus();
+//        bus.setBusNumber(dto.getBusNumber());
+//        bus.setStatus(dto.getStatus());
+//        return bus;
+//    }
 
     public BusResponseDto toBusResponseDto(Bus bus) {
         if (bus == null) {

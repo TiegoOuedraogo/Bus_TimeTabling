@@ -1,9 +1,11 @@
 package com.example.bus_timetabling.controller;
 
+import com.example.bus_timetabling.dto.RouteDto;
 import com.example.bus_timetabling.dto.RouteRequestDto;
 import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.service.RouteService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,25 +20,26 @@ public class RouteController {
         this.routeService = routeService;
     }
     @GetMapping
-    public List<RouteResponseDto> retrieveAllRoutes (){
+    public List<RouteDto> retrieveAllRoutes (){
         return routeService.retrieveAllRoutes();
 
     }
 //    @GetMapping ("/route_id")
     @GetMapping("/{id}")
-    public RouteResponseDto findRouteById (@PathVariable Long id){
+    public RouteDto findRouteById (@PathVariable Long id){
         return routeService.findRouteById(id);
     }
 
 //    @GetMapping("/route_id")
     @DeleteMapping("/{id}")
-    public RouteResponseDto deleteRouteById (@PathVariable Long id){
+    public RouteDto deleteRouteById (@PathVariable Long id){
         return routeService.deleteRouteById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public RouteResponseDto createRoute(RouteRequestDto routeRequestDto){
-        return routeService.createRoute(routeRequestDto);
+    public ResponseEntity<HttpStatus> createRoute(RouteRequestDto routeRequestDto){
+        routeService.createRoute(routeRequestDto);
+        return ResponseEntity<HttpStatus.OK>;
     }
 }

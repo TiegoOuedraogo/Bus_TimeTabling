@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "routes")
+@Table(name = "routes",schema = "bus_timetabling")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

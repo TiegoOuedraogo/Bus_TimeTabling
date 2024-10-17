@@ -19,3 +19,4 @@ public class TimesTableDto {
     private Long fromStopId;
     private Long toStopId;
 }
+

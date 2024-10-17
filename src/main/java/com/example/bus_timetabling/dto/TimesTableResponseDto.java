@@ -22,3 +22,4 @@ public class TimesTableResponseDto {
     private Long toStopId;
     private String toStopName;
 }
+

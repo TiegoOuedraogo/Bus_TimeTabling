@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "buses")
+@Table(name = "buses", schema = "bus_timetabling")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +26,7 @@ public class Bus {
     @Column(name = "capacity")
     private Integer capacity;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Service status;
 
@@ -37,3 +38,4 @@ public class Bus {
     @JoinColumn(name = "route_id", nullable = false)
     private Route route;
 }
+

@@ -6,10 +6,10 @@ INSERT INTO routes (route_name, origin, destination, distance) VALUES
    ('Route 3', 'University', 'Shopping Mall', 8.7);
 
 INSERT INTO buses (number, capacity, status, route_id) VALUES
-   ('Bus001', 50, 0, 1),
-   ('Bus002', 40, 0, 1),
-   ('Bus003', 60, 0, 2),
-   ('Bus004', 45, 1, 3);
+   ('Bus001', 50, 'INSERVICE', 1),
+   ('Bus002', 40, 'INSERVICE', 1),
+   ('Bus003', 60, 'INSERVICE', 2),
+   ('Bus004', 45, 'OUTOFSERVICE', 3);
 
 INSERT INTO stops (stop_name, order_in_route, route_id) VALUES
     ('City Center Station', 1, 1),

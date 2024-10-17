@@ -4,3 +4,4 @@ public enum Service {
     INSERVICE,
     OUTOFSERVICE,
 }
+

@@ -19,7 +19,7 @@ public class BusController {
     }
 
     @GetMapping("/{id}")
-    public BusResponseDto findBusById(@PathVariable("student-id") Long id) {
+    public BusResponseDto findBusById(@PathVariable("id") Long id) {
         return busService.getBusById(id);
     }
 

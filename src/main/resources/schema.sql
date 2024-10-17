@@ -1,4 +1,5 @@
--- Create schema if not exists
+-- drop schema IF EXISTS bus_timetabling cascade;
+
 CREATE SCHEMA IF NOT EXISTS bus_timetabling;
 
 SET search_path TO bus_timetabling;
@@ -7,7 +8,7 @@ CREATE TABLE IF NOT EXISTS buses (
      bus_id SERIAL PRIMARY KEY,
      number VARCHAR(255) NOT NULL,
      capacity INTEGER NOT NULL,
-     status INTEGER NOT NULL,
+     status VARCHAR(255) NOT NULL,
      route_id BIGINT NOT NULL
 );
 

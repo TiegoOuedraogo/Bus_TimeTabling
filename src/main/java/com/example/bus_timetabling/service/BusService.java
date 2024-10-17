@@ -1,10 +1,13 @@
 package com.example.bus_timetabling.service;
 
 import com.example.bus_timetabling.dto.BusDto;
+import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
 import com.example.bus_timetabling.entities.Bus;
+import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.mapper.BusMapper;
 import com.example.bus_timetabling.repository.BusRepository;
+import com.example.bus_timetabling.repository.RouteRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,16 +20,21 @@ public class BusService {
 
     private final BusRepository busRepo;
     private final BusMapper busMapper;
+    private final RouteRepository routeRepo;
 
-    public BusService(BusRepository busRepo, BusMapper busMapper) {
+    public BusService(BusRepository busRepo, BusMapper busMapper, RouteRepository routeRepo) {
         this.busRepo = busRepo;
         this.busMapper = busMapper;
+        this.routeRepo = routeRepo;
     }
 
-    public BusResponseDto findBusById(Long id) {
-        return busRepo.findById(id)
-                .map(busMapper::toBusResponseDto)
-                .orElse(null);
+    public BusResponseDto createBus(BusRequestDto busRequestDto) {
+        Bus bus = busMapper.toBus(busRequestDto);
+        Route route = routeRepo.findById(busRequestDto.getRouteId())
+                .orElseThrow(() -> new RuntimeException("Route not found"));
+        bus.setRoute(route);
+        Bus savedBus = busRepo.save(bus);
+        return busMapper.toBusResponseDto(savedBus);
     }
 
     public List<BusResponseDto> findBusByNumber(String busNumber) {
@@ -61,6 +69,10 @@ public class BusService {
                     return busMapper.toBusResponseDto(busRepo.save(updatedBus));
                 })
                 .orElse(null);
+    }
+
+    public BusResponseDto findBusById(Long id) {
+        return busRepo.findById(id).map(busMapper::toBusResponseDto).orElse(null);
     }
 
 //    public boolean deleteBus(Long id) {

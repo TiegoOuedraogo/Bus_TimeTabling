@@ -11,7 +11,7 @@ import java.time.LocalTime;
 @Getter
 @ToString
 @Entity
-@Table(name = "times_tables")
+@Table(name = "times_tables", schema = "bus_timetabling")
 @Data
 public class TimesTable {
     @Id

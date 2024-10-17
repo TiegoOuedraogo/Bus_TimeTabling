@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @ToString
 @Builder
-@Table(name="stops")
+@Table(name="stops", schema = "bus_timetabling")
 public class Stop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

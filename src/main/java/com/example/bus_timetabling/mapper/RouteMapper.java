@@ -16,7 +16,7 @@ public class RouteMapper {
 
         route.setId(dto.getId());
         route.setRouteName(dto.getRouteName());
-        route.setRouteOrigin(dto.getRouteOrigin());
+        route.setRouteOrigin(dto.getOrigin());
         route.setDestination(dto.getDestination());
         return route;
     }
@@ -29,8 +29,9 @@ public class RouteMapper {
         RouteDto dto = new RouteDto();
         dto.setId(entity.getId());
         dto.setRouteName(entity.getRouteName());
-        dto.setRouteOrigin(entity.getRouteOrigin());
+        dto.setOrigin(entity.getRouteOrigin());
         dto.setDestination(entity.getDestination());
         return dto;
     }
 }
+

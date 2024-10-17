@@ -2,11 +2,10 @@ package com.example.bus_timetabling.mapper;
 
 import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.dto.TimesTableDto;
+import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.entities.Bus;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -40,24 +39,48 @@ public class BusMapper {
         return bus;
     }
 
+    public Bus toBus(BusRequestDto dto) {
+        if(dto == null) {
+            return null;
+        }
+
+        Bus bus = new Bus();
+        bus.setBusNumber(dto.getBusNumber());
+        bus.setStatus(dto.getStatus());
+        return bus;
+    }
+
     public BusResponseDto toBusResponseDto(Bus bus) {
         if (bus == null) {
             return null;
         }
 
-        List<TimesTableDto> timesTableDtos = bus.getTimesTables() != null
-                ? bus.getTimesTables().stream()
-                .map(timesTableMapper::toTimesTableDto)
-                .collect(Collectors.toList())
-                : null;
+        return BusResponseDto.builder()
+                .id(bus.getId())
+                .busNumber(bus.getBusNumber())
+                .capacity(bus.getCapacity())
+                .status(bus.getStatus())
+                .route(routeMapper.toRouteDto(bus.getRoute()))
+                .timesTables(bus.getTimesTables().stream()
+                        .map(timesTableMapper::toTimesTableDto)
+                        .collect(Collectors.toList()))
+                .build();
+    }
 
-        return new BusResponseDto(
-                bus.getId(),
-                bus.getBusNumber(),
-                bus.getCapacity(),
-                bus.getStatus(),
-                routeMapper.toRouteDto(bus.getRoute()),
-                timesTableDtos
-        );
+    public BusDto toBusDto(Bus bus) {
+        if (bus == null) {
+            return null;
+        }
+
+        return BusDto.builder()
+                .id(bus.getId())
+                .busNumber(bus.getBusNumber())
+                .capacity(bus.getCapacity())
+                .status(bus.getStatus())
+                .route(routeMapper.toRouteDto(bus.getRoute()))
+                .timesTables(bus.getTimesTables().stream()
+                        .map(timesTableMapper::toTimesTableDto)
+                        .collect(Collectors.toList()))
+                .build();
     }
 }

@@ -1,19 +1,21 @@
 package com.example.bus_timetabling.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@Builder
 public class TimesTableDto {
     private Long id;
-    private LocalDateTime departures;
-    private LocalDateTime arrival;
+    private LocalTime departure;
+    private LocalTime arrival;
+    private Double segmentDistance;
     private Long busId;
-    private Long stopId;
+    private Long fromStopId;
+    private Long toStopId;
 }
-

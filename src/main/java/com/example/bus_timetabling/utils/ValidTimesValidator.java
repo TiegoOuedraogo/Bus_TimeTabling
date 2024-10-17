@@ -9,9 +9,9 @@ public class ValidTimesValidator implements ConstraintValidator<ValidTimes, Time
 
     @Override
     public boolean isValid(TimesTableRequestDto dto, ConstraintValidatorContext context) {
-        if (dto.getDepartures() == null || dto.getArrival() == null) {
+        if (dto.getDeparture() == null || dto.getArrival() == null) {
             return true;
         }
-        return !dto.getDepartures().isAfter(dto.getArrival());
+        return !dto.getDeparture().isAfter(dto.getArrival());
     }
 }

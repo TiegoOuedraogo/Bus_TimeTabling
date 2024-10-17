@@ -20,12 +20,12 @@ public class BusController {
 
     @GetMapping("/{id}")
     public BusResponseDto findBusById(@PathVariable("student-id") Long id) {
-        return busService.findBusById(id);
+        return busService.getBusById(id);
     }
 
     @GetMapping("/{busNumber}")
     public List<BusResponseDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
-        return busService.findBusByNumber(busNumber);
+        return busService.getBusByNumber(busNumber);
     }
 
     @GetMapping

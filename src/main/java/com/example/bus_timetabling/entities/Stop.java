@@ -1,16 +1,20 @@
 package com.example.bus_timetabling.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@AllArgsConstructor
 @Entity
-//@Table(name = "stop")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
+@Builder
+@Table(name="stops")
 public class Stop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +24,17 @@ public class Stop {
     @Column(name = "stop_name")
     private String stopName;
 
+    @Column(name = "order_in_route")
+    private Integer orderInRoute;
+
     @ManyToOne
     @JoinColumn(name = "route_id", referencedColumnName = "route_id")
     private Route route;
 
-    @OneToMany(mappedBy = "stop", cascade = CascadeType.ALL)
-    private List<TimesTable> timesTables = new ArrayList<>();
+    @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
+    private List<TimesTable> departureTimesTables = new ArrayList<>();
+
+    @OneToMany(mappedBy = "toStop", cascade = CascadeType.ALL)
+    private List<TimesTable> arrivalTimesTables = new ArrayList<>();
 }
+

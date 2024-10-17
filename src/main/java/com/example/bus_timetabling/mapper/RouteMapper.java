@@ -23,10 +23,12 @@ public class RouteMapper {
         if (dto == null) {
             return null;
         }
+
         Route route = new Route();
+
         route.setId(dto.getId());
         route.setRouteName(dto.getRouteName());
-        route.setRouteOrigin(dto.getRouteOrigin());
+        route.setRouteOrigin(dto.getOrigin());
         route.setDestination(dto.getDestination());
         route.setDistance(dto.getDistance());
 

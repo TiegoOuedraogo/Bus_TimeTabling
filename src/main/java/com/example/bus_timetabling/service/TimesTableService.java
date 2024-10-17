@@ -1,10 +1,12 @@
 package com.example.bus_timetabling.service;
 
+import com.example.bus_timetabling.dto.TimesTableDto;
 import com.example.bus_timetabling.dto.TimesTableRequestDto;
 import com.example.bus_timetabling.dto.TimesTableResponseDto;
+import com.example.bus_timetabling.entities.TimesTable;
 import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Stop;
-import com.example.bus_timetabling.entities.TimesTable;
+import com.example.bus_timetabling.mapper.TimesTableMapper;
 import com.example.bus_timetabling.repository.TimesTableRepository;
 import com.example.bus_timetabling.repository.BusRepository;
 import com.example.bus_timetabling.repository.StopRepository;
@@ -21,104 +23,90 @@ public class TimesTableService {
     private final TimesTableRepository timesTableRepository;
     private final BusRepository busRepository;
     private final StopRepository stopRepository;
+    private final TimesTableMapper timesTableMapper;
 
-    public TimesTableService(TimesTableRepository timesTableRepository,
-                             BusRepository busRepository,
-                             StopRepository stopRepository) {
+    public TimesTableService(TimesTableRepository timesTableRepository, BusRepository busRepository,
+                             StopRepository stopRepository, TimesTableMapper timesTableMapper) {
         this.timesTableRepository = timesTableRepository;
         this.busRepository = busRepository;
         this.stopRepository = stopRepository;
+        this.timesTableMapper = timesTableMapper;
     }
 
-    @Transactional(readOnly = true)
+    public TimesTableResponseDto createTimesTable(TimesTableRequestDto timesTableRequestDto) {
+        TimesTable timesTable = timesTableMapper.toTimesTable(timesTableRequestDto);
+        Bus bus = busRepository.findById(timesTableRequestDto.getBusId())
+                .orElseThrow(() -> new RuntimeException("Bus not found"));
+        Stop fromStop = stopRepository.findById(timesTableRequestDto.getFromStopId())
+                .orElseThrow(() -> new RuntimeException("From Stop not found"));
+        Stop toStop = stopRepository.findById(timesTableRequestDto.getToStopId())
+                .orElseThrow(() -> new RuntimeException("To Stop not found"));
+
+        timesTable.setBus(bus);
+        timesTable.setFromStop(fromStop);
+        timesTable.setToStop(toStop);
+
+        TimesTable savedTimesTable = timesTableRepository.save(timesTable);
+        return timesTableMapper.toTimesTableResponseDto(savedTimesTable);
+    }
+
+    public TimesTableResponseDto getTimesTableById(Long id) {
+        TimesTable timesTable = timesTableRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TimesTable not found"));
+        return timesTableMapper.toTimesTableResponseDto(timesTable);
+    }
+
     public List<TimesTableResponseDto> getAllTimesTables() {
-        return timesTableRepository.findAll()
-                .stream()
-                .map(this::mapToResponseDto)
+        return timesTableRepository.findAll().stream()
+                .map(timesTableMapper::toTimesTableResponseDto)
                 .collect(Collectors.toList());
     }
 
-    @Transactional(readOnly = true)
-    public TimesTableResponseDto getTimesTableById(Long id) {
+    public TimesTableResponseDto updateTimesTable(Long id, TimesTableRequestDto timesTableRequestDto) {
         TimesTable timesTable = timesTableRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("TimesTable not found with id: " + id));
-        return mapToResponseDto(timesTable);
-    }
+                .orElseThrow(() -> new RuntimeException("TimesTable not found"));
 
-    public TimesTableResponseDto createTimesTable(TimesTableRequestDto requestDto) {
-        Bus bus = getBusById(requestDto.getBusId());
-        Stop stop = getStopById(requestDto.getStopId());
+        timesTable.setDeparture(timesTableRequestDto.getDeparture());
+        timesTable.setArrival(timesTableRequestDto.getArrival());
+//        timesTable.setSegmentDistance(timesTableRequestDto.getSegmentDistance());
 
-        TimesTable timesTable = new TimesTable();
-        updateTimesTableFromDto(timesTable, requestDto, bus, stop);
+        Bus bus = busRepository.findById(timesTableRequestDto.getBusId())
+                .orElseThrow(() -> new RuntimeException("Bus not found"));
+        Stop fromStop = stopRepository.findById(timesTableRequestDto.getFromStopId())
+                .orElseThrow(() -> new RuntimeException("From Stop not found"));
+        Stop toStop = stopRepository.findById(timesTableRequestDto.getToStopId())
+                .orElseThrow(() -> new RuntimeException("To Stop not found"));
 
-        TimesTable savedTimesTable = timesTableRepository.save(timesTable);
-        return mapToResponseDto(savedTimesTable);
+        timesTable.setBus(bus);
+        timesTable.setFromStop(fromStop);
+        timesTable.setToStop(toStop);
+
+        TimesTable updatedTimesTable = timesTableRepository.save(timesTable);
+        return timesTableMapper.toTimesTableResponseDto(updatedTimesTable);
     }
 
     public void deleteTimesTable(Long id) {
         if (!timesTableRepository.existsById(id)) {
-            throw new IllegalArgumentException("TimesTable not found with id: " + id);
+            throw new RuntimeException("TimesTable not found");
         }
         timesTableRepository.deleteById(id);
     }
 
-    @Transactional(readOnly = true)
     public List<TimesTableResponseDto> getTimesTablesByBusId(Long busId) {
-        return timesTableRepository.findByBusId(busId)
-                .stream()
-                .map(this::mapToResponseDto)
-                .collect(Collectors.toList());
+        List<TimesTable> timesTables = timesTableRepository.findByBusId(busId);
+        return timesTables.stream()
+               .map(timesTableMapper::toTimesTableResponseDto)
+               .collect(Collectors.toList());
     }
 
-    @Transactional(readOnly = true)
     public List<TimesTableResponseDto> getTimesTablesByStopId(Long stopId) {
-        return timesTableRepository.findByStopId(stopId)
-                .stream()
-                .map(this::mapToResponseDto)
-                .collect(Collectors.toList());
-    }
-
-    public TimesTableResponseDto updateTimesTable(Long id, TimesTableRequestDto requestDto) {
-        TimesTable existing = timesTableRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("TimesTable not found with id: " + id));
-
-        Bus bus = getBusById(requestDto.getBusId());
-        Stop stop = getStopById(requestDto.getStopId());
-
-        updateTimesTableFromDto(existing, requestDto, bus, stop);
-
-        TimesTable updated = timesTableRepository.save(existing);
-        return mapToResponseDto(updated);
-    }
-
-    private TimesTableResponseDto mapToResponseDto(TimesTable timesTable) {
-        TimesTableResponseDto responseDto = new TimesTableResponseDto();
-        responseDto.setId(timesTable.getId());
-        responseDto.setDepartures(timesTable.getDepartures());
-        responseDto.setArrival(timesTable.getArrival());
-        responseDto.setBusId(timesTable.getBus().getId());
-        responseDto.setBusNumber(timesTable.getBus().getBusNumber());
-        responseDto.setStopId(timesTable.getStop().getId());
-        responseDto.setStopName(timesTable.getStop().getStopName());
-        responseDto.calculateJourneyDuration();
-        return responseDto;
-    }
-
-    private Bus getBusById(Long busId) {
-        return busRepository.findById(busId)
-                .orElseThrow(() -> new IllegalArgumentException("Bus not found with id: " + busId));
-    }
-
-    private Stop getStopById(Long stopId) {
-        return stopRepository.findById(stopId)
-                .orElseThrow(() -> new IllegalArgumentException("Stop not found with id: " + stopId));
-    }
-
-    private void updateTimesTableFromDto(TimesTable timesTable, TimesTableRequestDto dto, Bus bus, Stop stop) {
-        timesTable.setDepartures(dto.getDepartures());
-        timesTable.setArrival(dto.getArrival());
-        timesTable.setBus(bus);
-        timesTable.setStop(stop);
+        List<TimesTable> timesTables = timesTableRepository.findAll()
+               .stream()
+               .filter(timesTable -> timesTable.getFromStop().equals(stopId)
+                        || timesTable.getToStop().equals(stopId))
+               .collect(Collectors.toList());
+        return timesTables.stream()
+               .map(timesTableMapper::toTimesTableResponseDto)
+               .collect(Collectors.toList());
     }
 }

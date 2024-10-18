@@ -3,7 +3,6 @@ package com.example.bus_timetabling.service;
 import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
 import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.dto.StopResponseDto;
 import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Stop;
 import com.example.bus_timetabling.mapper.BusMapper;
@@ -25,42 +24,41 @@ public class StopService {
         this.stopMapper = stopMapper;
     }
 
-    public StopResponseDto findStopById(Long id) {
+    public StopDto findStopById(Long id) {
         return stopRepo.findById(id)
-                .map(stopMapper::toStopResponseDto)
+                .map(stopMapper::toStopDto)
                 .orElse(null);
     }
 
-    public List<StopResponseDto> findStopByName(String stopName) {
+    public List<StopDto> findStopByName(String stopName) {
         return stopRepo.findByStopName(stopName).stream()
-                .map(stopMapper::toStopResponseDto)
+                .map(stopMapper::toStopDto)
                 .collect(Collectors.toList());
     }
 
-    public List<StopResponseDto> findAllStops() {
+    public List<StopDto> findAllStops() {
         return stopRepo.findAll().stream()
-                .map(stopMapper::toStopResponseDto)
+                .map(stopMapper::toStopDto)
                 .collect(Collectors.toList());
     }
 
-    public List<StopResponseDto> findBusByRouteId(Long routeId) {
+    public List<StopDto> findBusByRouteId(Long routeId) {
         return stopRepo.findStopByRouteId(routeId).stream()
-                .map(stopMapper::toStopResponseDto)
+                .map(stopMapper::toStopDto)
                 .collect(Collectors.toList());
     }
 
-    public StopResponseDto createStop(StopDto stopDto) {
+    public void createStop(StopDto stopDto) {
         Stop stop = stopMapper.toStop(stopDto);
-        Stop savedStop = stopRepo.save(stop);
-        return stopMapper.toStopResponseDto(savedStop);
+        stopRepo.save(stop);
     }
 
-    public StopResponseDto updateBus(Long id, StopDto stopDto) {
+    public StopDto updateBus(Long id, StopDto stopDto) {
         return stopRepo.findById(id)
                 .map(existingBus -> {
                     Stop updatedStop = stopMapper.toStop(stopDto);
                     updatedStop.setId(id);
-                    return stopMapper.toStopResponseDto(stopRepo.save(updatedStop));
+                    return stopMapper.toStopDto(stopRepo.save(updatedStop));
                 })
                 .orElse(null);
     }

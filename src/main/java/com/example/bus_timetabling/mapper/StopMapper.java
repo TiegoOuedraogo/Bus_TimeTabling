@@ -1,7 +1,6 @@
 package com.example.bus_timetabling.mapper;
 
 import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.dto.StopResponseDto;
 import com.example.bus_timetabling.dto.TimesTableDto;
 import com.example.bus_timetabling.entities.Stop;
 import org.springframework.stereotype.Component;
@@ -28,40 +27,47 @@ public class StopMapper {
         Stop stop = new Stop();
         stop.setId(stopDto.getId());
         stop.setStopName(stopDto.getStopName());
-//        stop.setRoute(routeMapper.toRoute(stopDto.getRoute()));
         stop.setOrderInRoute(stopDto.getOrderInRoute());
-        // set routeName & routeID later -- stop.setRoute();
-
-
+        stop.setRoute(routeMapper.toRoute(stopDto.getRoute()));
         //??
-//        if (stopDto.getTimesTables() != null) {
-//            stop.setTimesTables(stopDto.getTimesTables().stream()
-//                    .map(timesTableMapper::toTimesTable)
-//                    .collect(Collectors.toList()));
-//        }
+        if (stopDto.getDepartureTimesTables()!= null) {
+            stop.setDepartureTimesTables(stopDto.getDepartureTimesTables().stream()
+                    .map(timesTableMapper::toTimesTable)
+                    .collect(Collectors.toList()));
+        }
+        if (stopDto.getArrivalTimesTables() != null) {
+            stop.setArrivalTimesTables(stopDto.getArrivalTimesTables().stream()
+                    .map(timesTableMapper::toTimesTable)
+                    .collect(Collectors.toList()));
+        }
         return stop;
     }
 
-    public StopResponseDto toStopResponseDto(Stop stop) {
+    public StopDto toStopDto(Stop stop) {
         if (stop == null) {
             return null;
         }
         //??
-//        List<TimesTableDto> timesTableDtos = stop.getTimesTables() != null
-//                ? stop.getTimesTables().stream()
-//                .map(timesTableMapper::toTimesTableDto)
-//                .collect(Collectors.toList())
-//                : null;
+        List<TimesTableDto> departureTimesTables = stop.getDepartureTimesTables() != null
+                ? stop.getDepartureTimesTables().stream()
+                .map(timesTableMapper::toTimesTableDto)
+                .collect(Collectors.toList())
+                : null;
+
+        List<TimesTableDto> arrivalTimesTables = stop.getArrivalTimesTables()!= null
+                ? stop.getArrivalTimesTables().stream()
+                .map(timesTableMapper::toTimesTableDto)
+                .collect(Collectors.toList())
+                : null;
 
         //fix this later
-        return new StopResponseDto(
-//                stop.getId(),
-//                stop.getStopName(),
-//                stop.getOrderInRoute(),
-//                routeMapper.toRouteDto(stop.getRoute()),
-//                routeMapper.toRouteDto(stop.getRoute())
-//                routeMapper.toRouteDto(stop.getRoute()),
-//                timesTableDtos
+        return new StopDto(
+                stop.getId(),
+                stop.getStopName(),
+                stop.getOrderInRoute(),
+                routeMapper.toRouteDto(stop.getRoute()),
+                departureTimesTables,
+                arrivalTimesTables
         );
     }
 

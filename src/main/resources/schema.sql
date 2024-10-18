@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS stops (
 );
 
 CREATE TABLE IF NOT EXISTS times_tables (
-    times_table_id PRIMARY KEY,
+    times_table_id SERIAL PRIMARY KEY,
     departure TIME NOT NULL,
     arrival TIME NOT NULL,
     segment_distance DOUBLE PRECISION,

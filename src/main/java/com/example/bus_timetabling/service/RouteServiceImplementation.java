@@ -5,6 +5,7 @@ import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.exception.RouteNotFoundException;
 import com.example.bus_timetabling.mapper.BusMapper;
 import com.example.bus_timetabling.mapper.RouteMapper;
+import com.example.bus_timetabling.mapper.StopMapper;
 import com.example.bus_timetabling.repository.BusRepository;
 import com.example.bus_timetabling.repository.RouteRepository;
 import com.example.bus_timetabling.repository.StopRepository;
@@ -40,8 +41,8 @@ public class RouteServiceImplementation implements RouteService {
                 routeDto.getOrigin(),
                 routeDto.getDestination(),
                 routeDto.getDistance(),
-                routeDto.getStops().stream().map(StopMapper:: toStop).collect(Collectors.toList()),
-        routeDto.getBuses().stream().map(BusMapper:: toBus).collect(Collectors.toList())
+                routeDto.getStops().stream().map(stopMapper::toStop).collect(Collectors.toList()),
+        routeDto.getBuses().stream().map(busMapper:: toBus).collect(Collectors.toList())
         );
 
         //Save entity to repo

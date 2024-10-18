@@ -19,18 +19,6 @@ public class RouteMapper {
         this.stopMapper = stopMapper;
     }
 
-    
-//    public RouteResponseDto RouteDtoToRouteResponseDto(RouteDto routeDto){
-//        RouteResponseDto dto = new RouteResponseDto();
-//        dto.setId(routeDto.getId());
-//        dto.setRouteName(routeDto.getRouteName());
-//        dto.setRouteOrigin(routeDto.getOrigin());
-//        dto.setStops(routeDto.getStops());
-//        dto.setDistance(routeDto.getDistance());
-//        dto.setDestination(routeDto.getDestination());
-//        dto.setBuses(routeDto.getBuses().stream().map(busMapper::toBusResponseDto).collect(Collectors.toList()));
-//        return dto;
-//    }
 
     public Route toRoute(RouteDto dto) {
         if (dto == null) {
@@ -75,17 +63,31 @@ public class RouteMapper {
         dto.setStops(route.getStops().stream().map(stopMapper::toStopDto).collect(Collectors.toList()));
         return dto;
     }
-    public Route toRoute(RouteRequestDto routeRequestDto) {
-        Route dto = new Route();
-        dto.setId(routeRequestDto.getId());
-        dto.setRouteName(routeRequestDto.getRouteName());
-        dto.setDestination(routeRequestDto.getDestination());
-        dto.setDistance(routeRequestDto.getDistance());
-        dto.setRouteOrigin(routeRequestDto.getRouteOrigin());
-        dto.setBuses(routeRequestDto.getBuses().stream().map(busMapper::toBus).collect(Collectors.toList()));
-        dto.setStops(routeRequestDto.getStops().stream().map(stopMapper::toStop).collect(Collectors.toList()));
-        return dto;
-    }
+//    public Route toRoute(RouteRequestDto routeRequestDto) {
+//        Route dto = new Route();
+//        dto.setId(routeRequestDto.getId());
+//        dto.setRouteName(routeRequestDto.getRouteName());
+//        dto.setDestination(routeRequestDto.getDestination());
+//        dto.setDistance(routeRequestDto.getDistance());
+//        dto.setRouteOrigin(routeRequestDto.getRouteOrigin());
+//        dto.setBuses(routeRequestDto.getBuses().stream().map(busMapper::toBus).collect(Collectors.toList()));
+//        dto.setStops(routeRequestDto.getStops().stream().map(stopMapper::toStop).collect(Collectors.toList()));
+//        return dto;
+//    }
+
+
+    //    public RouteResponseDto RouteDtoToRouteResponseDto(RouteDto routeDto){
+//        RouteResponseDto dto = new RouteResponseDto();
+//        dto.setId(routeDto.getId());
+//        dto.setRouteName(routeDto.getRouteName());
+//        dto.setRouteOrigin(routeDto.getOrigin());
+//        dto.setStops(routeDto.getStops());
+//        dto.setDistance(routeDto.getDistance());
+//        dto.setDestination(routeDto.getDestination());
+//        dto.setBuses(routeDto.getBuses().stream().map(busMapper::toBusResponseDto).collect(Collectors.toList()));
+//        return dto;
+//    }
+
 
 //    public RouteResponseDto toRouteResponseDto(Route route) {
 //        if (route == null) {

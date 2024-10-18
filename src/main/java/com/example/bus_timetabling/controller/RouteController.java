@@ -1,8 +1,7 @@
 package com.example.bus_timetabling.controller;
-
 import com.example.bus_timetabling.dto.RouteDto;
-import com.example.bus_timetabling.dto.RouteRequestDto;
-import com.example.bus_timetabling.dto.RouteResponseDto;
+//import com.example.bus_timetabling.dto.RouteRequestDto;
+//import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.service.RouteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,7 @@ public class RouteController {
     }
 
 //    @GetMapping("/route_id")
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/routeId/{id}")
     public RouteDto deleteRouteById (@PathVariable Long id){
         return routeService.deleteRouteById(id);
     }

@@ -19,18 +19,17 @@ public class RouteController {
         this.routeService = routeService;
     }
     @GetMapping
-    public List<RouteDto> retrieveAllRoutes (){
-        return routeService.retrieveAllRoutes();
 
+
+    public List<RouteDto> retrieveAllRoutes () {
+        return routeService.retrieveAllRoutes();
     }
-//    @GetMapping ("/route_id")
+
     @GetMapping("/{id}")
     public RouteDto findRouteById (@PathVariable Long id){
-
         return routeService.findRouteById(id);
     }
 
-//    @GetMapping("/route_id")
     @DeleteMapping("/routeId/{id}")
     public RouteDto deleteRouteById (@PathVariable Long id){
         return routeService.deleteRouteById(id);

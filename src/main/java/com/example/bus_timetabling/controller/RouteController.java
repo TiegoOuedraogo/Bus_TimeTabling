@@ -27,6 +27,7 @@ public class RouteController {
 //    @GetMapping ("/route_id")
     @GetMapping("/{id}")
     public RouteDto findRouteById (@PathVariable Long id){
+
         return routeService.findRouteById(id);
     }
 
@@ -38,8 +39,8 @@ public class RouteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<HttpStatus> createRoute(RouteRequestDto routeRequestDto){
-        routeService.createRoute(routeRequestDto);
-        return ResponseEntity<HttpStatus.OK>;
+    public ResponseEntity<HttpStatus> createRoute(RouteDto routeDto){
+        routeService.createRoute(routeDto);
+        return new ResponseEntity<> (HttpStatus.OK);
     }
 }

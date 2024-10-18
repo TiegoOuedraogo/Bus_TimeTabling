@@ -7,9 +7,8 @@ import com.example.bus_timetabling.exception.RouteNotFoundException;
 import java.util.List;
 
 public interface RouteService<Route ,Long> {
- void createRoute(RouteRequestDto routeRequestDto);
+ void createRoute(RouteDto routeDto);
   List<RouteDto> retrieveAllRoutes ();
-//  RouteDto findRouteById(Long route_id) throws RouteNotFoundException;
-
-  RouteDto deleteRouteById (Long route_id) throws RouteNotFoundException;
+ RouteDto deleteRouteById(java.lang.Long route_id) throws RouteNotFoundException;
+ RouteDto findRouteById(java.lang.Long route_id) throws RouteNotFoundException;
 }

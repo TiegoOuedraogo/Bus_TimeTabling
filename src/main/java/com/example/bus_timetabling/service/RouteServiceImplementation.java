@@ -1,7 +1,6 @@
 package com.example.bus_timetabling.service;
 
 import com.example.bus_timetabling.dto.RouteDto;
-import com.example.bus_timetabling.dto.RouteRequestDto;
 import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.exception.RouteNotFoundException;
 import com.example.bus_timetabling.mapper.BusMapper;
@@ -24,11 +23,12 @@ public class RouteServiceImplementation implements RouteService {
     private StopMapper stopMapper;
 
 
-    public RouteServiceImplementation(RouteRepository routeRepository, BusRepository busRepository, StopRepository stopRepository, BusMapper busMapper) {
+    public RouteServiceImplementation(RouteRepository routeRepository, BusRepository busRepository, StopRepository stopRepository, BusMapper busMapper, StopMapper stopMapper) {
         this.routeRepository = routeRepository;
         this.busRepository = busRepository;
         this.stopRepository = stopRepository;
         this.busMapper = busMapper;
+        this.stopMapper = stopMapper;
     }
 
     @Override
@@ -48,24 +48,30 @@ public class RouteServiceImplementation implements RouteService {
         Route savedRoute = routeRepository.save(route);
     }
 
+
     @Override
     public List<RouteDto> retrieveAllRoutes() {
         return routeRepository.findAll().stream().map(routeMapper::toRouteDto).collect(Collectors.toList());
     }
 
 
-    public RouteDto findRouteById(Long route_id) throws RouteNotFoundException {
-        return routeRepository.findById(route_id).map(routeMapper::toRouteDto).orElse(null);
-    }
-
     @Override
     public RouteDto deleteRouteById(Long route_id) throws RouteNotFoundException {
         //Find route from route_id
         RouteDto routeDto = routeRepository.findById(route_id).map(routeMapper::toRouteDto).orElse(null);
 
+        //Convert routeDTO to route entity
+        Route route = routeMapper.toRoute(routeDto);
         //Delete DTO from repo
-        routeRepository.delete(routeRepository.findBy(route_id));
+        routeRepository.delete(route);
 
         return routeDto;
     }
+
+ @Override
+    public RouteDto findRouteById(Long route_id) throws RouteNotFoundException {
+        return routeRepository.findById(route_id).map(routeMapper::toRouteDto).orElse(null);
+    }
+
+
 }

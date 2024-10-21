@@ -14,10 +14,19 @@ import java.time.LocalTime;
 @Table(name = "times_tables", schema = "bus_timetabling")
 @Data
 public class TimesTable {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "times_table_id")
+//    private Long id;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "times_table_id")
-    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "from_stop_id")
+    private Stop fromStop;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "to_stop_id")
+    private Stop toStop;
 
     @Column(name = "departure")
     private LocalTime departure;
@@ -25,19 +34,15 @@ public class TimesTable {
     @Column(name = "arrival")
     private LocalTime arrival;
 
-    @Column(name = "segment_distance")
-    private Double segmentDistance;
+//    @Column(name = "segment_distance")
+//    private Double segmentDistance;
 
     @ManyToOne
     @JoinColumn(name = "bus_id")
-    private Bus bus;
+    private Long busId;
 
     @ManyToOne
-    @JoinColumn(name = "from_stop_id")
-    private Stop fromStop;
+    @JoinColumn(name = "route_id")
+    private Long routeId;
 
-    @ManyToOne
-    @JoinColumn(name = "to_stop_id")
-    private Stop toStop;
 }
-

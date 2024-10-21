@@ -23,18 +23,30 @@ public class Bus {
     @Column(name = "number")
     private String busNumber;
 
-    @Column(name = "capacity")
-    private Integer capacity;
+//    @Column(name = "capacity")
+//    private Integer capacity;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Service status;
 
     //Relationships
+//    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<TimesTable> timesTables = new ArrayList<>();
+//
+//    @ManyToOne
+//    @JoinColumn(name = "route_id", nullable = false)
+//    private Route route;
+
     @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TimesTable> timesTables = new ArrayList<>();
+    @Column(name = "to_stop_id")
+    private Long toStopId;
+
+    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "from_stop_id")
+    private Long fromStopId;
 
     @ManyToOne
-    @JoinColumn(name = "route_id", nullable = false)
-    private Route route;
+    @Column(name = "route_schedule_id")
+    private Long route_schedule_id;
 }

@@ -1,13 +1,16 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.enums.Service;
 import lombok.*;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
-public record BusRequestDto(  String busNumber,
-    List<TimesTableDto> timesTables,
-    Service status){}
-
+@Builder
+public class BusRequestDto {
+    private String busNumber;
+    private Service status;
+    private Long routeId;
+}

@@ -1,14 +1,17 @@
 package com.example.bus_timetabling.entities;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
-import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@ToString
 @Entity
-//@Table(name = "times_table")
+@Table(name = "times_tables", schema = "bus_timetabling")
 @Data
 public class TimesTable {
     @Id
@@ -16,22 +19,25 @@ public class TimesTable {
     @Column(name = "times_table_id")
     private Long id;
 
-    @Column(name = "departures")
-    @CreationTimestamp
-    private LocalDateTime departures;
+    @Column(name = "departure")
+    private LocalTime departure;
 
     @Column(name = "arrival")
-    @CreationTimestamp
-    private LocalDateTime arrival;
-        //Relationship
+    private LocalTime arrival;
+
+    @Column(name = "segment_distance")
+    private Double segmentDistance;
+
     @ManyToOne
     @JoinColumn(name = "bus_id")
     private Bus bus;
 
     @ManyToOne
-    @JoinColumn(name = "stop_id")
-    private Stop stop;
+    @JoinColumn(name = "from_stop_id")
+    private Stop fromStop;
 
+    @ManyToOne
+    @JoinColumn(name = "to_stop_id")
+    private Stop toStop;
 }
-
 

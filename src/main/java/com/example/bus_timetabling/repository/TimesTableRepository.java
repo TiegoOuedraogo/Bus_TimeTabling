@@ -8,5 +8,4 @@ import java.util.List;
 public interface TimesTableRepository extends JpaRepository<TimesTable, Long> {
     List<TimesTable> findByBusId(Long busId);
 
-    List<TimesTable> findByStopId(Long stopId);
 }

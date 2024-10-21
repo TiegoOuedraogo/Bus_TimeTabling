@@ -1,27 +1,21 @@
 package com.example.bus_timetabling.dto;
 
-import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.enums.Service;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.List;
 
-
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
-
-public record BusResponseDto
-    ( Long id,
-     String busNumber,
-     Integer capacity,
-     Service status,
-     RouteDto route,
-     List<TimesTableDto> timesTables,
-     List<Route> routes){
-
-
+@Getter
+@Builder
+public class BusResponseDto {
+    private Long id;
+    private String busNumber;
+    private Integer capacity;
+    private Service status;
+    private RouteDto route;
+    private List<TimesTableDto> timesTables;
 }
-

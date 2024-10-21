@@ -1,16 +1,22 @@
 package com.example.bus_timetabling.entities;
 
+
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@Table(name = "route")
+@Table(name = "routes", schema = "bus_timetabling")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@ToString
+@Builder
 public class Route {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "route_id")
@@ -22,7 +28,7 @@ public class Route {
     @Column(name = "origin")
     private String routeOrigin;
 
-    @Column(name = "destination")
+    @Column(name = "destination", nullable = false)
     private String destination;
 
     @Column(name="distance")

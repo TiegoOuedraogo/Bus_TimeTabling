@@ -45,13 +45,13 @@ public class TimesTableController {
         timesTableService.deleteTimesTable(id);
     }
 
-    @GetMapping("/bus/{busId}")
-    public List<TimesTableResponseDto> getTimesTablesByBusId(@PathVariable Long busId) {
-        return timesTableService.getTimesTablesByBusId(busId);
-    }
-
-    @GetMapping("/stop/{stopId}")
-    public List<TimesTableResponseDto> getTimesTablesByStopId(@PathVariable Long stopId) {
-        return timesTableService.getTimesTablesByStopId(stopId);
-    }
+//    @GetMapping("/bus/{busId}")
+//    public List<TimesTableResponseDto> getTimesTablesByBusId(@PathVariable Long busId) {
+//        return timesTableService.getTimesTablesByBusId(busId);
+//    }
+//
+//    @GetMapping("/stop/{stopId}")
+//    public List<TimesTableResponseDto> getTimesTablesByStopId(@PathVariable Long stopId) {
+//        return timesTableService.getTimesTablesByStopId(stopId);
+//    }
 }

@@ -1,29 +1,19 @@
 package com.example.bus_timetabling.dto;
 
-import com.example.bus_timetabling.service.ValidTimes;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-import jakarta.validation.constraints.NotNull;
+import java.time.LocalTime;
 
-import java.time.LocalDateTime;
-
-@ValidTimes
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
+@Builder
 public class TimesTableRequestDto {
-
-    @NotNull(message = "Departure time cannot be null")
-    private LocalDateTime departures;
-
-    @NotNull(message = "Arrival time cannot be null")
-    private LocalDateTime arrival;
-
-    @NotNull(message = "Bus ID cannot be null")
+    private LocalTime departure;
+    private LocalTime arrival;
     private Long busId;
-
-    @NotNull(message = "Stop ID cannot be null")
-    private Long stopId;
+    private Long fromStopId;
+    private Long toStopId;
 }

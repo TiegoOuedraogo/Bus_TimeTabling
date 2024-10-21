@@ -1,11 +1,11 @@
 package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.service.BusService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -19,7 +19,7 @@ public class BusController {
     }
 
     @GetMapping("/{id}")
-    public BusResponseDto findBusById(@PathVariable("student-id") Long id) {
+    public BusResponseDto findBusById(@PathVariable("id") Long id) {
         return busService.findBusById(id);
     }
 
@@ -33,10 +33,10 @@ public class BusController {
         return busService.getAllBuses();
     }
 
-    @GetMapping("/{routeId}")
-    public List<BusResponseDto> findBusByRouteId(@PathVariable("routeId") Long routeId) {
-        return busService.findBusByRouteId(routeId);
-    }
+//    @GetMapping("/{routeId}")
+//    public List<BusResponseDto> findBusByRouteId(@PathVariable("routeId") Long routeId) {
+//        return busService.findBusByRouteId(routeId);
+//    }
 //
 //    @GetMapping("/{stopId}")
 //    public List<BusResponseDto> findBusByStopId(@PathVariable("stopId") Long stopId) {

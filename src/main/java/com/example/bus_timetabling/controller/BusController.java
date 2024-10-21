@@ -23,7 +23,7 @@ public class BusController {
         return busService.findBusById(id);
     }
 
-    @GetMapping("/{busNumber}")
+    @GetMapping("/BusNumber/{busNumber}")
     public List<BusResponseDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
         return busService.findBusByNumber(busNumber);
     }

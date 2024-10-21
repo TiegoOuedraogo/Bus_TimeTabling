@@ -25,19 +25,27 @@ public class Route {
     @Column(name = "route_name")
     private String routeName;
 
-    @Column(name = "origin")
-    private String routeOrigin;
+//    @Column(name = "origin")
+//    private String routeOrigin;
+//
+//    @Column(name = "destination", nullable = false)
+//    private String destination;
 
-    @Column(name = "destination", nullable = false)
-    private String destination;
+    @ManyToOne
+    @Column(name = "to_stop_id")
+    private Long toStopId;
+
+    @ManyToOne
+    @Column(name = "from_stop_id")
+    private Long fromStopId;
 
     @Column(name="distance")
     private Double distance;
 
     // Relationships
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Stop> stops = new ArrayList<>();
-
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Bus> buses = new ArrayList<>();
+//    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Stop> stops = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Bus> buses = new ArrayList<>();
 }

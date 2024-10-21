@@ -10,7 +10,10 @@ import lombok.*;
 @Getter
 @Builder
 public class BusRequestDto {
+    private Long id;
     private String busNumber;
     private Service status;
-    private Long routeId;
+    private Long toStopId;
+    private Long fromStopId;
+    private Long route_schedule_Id;
 }

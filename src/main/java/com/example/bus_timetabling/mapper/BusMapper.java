@@ -27,16 +27,10 @@ public class BusMapper {
         Bus bus = new Bus();
         bus.setId(dto.getId());
         bus.setBusNumber(dto.getBusNumber());
-        bus.setCapacity(dto.getCapacity());
         bus.setStatus(dto.getStatus());
-        bus.setRoute(routeMapper.toRoute(dto.getRoute()));
-
-        if (dto.getTimesTables() != null) {
-            bus.setTimesTables(dto.getTimesTables().stream()
-                    .map(timesTableMapper::toTimesTable)
-                    .collect(Collectors.toList()));
-        }
-
+        bus.setFromStopId(dto.getFromStopId());
+        bus.setToStopId(dto.getToStopId());
+        bus.setRoute_schedule_id(dto.getRoute_schedule_id());
         return bus;
     }
 
@@ -59,12 +53,10 @@ public class BusMapper {
         return BusResponseDto.builder()
                 .id(bus.getId())
                 .busNumber(bus.getBusNumber())
-                .capacity(bus.getCapacity())
                 .status(bus.getStatus())
-                .route(routeMapper.toRouteDto(bus.getRoute()))
-                .timesTables(bus.getTimesTables().stream()
-                        .map(timesTableMapper::toTimesTableDto)
-                        .collect(Collectors.toList()))
+                .toStopId(bus.getToStopId())
+                .fromStopId(bus.getFromStopId())
+                .route_schedule_Id(bus.getRoute_schedule_id())
                 .build();
     }
 
@@ -76,12 +68,10 @@ public class BusMapper {
         return BusDto.builder()
                 .id(bus.getId())
                 .busNumber(bus.getBusNumber())
-                .capacity(bus.getCapacity())
                 .status(bus.getStatus())
-                .route(routeMapper.toRouteDto(bus.getRoute()))
-                .timesTables(bus.getTimesTables().stream()
-                        .map(timesTableMapper::toTimesTableDto)
-                        .collect(Collectors.toList()))
+                .toStopId(bus.getToStopId())
+                .fromStopId(bus.getFromStopId())
+                .route_schedule_id(bus.getRoute_schedule_id())
                 .build();
     }
 }

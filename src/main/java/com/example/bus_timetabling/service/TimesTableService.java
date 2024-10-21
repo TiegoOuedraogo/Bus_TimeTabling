@@ -42,9 +42,9 @@ public class TimesTableService {
         Stop toStop = stopRepository.findById(timesTableRequestDto.getToStopId())
                 .orElseThrow(() -> new RuntimeException("To Stop not found"));
 
-        timesTable.setBus(bus);
-        timesTable.setFromStop(fromStop);
-        timesTable.setToStop(toStop);
+        timesTable.setBusId(bus.getId());
+        timesTable.setFromStopId(fromStop.getId());
+        timesTable.setToStopId(toStop.getId());
 
         TimesTable savedTimesTable = timesTableRepository.save(timesTable);
         return timesTableMapper.toTimesTableResponseDto(savedTimesTable);
@@ -77,9 +77,9 @@ public class TimesTableService {
         Stop toStop = stopRepository.findById(timesTableRequestDto.getToStopId())
                 .orElseThrow(() -> new RuntimeException("To Stop not found"));
 
-        timesTable.setBus(bus);
-        timesTable.setFromStop(fromStop);
-        timesTable.setToStop(toStop);
+        timesTable.setBusId(bus.getId());
+        timesTable.setFromStopId(fromStop.getId());
+        timesTable.setToStopId(toStop.getId());
 
         TimesTable updatedTimesTable = timesTableRepository.save(timesTable);
         return timesTableMapper.toTimesTableResponseDto(updatedTimesTable);

@@ -21,12 +21,12 @@ public class TimesTable {
     @Id
     @ManyToOne
     @JoinColumn(name = "from_stop_id")
-    private Stop fromStop;
+    private Long fromStopId;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "to_stop_id")
-    private Stop toStop;
+    private Long toStopId;
 
     @Column(name = "departure")
     private LocalTime departure;

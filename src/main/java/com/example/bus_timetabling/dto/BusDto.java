@@ -14,8 +14,8 @@ import java.util.List;
 public class BusDto {
     private Long id;
     private String busNumber;
-    private Integer capacity;
     private Service status;
-    private RouteDto route;
-    private List<TimesTableDto> timesTables;
+    private Long toStopId;
+    private Long fromStopId;
+    private Long route_schedule_id;
 }

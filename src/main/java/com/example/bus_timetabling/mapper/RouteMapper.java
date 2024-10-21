@@ -11,13 +11,12 @@ public class RouteMapper {
         if (dto == null) {
             return null;
         }
-
         Route route = new Route();
-
         route.setId(dto.getId());
         route.setRouteName(dto.getRouteName());
-        route.setRouteOrigin(dto.getOrigin());
-        route.setDestination(dto.getDestination());
+        route.setToStopId(dto.getToStopId());
+        route.setFromStopId(dto.getFromStopId());
+        route.setDistance(dto.getDistance());
         return route;
     }
 
@@ -29,8 +28,9 @@ public class RouteMapper {
         RouteDto dto = new RouteDto();
         dto.setId(entity.getId());
         dto.setRouteName(entity.getRouteName());
-        dto.setOrigin(entity.getRouteOrigin());
-        dto.setDestination(entity.getDestination());
+        dto.setToStopId(entity.getToStopId());
+        dto.setFromStopId(entity.getFromStopId());
+        dto.setDistance(entity.getDistance());
         return dto;
     }
 }

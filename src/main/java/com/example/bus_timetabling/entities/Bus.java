@@ -38,15 +38,15 @@ public class Bus {
 //    @JoinColumn(name = "route_id", nullable = false)
 //    private Route route;
 
-    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "to_stop_id")
+    @ManyToOne
+    @JoinColumn(name = "to_stop_id")
     private Long toStopId;
 
-    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "from_stop_id")
+    @ManyToOne
+    @JoinColumn(name = "from_stop_id")
     private Long fromStopId;
 
     @ManyToOne
-    @Column(name = "route_schedule_id")
+    @JoinColumn(name = "route_schedule_id")
     private Long route_schedule_id;
 }

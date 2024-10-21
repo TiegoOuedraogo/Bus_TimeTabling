@@ -32,11 +32,11 @@ public class Route {
 //    private String destination;
 
     @ManyToOne
-    @Column(name = "to_stop_id")
+    @JoinColumn(name = "to_stop_id")
     private Long toStopId;
 
     @ManyToOne
-    @Column(name = "from_stop_id")
+    @JoinColumn(name = "from_stop_id")
     private Long fromStopId;
 
     @Column(name="distance")

@@ -3,6 +3,8 @@ package com.example.bus_timetabling.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "route_stop_schedule", schema = "bus_timetabling")
 @Data
@@ -23,9 +25,9 @@ public class RouteStopSchedule {
 
     @OneToMany(mappedBy = "stop", cascade = CascadeType.ALL, orphanRemoval = true)
     @Column(name = "stop_id")
-    private Long stopId;
+    private List<Long> stopId;
 
     @ManyToOne
-    @Column(name = "route_id")
+    @JoinColumn(name = "route_id")
     private Long routeId;
 }

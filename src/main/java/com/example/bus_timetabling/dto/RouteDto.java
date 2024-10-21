@@ -13,9 +13,8 @@ import java.util.List;
 public class RouteDto {
     private Long id;
     private String routeName;
-    private String origin;
-    private String destination;
+    private Long toStopId;
+    private Long fromStopId;
     private Double distance;
-    private List<StopDto> stops;
-    private List<BusDto> buses;
+
 }

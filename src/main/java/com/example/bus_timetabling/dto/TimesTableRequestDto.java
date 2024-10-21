@@ -11,9 +11,10 @@ import java.time.LocalTime;
 @Getter
 @Builder
 public class TimesTableRequestDto {
+    private Long fromStopId;
+    private Long toStopId;
     private LocalTime departure;
     private LocalTime arrival;
     private Long busId;
-    private Long fromStopId;
-    private Long toStopId;
+    private Long routeId;
 }

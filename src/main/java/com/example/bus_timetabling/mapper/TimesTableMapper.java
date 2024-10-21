@@ -15,10 +15,12 @@ public class TimesTableMapper {
         }
 
         TimesTable timesTable = new TimesTable();
-        timesTable.setId(dto.getId());
+        timesTable.setFromStopId(dto.getFromStopId());
+        timesTable.setToStopId(dto.getToStopId());
         timesTable.setDeparture(dto.getDeparture());
         timesTable.setArrival(dto.getArrival());
-        timesTable.setSegmentDistance(dto.getSegmentDistance());
+        timesTable.setBusId(dto.getBusId());
+        timesTable.setRouteId(dto.getRouteId());
         return timesTable;
     }
 
@@ -40,13 +42,12 @@ public class TimesTableMapper {
         }
 
         return TimesTableDto.builder()
-                .id(entity.getId())
+                .fromStopId(entity.getFromStopId())
+                .toStopId(entity.getToStopId())
                 .departure(entity.getDeparture())
                 .arrival(entity.getArrival())
-                .segmentDistance(entity.getSegmentDistance())
-                .busId(entity.getBus().getId())
-                .fromStopId(entity.getFromStop().getId())
-                .toStopId(entity.getToStop().getId())
+                .busId(entity.getBusId())
+                .routeId(entity.getRouteId())
                 .build();
     }
 
@@ -56,16 +57,12 @@ public class TimesTableMapper {
         }
 
         return TimesTableResponseDto.builder()
-                .id(entity.getId())
+                .fromStopId(entity.getFromStopId())
+                .toStopId(entity.getToStopId())
                 .departure(entity.getDeparture())
                 .arrival(entity.getArrival())
-                .segmentDistance(entity.getSegmentDistance())
-                .busId(entity.getBus().getId())
-                .busNumber(entity.getBus().getBusNumber())
-                .fromStopId(entity.getFromStop().getId())
-                .fromStopName(entity.getFromStop().getStopName())
-                .toStopId(entity.getToStop().getId())
-                .toStopName(entity.getToStop().getStopName())
+                .busId(entity.getBusId())
+                .routeId(entity.getRouteId())
                 .build();
     }
 }

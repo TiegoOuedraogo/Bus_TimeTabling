@@ -28,14 +28,14 @@ public class BusService {
         this.routeRepo = routeRepo;
     }
 
-    public BusResponseDto createBus(BusRequestDto busRequestDto) {
-        Bus bus = busMapper.toBus(busRequestDto);
-        Route route = routeRepo.findById(busRequestDto.getRouteId())
-                .orElseThrow(() -> new RuntimeException("Route not found"));
-        bus.setRoute(route);
-        Bus savedBus = busRepo.save(bus);
-        return busMapper.toBusResponseDto(savedBus);
-    }
+//    public BusResponseDto createBus(BusRequestDto busRequestDto) {
+//        Bus bus = busMapper.toBus(busRequestDto);
+//        Route route = routeRepo.findById(busRequestDto.getRouteId())
+//                .orElseThrow(() -> new RuntimeException("Route not found"));
+//        bus.setRoute_schedule_id(route);
+//        Bus savedBus = busRepo.save(bus);
+//        return busMapper.toBusResponseDto(savedBus);
+//    }
 
     public List<BusResponseDto> findBusByNumber(String busNumber) {
         return busRepo.findByBusNumber(busNumber).stream()

@@ -11,14 +11,10 @@ import java.time.LocalTime;
 @Getter
 @Builder
 public class TimesTableResponseDto {
-    private Long id;
+    private Long fromStopId;
+    private Long toStopId;
     private LocalTime departure;
     private LocalTime arrival;
-    private Double segmentDistance;
     private Long busId;
-    private String busNumber;
-    private Long fromStopId;
-    private String fromStopName;
-    private Long toStopId;
-    private String toStopName;
+    private Long routeId;
 }

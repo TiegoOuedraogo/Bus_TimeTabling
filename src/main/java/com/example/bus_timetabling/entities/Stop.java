@@ -24,17 +24,17 @@ public class Stop {
     @Column(name = "stop_name")
     private String stopName;
 
-    @Column(name = "order_in_route")
-    private Integer orderInRoute;
-
-    @ManyToOne
-    @JoinColumn(name = "route_id", referencedColumnName = "route_id")
-    private Route route;
-
-    @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
-    private List<TimesTable> departureTimesTables = new ArrayList<>();
-
-    @OneToMany(mappedBy = "toStop", cascade = CascadeType.ALL)
-    private List<TimesTable> arrivalTimesTables = new ArrayList<>();
+//    @Column(name = "order_in_route")
+//    private Integer orderInRoute;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "route_id", referencedColumnName = "route_id")
+//    private Route route;
+//
+//    @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
+//    private List<TimesTable> departureTimesTables = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "toStop", cascade = CascadeType.ALL)
+//    private List<TimesTable> arrivalTimesTables = new ArrayList<>();
 }
 

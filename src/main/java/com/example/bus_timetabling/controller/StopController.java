@@ -33,25 +33,15 @@ public class StopController {
 
     @PostMapping(produces = "application/json")
     public ResponseEntity<HttpStatus> createStop(@RequestBody StopDto request ) {
-//        StopDto stopDto = new StopDto();
-//        stopDto.setId(request.getId());
-//        stopDto.setStopName(request.getStopName());
-//        stopDto.setOrderInRoute(request.getOrderInRoute());
-//        stopDto.setRoute(request.getRoute());
-//        stopDto.setArrivalTimesTables(request.getArrivalTimesTables());
-//        stopDto.setDepartureTimesTables(request.getDepartureTimesTables());
         stopService.createStop(request);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<StopResponseDto> updateStop(@PathVariable long id, @RequestBody StopRequestDto request ) {
-//        StopDto stopDto = new StopDto();
-//        stopDto.setStopName(request.getStopName());
-//        stopDto.setRoute(request.getRoute());
-//        stopDto.setTimesTables(request.getTimesTables());
-//
-//        return ResponseEntity.ok(stopService.createStop(stopDto));
-//
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<HttpStatus> updateStop(@PathVariable long id, @RequestBody StopDto request ) {
+        stopService.updateBus(id, request);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+
+    }
 }

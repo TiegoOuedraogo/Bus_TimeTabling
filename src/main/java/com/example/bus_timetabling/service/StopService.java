@@ -1,13 +1,8 @@
 package com.example.bus_timetabling.service;
 
-import com.example.bus_timetabling.dto.BusDto;
-import com.example.bus_timetabling.dto.BusResponseDto;
 import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Stop;
-import com.example.bus_timetabling.mapper.BusMapper;
 import com.example.bus_timetabling.mapper.StopMapper;
-import com.example.bus_timetabling.repository.BusRepository;
 import com.example.bus_timetabling.repository.StopRepository;
 import org.springframework.stereotype.Service;
 
@@ -42,11 +37,11 @@ public class StopService {
                 .collect(Collectors.toList());
     }
 
-    public List<StopDto> findBusByRouteId(Long routeId) {
-        return stopRepo.findStopByRouteId(routeId).stream()
-                .map(stopMapper::toStopDto)
-                .collect(Collectors.toList());
-    }
+//    public List<StopDto> findStopByRouteId(Long routeId) {
+//        return stopRepo.findStopByRouteId(routeId).stream()
+//                .map(stopMapper::toStopDto)
+//                .collect(Collectors.toList());
+//    }
 
     public void createStop(StopDto stopDto) {
         Stop stop = stopMapper.toStop(stopDto);

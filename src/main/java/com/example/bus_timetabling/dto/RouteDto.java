@@ -1,5 +1,6 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.Stop;
 import lombok.*;
 
 import java.util.List;
@@ -13,8 +14,8 @@ import java.util.List;
 public class RouteDto {
     private Long id;
     private String routeName;
-    private Long toStopId;
-    private Long fromStopId;
+    private Stop toStopId;
+    private Stop fromStopId;
     private Double distance;
 
 }

@@ -1,5 +1,8 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.BusRouteManager;
+import com.example.bus_timetabling.entities.RouteStopSchedule;
+import com.example.bus_timetabling.entities.Stop;
 import com.example.bus_timetabling.enums.Service;
 import lombok.*;
 
@@ -15,7 +18,7 @@ public class BusDto {
     private Long id;
     private String busNumber;
     private Service status;
-    private Long toStopId;
-    private Long fromStopId;
-    private Long route_schedule_id;
+    private Stop toStopId;
+    private Stop fromStopId;
+    private BusRouteManager bus_Route;
 }

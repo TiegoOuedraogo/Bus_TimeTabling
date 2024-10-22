@@ -1,5 +1,7 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.Bus;
+import com.example.bus_timetabling.entities.Route;
 import lombok.*;
 
 import java.time.LocalTime;
@@ -15,6 +17,6 @@ public class TimesTableDto {
     private Long toStopId;
     private LocalTime departure;
     private LocalTime arrival;
-    private Long busId;
-    private Long routeId;
+    private Bus bus;
+    private Route route;
 }

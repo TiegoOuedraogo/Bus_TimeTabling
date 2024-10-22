@@ -31,22 +31,24 @@ public class Bus {
     private Service status;
 
     //Relationships
-//    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<TimesTable> timesTables = new ArrayList<>();
-//
+    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TimesTable> timesTables = new ArrayList<>();
+
 //    @ManyToOne
 //    @JoinColumn(name = "route_id", nullable = false)
 //    private Route route;
 
     @ManyToOne
-    @JoinColumn(name = "to_stop_id")
-    private Long toStopId;
+//    @JoinColumn(name = "to_stop_id")
+    private Stop toStopId;
 
     @ManyToOne
+//    @MapsId
     @JoinColumn(name = "from_stop_id")
-    private Long fromStopId;
+    private Stop fromStopId;
 
     @ManyToOne
+//    @MapsId
     @JoinColumn(name = "route_schedule_id")
-    private Long route_schedule_id;
+    private BusRouteManager bus_Route;
 }

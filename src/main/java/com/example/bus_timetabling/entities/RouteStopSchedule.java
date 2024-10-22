@@ -24,10 +24,11 @@ public class RouteStopSchedule {
     private int stopNum;
 
     @OneToMany(mappedBy = "stop", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Column(name = "stop_id")
-    private List<Long> stopId;
+//    @MapsId
+    private List<Stop> stopId;
 
     @ManyToOne
+//    @MapsId
     @JoinColumn(name = "route_id")
-    private Long routeId;
+    private Route route;
 }

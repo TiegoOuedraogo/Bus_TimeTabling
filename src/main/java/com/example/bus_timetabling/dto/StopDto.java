@@ -1,6 +1,10 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.Route;
+import com.example.bus_timetabling.entities.TimesTable;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -11,7 +15,6 @@ import lombok.*;
 public class StopDto {
     private Long id;
     private String stopName;
-    private Integer orderInRoute;
-    private String routeName;
-    private Long routeId;
+    private List<TimesTable> departureTimesTable;
+    private List<TimesTable> arrivalTimesTable;
 }

@@ -10,6 +10,5 @@ import lombok.*;
 @Builder
 public class RouteRequestDto {
     private String routeName;
-    private String origin;
-    private String destination;
+
 }

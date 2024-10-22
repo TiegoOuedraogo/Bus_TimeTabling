@@ -38,11 +38,13 @@ public class TimesTable {
 //    private Double segmentDistance;
 
     @ManyToOne
+//    @MapsId
     @JoinColumn(name = "bus_id")
-    private Long busId;
+    private Bus bus;
 
-    @ManyToOne
-    @JoinColumn(name = "route_id")
-    private Long routeId;
+//    @ManyToOne
+//    @MapsId
+//    @JoinColumn(name = "route_id")
+//    private Route route;
 
 }

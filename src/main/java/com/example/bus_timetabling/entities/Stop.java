@@ -31,6 +31,10 @@ public class Stop {
 //    @JoinColumn(name = "route_id", referencedColumnName = "route_id")
 //    private Route route;
 
+    @ManyToOne
+    @JoinColumn(name = "route_stop_id")
+    private RouteStopSchedule routeStopSchedule;
+
     @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
     private List<TimesTable> departureTimesTables = new ArrayList<>();
 

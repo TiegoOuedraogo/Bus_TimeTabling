@@ -10,5 +10,4 @@ import lombok.*;
 @Builder
 public class StopRequestDto {
     private String stopName;
-    private Long routeId;
 }

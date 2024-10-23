@@ -2,16 +2,12 @@ package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.enums.Service;
 import com.example.bus_timetabling.service.BusService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @WebMvcTest(BusControllerTest.class)
 class BusControllerTest {

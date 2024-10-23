@@ -10,13 +10,13 @@
 //import com.example.bus_timetabling.repository.TimesTableRepository;
 //import com.example.bus_timetabling.repository.BusRepository;
 //import com.example.bus_timetabling.repository.StopRepository;
-//import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.ServiceStatus;
 //import org.springframework.transaction.annotation.Transactional;
 //
 //import java.util.List;
 //import java.util.stream.Collectors;
 //
-//@Service
+//@ServiceStatus
 //@Transactional
 //public class TimesTableService {
 //

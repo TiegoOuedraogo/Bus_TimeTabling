@@ -26,7 +26,7 @@ public class RouteStopSchedule {
 
     // Relationships
     @ManyToOne
-    @JoinColumn(name = "route_id") // Defaults to primary key of Route
+    @JoinColumn (name = "route_id")// Defaults to primary key of Route
     private Route route;
 
     @ManyToOne

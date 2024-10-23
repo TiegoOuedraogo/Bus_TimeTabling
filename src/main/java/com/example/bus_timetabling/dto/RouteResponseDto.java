@@ -14,7 +14,6 @@ import java.util.List;
 public class RouteResponseDto {
     private Long id;
     private String routeName;
-    private Stop toStopId;
-    private Stop fromStopId;
     private Double distance;
+    private Long routeStopSchedule;
 }

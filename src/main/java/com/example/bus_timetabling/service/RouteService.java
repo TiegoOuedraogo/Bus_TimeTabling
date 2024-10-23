@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface RouteService {
-  RouteDto createRoute(RouteDto routeDto);
+void createRoute(RouteDto routeDto);
 
   List<RouteDto> retrieveAllRoutes ();
     @Query("SELECT b FROM Bus b WHERE b.busRouteManager.id = :routeId")
   RouteDto findRouteById(java.lang.Long route_id) throws RouteNotFoundException;
 
-  RouteDto deleteRouteById(java.lang.Long route_id) throws RouteNotFoundException;
+  void deleteRouteById(java.lang.Long route_id) throws RouteNotFoundException;
 }

@@ -31,14 +31,16 @@ public class RouteController {
     }
 
     @DeleteMapping("/routeId/{id}")
-    public RouteDto deleteRouteById (@PathVariable Long id){
-        return routeService.deleteRouteById(id);
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity <HttpStatus> deleteRouteById (@PathVariable Long id){
+        routeService.deleteRouteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<HttpStatus> createRoute(RouteDto routeDto){
+    public ResponseEntity<String> createRoute(RouteDto routeDto){
         routeService.createRoute(routeDto);
-        return new ResponseEntity<> (HttpStatus.OK);
+        return ResponseEntity.ok("Route deleted successfully");
     }
 }

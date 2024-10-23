@@ -14,8 +14,7 @@ import java.util.List;
 public class RouteDto {
     private Long id;
     private String routeName;
-    private Stop toStopId;
-    private Stop fromStopId;
     private Double distance;
+    private Long routeStopScheduleId;
 
 }

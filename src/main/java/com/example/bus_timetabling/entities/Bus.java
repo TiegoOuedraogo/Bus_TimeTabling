@@ -15,46 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-//public class Bus {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "bus_id")
-//    private Long id;
-//
-//    @Column(name = "number")
-//    private String busNumber;
-//
-////    @Column(name = "capacity")
-////    private Integer capacity;
-//
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "status")
-//    private ServiceStatus status;
-//
-//    //Relationships
-//    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<TimesTable> timesTables = new ArrayList<>();
-//
-////    @ManyToOne
-////    @JoinColumn(name = "route_id", nullable = false)
-////    private Route route;
-//
-//    @ManyToOne
-////    @JoinColumn(name = "to_stop_id")
-//    private Stop toStopId;
-//
-//    @ManyToOne
-////    @MapsId
-//    @JoinColumn(name = "from_stop_id")
-//    private Stop fromStopId;
-//
-//    @ManyToOne
-////    @MapsId
-//    @JoinColumn(name = "route_schedule_id")
-//    private BusRouteManager bus_Route;
-//}
-//
-
 
 public class Bus {
     @Id

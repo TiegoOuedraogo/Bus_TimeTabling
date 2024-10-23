@@ -15,22 +15,6 @@ import java.util.List;
 @Entity
 @Table(name = "bus_route_manager", schema = "bus_timetabling")
 
-//public class BusRouteManager {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "bus_route_id")
-//    private Long id;
-//
-//    @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
-////    @MapsId
-//    private List<Bus> bus_id;
-//
-//    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-////    @MapsId
-//    private List<Route> route_id;
-//}
-
 public class BusRouteManager {
 
     @Id

@@ -1,8 +1,9 @@
 package com.example.bus_timetabling.entities;
 
-import com.example.bus_timetabling.enums.Service;
+import com.example.bus_timetabling.enums.ServiceStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
+
 public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,32 +25,23 @@ public class Bus {
     @Column(name = "number")
     private String busNumber;
 
-//    @Column(name = "capacity")
-//    private Integer capacity;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private Service status;
+    private ServiceStatus status;
 
-    //Relationships
+    // Relationships
     @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TimesTable> timesTables = new ArrayList<>();
 
-//    @ManyToOne
-//    @JoinColumn(name = "route_id", nullable = false)
-//    private Route route;
+    @ManyToOne
+    @JoinColumn(name = "to_stop_id") //defaults to primary key of Stop
+    private Stop toStop;
 
     @ManyToOne
-//    @JoinColumn(name = "to_stop_id")
-    private Stop toStopId;
+    @JoinColumn(name = "from_stop_id") //defaults to primary key of Stop
+    private Stop fromStop;
 
     @ManyToOne
-//    @MapsId
-    @JoinColumn(name = "from_stop_id")
-    private Stop fromStopId;
-
-    @ManyToOne
-//    @MapsId
-    @JoinColumn(name = "route_schedule_id")
-    private BusRouteManager bus_Route;
+    @JoinColumn(name = "route_schedule_id") //defaults to primary key of BusRouteManager
+    private BusRouteManager busRouteManager;
 }

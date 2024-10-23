@@ -14,6 +14,7 @@ import java.util.List;
 @Getter
 @ToString
 @Builder
+
 public class RouteStopSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,12 +24,12 @@ public class RouteStopSchedule {
     @Column(name = "stop_num")
     private int stopNum;
 
-    @OneToMany(mappedBy = "stop", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @MapsId
-    private List<Stop> stopId;
+    // Relationships
+    @ManyToOne
+    @JoinColumn(name = "route_id") // Defaults to primary key of Route
+    private Route route;
 
     @ManyToOne
-//    @MapsId
-    @JoinColumn(name = "route_id")
-    private Route route;
+    @JoinColumn(name = "stop_id") // Defaults to primary key of Stop
+    private Stop stop;
 }

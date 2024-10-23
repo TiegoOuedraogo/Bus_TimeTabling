@@ -1,6 +1,6 @@
 package com.example.bus_timetabling.enums;
 
-public enum Service {
+public enum ServiceStatus {
     INSERVICE,
     OUTOFSERVICE,
 }

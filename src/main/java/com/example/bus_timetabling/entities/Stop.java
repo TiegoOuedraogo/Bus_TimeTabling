@@ -15,6 +15,7 @@ import java.util.List;
 @ToString
 @Builder
 @Table(name="stops", schema = "bus_timetabling")
+
 public class Stop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,15 +25,8 @@ public class Stop {
     @Column(name = "stop_name")
     private String stopName;
 
-//    @Column(name = "order_in_route")
-//    private Integer orderInRoute;
-
-//    @ManyToOne
-//    @JoinColumn(name = "route_id", referencedColumnName = "route_id")
-//    private Route route;
-
     @ManyToOne
-    @JoinColumn(name = "route_stop_id")
+    @JoinColumn(name = "route_stop_id") // Defaults to primary key of RouteStopSchedule
     private RouteStopSchedule routeStopSchedule;
 
     @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
@@ -41,4 +35,3 @@ public class Stop {
     @OneToMany(mappedBy = "toStop", cascade = CascadeType.ALL)
     private List<TimesTable> arrivalTimesTables = new ArrayList<>();
 }
-

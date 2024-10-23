@@ -31,21 +31,28 @@ public class Route {
 //    @Column(name = "destination", nullable = false)
 //    private String destination;
 
-    @ManyToOne
-    @Column(name = "to_stop_id")
-    private Long toStopId;
-
-    @ManyToOne
-    @Column(name = "from_stop_id")
-    private Long fromStopId;
+//    @ManyToOne
+////    @MapsId
+//    @JoinColumn(name = "to_stop_id")
+//    private Stop toStopId;
+//
+//    @ManyToOne
+////    @MapsId
+//    @JoinColumn(name = "from_stop_id")
+//    private Stop fromStopId;
 
     @Column(name="distance")
     private Double distance;
 
+    @ManyToOne
+    @JoinColumn(name = "route_stop_id")
+    private List<RouteStopSchedule> routeStopSchedules;
+
     // Relationships
-//    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Stop> stops = new ArrayList<>();
-//
+    @ManyToOne
+    @JoinColumn(name = "bus_route_id")
+    private List<BusRouteManager> busRouteManagers = new ArrayList<>();
+
 //    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Bus> buses = new ArrayList<>();
 }

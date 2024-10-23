@@ -1,3 +1,4 @@
+/*
 package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.TimesTableRequestDto;
@@ -55,3 +56,4 @@ public class TimesTableController {
 //        return timesTableService.getTimesTablesByStopId(stopId);
 //    }
 }
+*/

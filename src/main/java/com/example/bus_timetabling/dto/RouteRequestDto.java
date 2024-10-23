@@ -1,23 +1,14 @@
-//package com.example.bus_timetabling.dto;
-//
-//import lombok.*;
-//
-//import java.util.List;
-//
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@ToString
-//@Getter
-//@Setter
-//@Builder
-//public class RouteRequestDto {
-//    private Long id;
-//    private String routeName;
-//    private String routeOrigin;
-//    private String destination;
-//    private Double distance;
-//    private List <StopRequestDto> stops;
-//    private List<BusRequestDto> buses;
-//
-//}
+package com.example.bus_timetabling.dto;
+
+import lombok.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
+@Builder
+public class RouteRequestDto {
+    private String routeName;
+
+}

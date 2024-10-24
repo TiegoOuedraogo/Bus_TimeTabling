@@ -25,11 +25,10 @@ public class RouteStopSchedule {
     private int stopNum;
 
     // Relationships
-    @ManyToOne
-    @JoinColumn (name = "route_id")// Defaults to primary key of Route
-    private Route route;
+    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Route> route;
 
-    @ManyToOne
+    @ManyToOne //many routeStop Schedules can refer to one stop
     @JoinColumn(name = "stop_id") // Defaults to primary key of Stop
     private Stop stop;
 }

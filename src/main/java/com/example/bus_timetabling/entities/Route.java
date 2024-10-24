@@ -30,8 +30,9 @@ public class Route {
     @Column(name = "distance")
     private Double distance;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RouteStopSchedule> routeStopSchedules = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "route_stop_id")
+    private RouteStopSchedule routeStopSchedule;
 
     @ManyToOne
     @JoinColumn(name = "bus_route_id")

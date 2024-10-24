@@ -44,12 +44,8 @@ public class RouteServiceImplementation implements RouteService {
        RouteStopSchedule routeStopSchedule = (RouteStopSchedule) routeStopScheduleRepository.findById(routeDto.getRouteStopScheduleId())
                .orElseThrow(() -> new EntityNotFoundException("RouteStopSchedule not found"));
 
-       //Create  a list and add found RouteStopSchedule to it
-        List <RouteStopSchedule> routeStopSchedules = new ArrayList<>();
-        routeStopSchedules.add(routeStopSchedule);
-
-        //Set the list of RouteStopScheudle to the Route
-        route.setRouteStopSchedules(routeStopSchedules);
+        //Set the RouteStopSchedule of Route
+        route.setRouteStopSchedule(routeStopSchedule);
 
         //Save the route object to the database
         routeRepository.save(route);

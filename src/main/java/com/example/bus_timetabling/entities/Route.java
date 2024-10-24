@@ -35,6 +35,10 @@ public class Route {
     private RouteStopSchedule routeStopSchedule;
 
     @ManyToOne
+    @JoinColumn(name= "stop_id") //Defaults to primary key of Stop
+    private Stop stop;
+
+    @ManyToOne
     @JoinColumn(name = "bus_route_id")
     private BusRouteManager busRouteManager;
 }

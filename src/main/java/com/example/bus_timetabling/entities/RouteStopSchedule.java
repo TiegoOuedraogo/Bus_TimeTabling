@@ -26,9 +26,8 @@ public class RouteStopSchedule {
 
     // Relationships
     @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Route> route;
+    private List<Route> routes;
 
-    @ManyToOne //many routeStop Schedules can refer to one stop
-    @JoinColumn(name = "stop_id") // Defaults to primary key of Stop
-    private Stop stop;
+    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Stop> stops;
 }

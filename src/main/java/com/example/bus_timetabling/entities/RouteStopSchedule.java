@@ -26,8 +26,10 @@ public class RouteStopSchedule {
 
     // Relationships
     @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Route> routes;
+    private List<Stop> stops;
 
     @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Stop> stops;
+    private List<Route> routes;
+
+
 }

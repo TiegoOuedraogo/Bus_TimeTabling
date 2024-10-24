@@ -9,7 +9,6 @@ import com.example.bus_timetabling.repository.StopRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
 @Component
 public class RouteMapper {
     private final BusRepository busRepository;
@@ -22,7 +21,6 @@ public class RouteMapper {
 
     // DTO to Entity
     public Route toEntity(RouteResponseDto routeResponseDto){
-
         //Fetch List of buses and stops
         List<Bus> buses = busRepository.findAll();
         List <Stop> stops = stopRepository.findAll();

@@ -9,6 +9,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimesTableMapper {
 
+    public TimesTable toEntity(TimesTableResponseDto timesTableResponseDto){
+        return new TimesTable(
+                timesTableResponseDto.getId(),
+                timesTableResponseDto.getFromStop(),
+                timesTableResponseDto.getToStop(),
+                timesTableResponseDto.getDeparture(),
+                timesTableResponseDto.getArrival(),
+                timesTableResponseDto.getBus()
+        );
+
+    }
+
     public TimesTable FromDTOtoTimesTable(TimesTableDto dto) {
         if (dto == null) {
             return null;

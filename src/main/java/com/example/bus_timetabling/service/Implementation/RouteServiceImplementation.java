@@ -11,6 +11,7 @@ import com.example.bus_timetabling.repository.RouteStopScheduleRepository;
 import com.example.bus_timetabling.repository.StopRepository;
 import com.example.bus_timetabling.service.RouteService;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import com.example.bus_timetabling.mapper.RouteMapper;
 
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+//@ServiceStatus
+@Transactional
 @Service
 public class RouteServiceImplementation implements RouteService {
     private final RouteStopScheduleRepository routeStopScheduleRepository;
@@ -62,8 +65,6 @@ public class RouteServiceImplementation implements RouteService {
     }
     @Override
     public void deleteRouteById(Long route_id) throws RouteNotFoundException {
-        RouteResponseDto routeResponseDto = findRouteById(route_id);
-        Route route = routeMapper.toEntity(routeResponseDto);
-        routeRepository.delete(route);
+        routeRepository.deleteById(route_id);
     }
 }

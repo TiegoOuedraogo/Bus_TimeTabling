@@ -13,7 +13,26 @@ public class StopMapper {
     private final TimesTableMapper timesTableMapper;
 
     public StopMapper(TimesTableMapper timesTableMapper) {
+
         this.timesTableMapper = timesTableMapper;
+    }
+
+
+    //DTO to Entity
+    public Stop toEntity(StopResponseDto stopResponseDto) {
+
+        return new Stop(
+                stopResponseDto.getId(),
+                stopResponseDto.getStopName(),
+                stopResponseDto.getRouteStopSchedule(),
+
+                //convert lists dto to list entity using timestable mapper
+                stopResponseDto.getDepartureTimesTable().stream().map(timesTableMapper::toEntity).collect(Collectors.toList()),
+
+                //convert lists dto to list entity
+                stopResponseDto.getArrivalTimesTable().stream().map(timesTableMapper::toEntity).collect(Collectors.toList())
+        );
+
     }
 
     public Stop toStop(StopDto dto) {
@@ -68,5 +87,7 @@ public class StopMapper {
                 .bus_Route(bus.getBusRouteManager())
                 .build();
     }
+
+
 
 }

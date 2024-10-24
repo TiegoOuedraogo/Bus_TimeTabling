@@ -1,7 +1,6 @@
 package com.example.bus_timetabling.dto;
 
-import com.example.bus_timetabling.entities.Route;
-import com.example.bus_timetabling.entities.TimesTable;
+import com.example.bus_timetabling.entities.RouteStopSchedule;
 import lombok.*;
 
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.List;
 public class StopDto {
     private Long id;
     private String stopName;
-    private List<TimesTable> departureTimesTable;
-    private List<TimesTable> arrivalTimesTable;
+    private RouteStopSchedule routeStopSchedule;
+    private List<TimesTableDto> departureTimesTable;
+    private List<TimesTableDto> arrivalTimesTable;
 }

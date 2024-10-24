@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface BusRepository extends JpaRepository<Bus, Long> {
     Bus findBusById(Long Id);
-    List<Bus> findBusByRouteId(Long Id);
     List<Bus> findByBusNumber(String busNumber);
 //    List<Bus> findBusByStopId(Long Id);
 }

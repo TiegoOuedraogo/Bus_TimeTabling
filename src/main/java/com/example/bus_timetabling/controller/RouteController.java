@@ -2,6 +2,7 @@ package com.example.bus_timetabling.controller;
 import com.example.bus_timetabling.dto.RouteDto;
 //import com.example.bus_timetabling.dto.RouteRequestDto;
 //import com.example.bus_timetabling.dto.RouteResponseDto;
+import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.service.RouteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,12 @@ public class RouteController {
     @GetMapping
 
 
-    public List<RouteDto> retrieveAllRoutes () {
+    public List<RouteResponseDto> retrieveAllRoutes () {
         return routeService.retrieveAllRoutes();
     }
 
     @GetMapping("/{id}")
-    public RouteDto findRouteById (@PathVariable Long id){
+    public RouteResponseDto findRouteById (@PathVariable Long id){
         return routeService.findRouteById(id);
     }
 

@@ -1,6 +1,7 @@
 package com.example.bus_timetabling.service.Implementation;
 
 import com.example.bus_timetabling.dto.RouteDto;
+import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.entities.RouteStopSchedule;;
 import com.example.bus_timetabling.exception.RouteNotFoundException;
@@ -21,9 +22,9 @@ import java.util.stream.Collectors;
 public class RouteServiceImplementation implements RouteService {
     private final RouteStopScheduleRepository routeStopScheduleRepository;
     private final RouteRepository routeRepository;
-  private final  StopRepository stopRepository;
-    BusRepository busRepository;
-    RouteMapper routeMapper;
+    private final  StopRepository stopRepository;
+    private final BusRepository busRepository;
+    private final RouteMapper routeMapper;
    ;
 
     public RouteServiceImplementation(RouteStopScheduleRepository routerouteStopScheduleRepository, RouteRepository routeRepository, StopRepository stopRepository, BusRepository busRepository, RouteMapper routeMapper, RouteStopScheduleRepository routeStopScheduleRepository) {
@@ -52,20 +53,17 @@ public class RouteServiceImplementation implements RouteService {
     }
 
     @Override
-    public List<RouteDto> retrieveAllRoutes() {
-        return routeRepository.findAll().stream().map(routeMapper::toRouteDto).collect(Collectors.toList());
-
+    public List<RouteResponseDto> retrieveAllRoutes() {
+        return routeRepository.findAll().stream().map(routeMapper::toDTO).collect(Collectors.toList());
     }
-
     @Override
-    public RouteDto findRouteById(Long route_id) throws RouteNotFoundException {
-        return routeRepository.findById(route_id).map(routeMapper::toRouteDto).orElse(null);
+    public RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException {
+        return routeRepository.findById(route_id).map(routeMapper::toDTO).orElse(null);
     }
-
     @Override
     public void deleteRouteById(Long route_id) throws RouteNotFoundException {
-        RouteDto routeDto = findRouteById(route_id);
-        Route route = routeMapper.toRoute(routeDto);
+        RouteResponseDto routeResponseDto = findRouteById(route_id);
+        Route route = routeMapper.toEntity(routeResponseDto);
         routeRepository.delete(route);
     }
 }

@@ -37,14 +37,16 @@ public class RouteMapper {
         );
     }
 
-    // Entity to DTO
-    public static RouteResponseDto toDTO(Route route){
+    // Entity to ResponseDTO
+    public  RouteResponseDto toDTO(Route route){
         return new RouteResponseDto(
                 route.getId(),
                 route.getRouteName(),
                 route.getDistance(),
-                route.getRouteStopSchedules(), //convert lists entity to list dto using stop mapper
+                route.getRouteStopSchedule(), //convert lists entity to list dto using stop mapper
                 route.getBusRouteManager() //convert lists entity to list dto using bus mapper
         );
     }
+
+
 }

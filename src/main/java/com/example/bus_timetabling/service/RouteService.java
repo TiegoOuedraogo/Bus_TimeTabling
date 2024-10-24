@@ -11,8 +11,8 @@ import java.util.List;
 
 public interface RouteService {
   void createRoute(RouteDto routeDto);
-  List<RouteDto> retrieveAllRoutes ();
+  List<RouteResponseDto> retrieveAllRoutes ();
     @Query("SELECT b FROM Bus b WHERE b.busRouteManager.id = :routeId")
-  RouteDto findRouteById(Long route_id) throws RouteNotFoundException;
+  RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException;
   void deleteRouteById(Long route_id) throws RouteNotFoundException;
 }

@@ -15,9 +15,9 @@ import java.time.LocalTime;
 @Builder
 public class TimesTableDto {
     private Long id;
-    private Stop fromStop;
-    private Stop toStop;
+    private StopDto fromStop;
+    private StopDto toStop;
     private LocalTime departure;
     private LocalTime arrival;
-    private Bus bus;
+    private BusDto bus;
 }

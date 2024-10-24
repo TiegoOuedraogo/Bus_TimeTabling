@@ -14,7 +14,7 @@ import java.util.List;
 public class StopDto {
     private Long id;
     private String stopName;
-    private RouteStopSchedule routeStopSchedule;
-    private List<TimesTableDto> departureTimesTable;
-    private List<TimesTableDto> arrivalTimesTable;
+    private RouteStopScheduleDto routeStopSchedule;
+//    private List<TimesTableDto> departureTimesTable;
+//    private List<TimesTableDto> arrivalTimesTable;
 }

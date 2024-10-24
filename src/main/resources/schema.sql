@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.stops (
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.bus_route_manager (
        bus_route_id SERIAL PRIMARY KEY
+
 );
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.route_stop_schedule (

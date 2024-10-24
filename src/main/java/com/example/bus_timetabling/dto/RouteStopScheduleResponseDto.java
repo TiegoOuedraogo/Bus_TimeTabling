@@ -2,16 +2,15 @@ package com.example.bus_timetabling.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 @Builder
-public class BusRouteManagerDto {
+public class RouteStopScheduleResponseDto {
     private Long id;
-    private List<BusDto> bus;
-    private List<RouteDto> routes;
+    private int stopNum;
+    private StopDto stop;
+    private RouteDto route;
 }

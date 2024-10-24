@@ -4,6 +4,7 @@ import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
 import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.entities.Bus;
+import com.example.bus_timetabling.entities.BusRouteManager;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
@@ -12,9 +13,13 @@ import java.util.stream.Collectors;
 public class BusMapper {
 
     private final TimesTableMapper timesTableMapper;
+    private final StopMapper stopMapper;
+    private final BusRouteManagerMapper BRMMapper;
 
-    public BusMapper(RouteMapper routeMapper, TimesTableMapper timesTableMapper) {
+    public BusMapper(RouteMapper routeMapper, TimesTableMapper timesTableMapper, StopMapper stopMapper, BusRouteManagerMapper brmMapper) {
         this.timesTableMapper = timesTableMapper;
+        this.stopMapper = stopMapper;
+        BRMMapper = brmMapper;
     }
 
     public Bus toBus(BusDto dto) {
@@ -26,9 +31,9 @@ public class BusMapper {
         bus.setId(dto.getId());
         bus.setBusNumber(dto.getBusNumber());
         bus.setStatus(dto.getStatus());
-        bus.setFromStop(dto.getFromStop());
-        bus.setToStop(dto.getToStop());
-        bus.setBusRouteManager(dto.getBus_Route());
+        bus.setFromStop(stopMapper.toStop(dto.getFromStop()));
+        bus.setToStop(stopMapper.toStop(dto.getToStop()));
+        bus.setBusRouteManager(BRMMapper.toBRM(dto.getBus_Route()));
         return bus;
     }
 
@@ -51,9 +56,9 @@ public class BusMapper {
                 .id(bus.getId())
                 .busNumber(bus.getBusNumber())
                 .status(bus.getStatus())
-                .toStop(bus.getToStop())
-                .fromStop(bus.getFromStop())
-                .bus_Route(bus.getBusRouteManager())
+                .toStop(stopMapper.fromEntityToResponse(bus.getToStop()))
+                .fromStop(stopMapper.fromEntityToResponse(bus.getFromStop()))
+                .bus_Route(BRMMapper.toDto(bus.getBusRouteManager()))
                 .build();
     }
 
@@ -66,9 +71,9 @@ public class BusMapper {
                 .id(bus.getId())
                 .busNumber(bus.getBusNumber())
                 .status(bus.getStatus())
-                .toStop(bus.getToStop())
-                .fromStop(bus.getFromStop())
-                .bus_Route(bus.getBusRouteManager())
+                .toStop(stopMapper.toStopDto(bus.getToStop()))
+                .fromStop(stopMapper.toStopDto(bus.getFromStop()))
+                .bus_Route(BRMMapper.toDto(bus.getBusRouteManager()))
                 .build();
     }
 }

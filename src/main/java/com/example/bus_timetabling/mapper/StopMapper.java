@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 public class StopMapper {
 
     private final TimesTableMapper timesTableMapper;
+    private final RouteStopScheduleMapper RSMapper;
 
-    public StopMapper(TimesTableMapper timesTableMapper) {
+    public StopMapper(TimesTableMapper timesTableMapper, RouteStopScheduleMapper rsMapper, BusRouteManagerMapper brmMapper) {
         this.timesTableMapper = timesTableMapper;
+        RSMapper = rsMapper;
     }
 
     public Stop toStop(StopDto dto) {
@@ -24,9 +26,9 @@ public class StopMapper {
         Stop stop = new Stop();
         stop.setId(dto.getId());
         stop.setStopName(dto.getStopName());
-        stop.setRouteStopSchedule(dto.getRouteStopSchedule());
-        stop.setArrivalTimesTables(dto.getArrivalTimesTable().stream().map(timesTableMapper::FromDTOtoTimesTable).collect(Collectors.toList()));
-        stop.setDepartureTimesTables(dto.getDepartureTimesTable().stream().map(timesTableMapper::FromDTOtoTimesTable).collect(Collectors.toList()));
+        stop.setRouteStopSchedule(RSMapper.toRS(dto.getRouteStopSchedule()));
+//        stop.setArrivalTimesTables(dto.getArrivalTimesTable().stream().map(timesTableMapper::FromDTOtoTimesTable).collect(Collectors.toList()));
+//        stop.setDepartureTimesTables(dto.getDepartureTimesTable().stream().map(timesTableMapper::FromDTOtoTimesTable).collect(Collectors.toList()));
         return stop;
     }
 
@@ -40,33 +42,51 @@ public class StopMapper {
         return stop;
     }
 
-    public StopResponseDto toStopResponseDto(Stop stop) {
-        if (stop == null) {
+    public StopDto toStopDto(Stop stop) {
+        if(stop == null) {
             return null;
         }
 
-        return StopResponseDto.builder()
-                .id(stop.getId())
-                .stopName(stop.getStopName())
-                .routeStopSchedule(stop.getRouteStopSchedule())
-                .arrivalTimesTable(stop.getArrivalTimesTables().stream().map(timesTableMapper::toTimesTableDto).collect(Collectors.toList()))
-                .departureTimesTable(stop.getDepartureTimesTables().stream().map(timesTableMapper::toTimesTableDto).collect(Collectors.toList()))
-                .build();
+        StopDto dto = new StopDto();
+        dto.setId(stop.getId());
+        dto.setStopName(stop.getStopName());
+        dto.setRouteStopSchedule(RSMapper.toRSDto(stop.getRouteStopSchedule()));
+        return dto;
     }
 
-    public BusDto toBusDto(Bus bus) {
-        if (bus == null) {
+//    public StopResponseDto toStopResponseDto(Stop stop) {
+//        if (stop == null) {
+//            return null;
+//        }
+//
+//        return StopResponseDto.builder()
+//                .id(stop.getId())
+//                .stopName(stop.getStopName())
+//                .routeStopSchedule(stop.getRouteStopSchedule())
+//                .arrivalTimesTable(stop.getArrivalTimesTables().stream().map(timesTableMapper::toTimesTableDto).collect(Collectors.toList()))
+//                .departureTimesTable(stop.getDepartureTimesTables().stream().map(timesTableMapper::toTimesTableDto).collect(Collectors.toList()))
+//                .build();
+//    }
+
+
+
+    public Stop fromResponseToEntity(StopResponseDto dto) {
+        if(dto == null) {
             return null;
         }
 
-        return BusDto.builder()
-                .id(bus.getId())
-                .busNumber(bus.getBusNumber())
-                .status(bus.getStatus())
-                .toStop(bus.getToStop())
-                .fromStop(bus.getFromStop())
-                .bus_Route(bus.getBusRouteManager())
-                .build();
+        Stop stop = new Stop();
+        stop.setId(dto.getId());
+        stop.setStopName(dto.getStopName());
+        stop.setRouteStopSchedule(RSMapper.toRS(dto.getRouteStopSchedule()));
+        return stop;
     }
 
+    public StopResponseDto fromEntityToResponse(Stop stop) {
+        StopResponseDto dto = new StopResponseDto();
+        dto.setId(stop.getId());
+        dto.setStopName(stop.getStopName());
+        dto.setRouteStopSchedule(RSMapper.toRSDto(stop.getRouteStopSchedule()));
+        return dto;
+    }
 }

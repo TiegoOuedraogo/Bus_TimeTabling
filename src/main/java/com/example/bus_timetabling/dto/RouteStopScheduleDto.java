@@ -13,6 +13,6 @@ import lombok.*;
 public class RouteStopScheduleDto {
     private Long id;
     private int stopNum;
-    private Stop stopId;
-    private Route routeId;
+    private StopDto stop;
+    private RouteDto route;
 }

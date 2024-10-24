@@ -1,37 +1,50 @@
 package com.example.bus_timetabling.mapper;
 
-import com.example.bus_timetabling.dto.RouteDto;
+import com.example.bus_timetabling.dto.RouteResponseDto;
+import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.entities.Route;
+import com.example.bus_timetabling.entities.Stop;
+import com.example.bus_timetabling.repository.BusRepository;
+import com.example.bus_timetabling.repository.StopRepository;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class RouteMapper {
+    private final BusRepository busRepository;
+    private final StopRepository stopRepository;
 
-    public Route toRoute(RouteDto dto) {
-        if (dto == null) {
-            return null;
-        }
-        Route route = new Route();
-        route.setId(dto.getId());
-        route.setRouteName(dto.getRouteName());
-        route.setToStopId(dto.getToStopId());
-        route.setFromStopId(dto.getFromStopId());
-        route.setDistance(dto.getDistance());
-        return route;
+    public RouteMapper(BusRepository busRepository , StopRepository stopRepository){
+        this.busRepository = busRepository;
+        this.stopRepository = stopRepository;
     }
 
-    public RouteDto toRouteDto(Route entity) {
-        if (entity == null) {
-            return null;
-        }
+    // DTO to Entity
+    public Route toEntity(RouteResponseDto routeResponseDto){
 
-        RouteDto dto = new RouteDto();
-        dto.setId(entity.getId());
-        dto.setRouteName(entity.getRouteName());
-        dto.setToStopId(entity.getToStopId());
-        dto.setFromStopId(entity.getFromStopId());
-        dto.setDistance(entity.getDistance());
-        return dto;
+        //Fetch List of buses and stops
+        List<Bus> buses = busRepository.findAll();
+        List <Stop> stops = stopRepository.findAll();
+
+       //Create and return Route Entity
+        return new Route(
+                routeResponseDto.getId(),
+                routeResponseDto.getRouteName(),
+                routeResponseDto.getDistance(),
+                routeResponseDto.getRouteStopSchedule(), //convert lists dto to list entity using stop mapper
+                routeResponseDto.getBusRouteManager() //convert lists dto to list entity using bus mapper
+        );
+    }
+
+    // Entity to DTO
+    public static RouteResponseDto toDTO(Route route){
+        return new RouteResponseDto(
+                route.getId(),
+                route.getRouteName(),
+                route.getDistance(),
+                route.getRouteStopSchedules(), //convert lists entity to list dto using stop mapper
+                route.getBusRouteManager() //convert lists entity to list dto using bus mapper
+        );
     }
 }
-

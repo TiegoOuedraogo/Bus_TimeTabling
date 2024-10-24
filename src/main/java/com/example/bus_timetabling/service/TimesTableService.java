@@ -10,13 +10,11 @@
 //import com.example.bus_timetabling.repository.TimesTableRepository;
 //import com.example.bus_timetabling.repository.BusRepository;
 //import com.example.bus_timetabling.repository.StopRepository;
-//import org.springframework.stereotype.ServiceStatus;
 //import org.springframework.transaction.annotation.Transactional;
 //
 //import java.util.List;
 //import java.util.stream.Collectors;
 //
-//@ServiceStatus
 //@Transactional
 //public class TimesTableService {
 //
@@ -43,7 +41,7 @@
 //                .orElseThrow(() -> new RuntimeException("To Stop not found"));
 //
 //        timesTable.setBus(bus);
-//        timesTable.setFromStopId(fromStop.getId());
+//        timesTable.setFromStop(fromStop.get());
 //        timesTable.setToStopId(toStop.getId());
 //
 //        TimesTable savedTimesTable = timesTableRepository.save(timesTable);

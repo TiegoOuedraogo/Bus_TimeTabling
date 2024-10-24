@@ -15,6 +15,6 @@ public class RouteDto {
     private Long id;
     private String routeName;
     private Double distance;
-    private Long routeStopScheduleId;
-
+    private RouteStopSchedule routeStopSchedule;
+    private BusRouteManager busRouteManager;
 }

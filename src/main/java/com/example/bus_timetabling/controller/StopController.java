@@ -3,6 +3,7 @@ package com.example.bus_timetabling.controller;
 import com.example.bus_timetabling.dto.StopDto;
 import com.example.bus_timetabling.entities.Stop;
 import com.example.bus_timetabling.service.StopService;
+import com.example.bus_timetabling.service.serviceImpl.StopServiceImplementation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/stops")
+@RequestMapping("/api/stops")
 public class StopController {
 
-    private final StopService stopService;
+    private final StopServiceImplementation stopService;
 
-    public StopController(StopService stopService) {
+    public StopController(StopServiceImplementation stopService) {
         this.stopService = stopService;
     }
 
@@ -28,7 +29,12 @@ public class StopController {
 
     @GetMapping("/{id}")
     public StopDto findStopDetail(@PathVariable Long id) {
-        return stopService.findStopById(id);
+        return stopService.findByStopId(id);
+    }
+
+    @GetMapping("/stopname/{stopName}")
+    public StopDto findStopDetail(@PathVariable String stopName) {
+        return stopService.findByStopName(stopName);
     }
 
     @PostMapping(produces = "application/json")

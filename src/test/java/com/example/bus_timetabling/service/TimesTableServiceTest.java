@@ -33,7 +33,7 @@
 //    private StopRepository stopRepository;
 //
 //    @InjectMocks
-//    private TimesTableService timesTableService;
+//    private TimesTableServiceImpl timesTableService;
 //
 //    private Bus validBus;
 //    private Stop validStop;

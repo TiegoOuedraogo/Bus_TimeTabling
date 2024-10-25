@@ -2,7 +2,7 @@
 //
 //import com.example.bus_timetabling.dto.TimesTableRequestDto;
 //import com.example.bus_timetabling.dto.TimesTableResponseDto;
-//import com.example.bus_timetabling.service.TimesTableService;
+//import com.example.bus_timetabling.service.TimesTableServiceImpl;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.Mockito;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@
 //    private MockMvc mockMvc;
 //
 //    @MockBean
-//    private TimesTableService timesTableService;
+//    private TimesTableServiceImpl timesTableService;
 //
 //    @Test
 //    public void testGetAllTimesTables() throws Exception {

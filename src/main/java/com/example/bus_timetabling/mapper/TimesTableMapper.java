@@ -9,6 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimesTableMapper {
 
+    private final BusMapper busMapper;
+    private final StopMapper stopMapper;
+
+    public TimesTableMapper(BusMapper busMapper, StopMapper stopMapper) {
+        this.busMapper = busMapper;
+        this.stopMapper = stopMapper;
+    }
+
     public TimesTable toEntity(TimesTableResponseDto timesTableResponseDto){
         return new TimesTable(
                 timesTableResponseDto.getId(),
@@ -27,11 +35,11 @@ public class TimesTableMapper {
         }
 
         TimesTable timesTable = new TimesTable();
-        timesTable.setFromStop(dto.getFromStop());
-        timesTable.setToStop(dto.getToStop());
+        timesTable.setFromStop(stopMapper.toStop(dto.getFromStop()));
+        timesTable.setToStop(stopMapper.toStop(dto.getToStop()));
         timesTable.setDeparture(dto.getDeparture());
         timesTable.setArrival(dto.getArrival());
-        timesTable.setBus(dto.getBus());
+        timesTable.setBus(busMapper.toBus(dto.getBus()));
         return timesTable;
     }
 
@@ -53,11 +61,11 @@ public class TimesTableMapper {
         }
 
         return TimesTableDto.builder()
-                .fromStop(entity.getFromStop())
-                .toStop(entity.getToStop())
+                .fromStop(stopMapper.toStopDto(entity.getFromStop()))
+                .toStop(stopMapper.toStopDto(entity.getToStop()))
                 .departure(entity.getDeparture())
                 .arrival(entity.getArrival())
-                .bus(entity.getBus())
+                .bus(busMapper.toBusDto(entity.getBus()))
                 .build();
     }
 
@@ -67,11 +75,11 @@ public class TimesTableMapper {
         }
 
         return TimesTableResponseDto.builder()
-                .fromStop(entity.getFromStop())
-                .toStop(entity.getToStop())
+                .fromStop(stopMapper.toStopDto(entity.getFromStop()))
+                .toStop(stopMapper.toStopDto(entity.getToStop()))
                 .departure(entity.getDeparture())
                 .arrival(entity.getArrival())
-                .bus(entity.getBus())
+                .bus(busMapper.toBusDto(entity.getBus()))
                 .build();
     }
 }

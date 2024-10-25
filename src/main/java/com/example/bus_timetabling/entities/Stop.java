@@ -29,9 +29,9 @@ public class Stop {
     @JoinColumn(name = "route_stop_id") // Defaults to primary key of RouteStopSchedule
     private RouteStopSchedule routeStopSchedule;
 
-    @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
-    private List<TimesTable> departureTimesTables = new ArrayList<>();
-
-    @OneToMany(mappedBy = "toStop", cascade = CascadeType.ALL)
-    private List<TimesTable> arrivalTimesTables = new ArrayList<>();
+//    @OneToMany(mappedBy = "fromStop", cascade = CascadeType.ALL)
+//    private List<TimesTable> departureTimesTables = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "toStop", cascade = CascadeType.ALL)
+//    private List<TimesTable> arrivalTimesTables = new ArrayList<>();
 }

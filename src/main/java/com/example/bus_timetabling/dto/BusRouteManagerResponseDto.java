@@ -10,8 +10,8 @@ import java.util.List;
 @Setter
 @Getter
 @Builder
-public class BusRouteManagerDto {
+public class BusRouteManagerResponseDto {
     private Long id;
-    private List<BusDto> bus;
-    private List<RouteDto> routes;
+    private List<BusDto> bus_id;
+    private List<RouteDto> route_id;
 }

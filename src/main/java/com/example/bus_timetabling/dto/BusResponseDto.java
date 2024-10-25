@@ -18,8 +18,8 @@ public class BusResponseDto {
     private Long id;
     private String busNumber;
     private ServiceStatus status;
-    private List<TimesTable> timesTables;
-    private Stop toStop;
-    private Stop fromStop;
-    private BusRouteManager bus_Route;
+    private List<TimesTableDto> timesTables; //TimesTableDTO StopDTO
+    private StopResponseDto toStop;
+    private StopResponseDto fromStop;
+    private BusRouteManagerDto bus_Route;
 }

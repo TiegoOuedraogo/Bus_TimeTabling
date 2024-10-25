@@ -12,14 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Setter
-@Getter
 public class BusDto {
     private Long id;
     private String busNumber;
     private ServiceStatus status;
-    private List<TimesTable> timesTables;
-    private Stop toStop;
-    private Stop fromStop;
-    private BusRouteManager bus_Route;
+    private List<TimesTableDto> timesTables;
+    private StopDto toStop;
+    private StopDto fromStop;
+    private BusRouteManagerDto bus_Route;
 }

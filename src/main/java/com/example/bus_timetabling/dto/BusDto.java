@@ -16,7 +16,6 @@ public class BusDto {
     private Long id;
     private String busNumber;
     private ServiceStatus status;
-    private List<TimesTableDto> timesTables;
     private StopDto toStop;
     private StopDto fromStop;
     private BusRouteManagerDto bus_Route;

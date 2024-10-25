@@ -13,8 +13,5 @@ import java.time.LocalTime;
 @Getter
 @Builder
 public class TimesTableRequestDto {
-    private StopRequestDto fromStop;
-    private StopRequestDto toStop;
-//    private LocalTime departure;
-//    private LocalTime arrival;
+    private Long timeTble_id;
 }

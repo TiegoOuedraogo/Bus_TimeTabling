@@ -15,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @Setter
 @Getter
-
 public class Bus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,4 +43,60 @@ public class Bus {
     @ManyToOne
     @JoinColumn(name = "route_schedule_id") //defaults to primary key of BusRouteManager
     private BusRouteManager busRouteManager;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getBusNumber() {
+        return busNumber;
+    }
+
+    public void setBusNumber(String busNumber) {
+        this.busNumber = busNumber;
+    }
+
+    public ServiceStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ServiceStatus status) {
+        this.status = status;
+    }
+
+    public List<TimesTable> getTimesTables() {
+        return timesTables;
+    }
+
+    public void setTimesTables(List<TimesTable> timesTables) {
+        this.timesTables = timesTables;
+    }
+
+    public Stop getToStop() {
+        return toStop;
+    }
+
+    public void setToStop(Stop toStop) {
+        this.toStop = toStop;
+    }
+
+    public Stop getFromStop() {
+        return fromStop;
+    }
+
+    public void setFromStop(Stop fromStop) {
+        this.fromStop = fromStop;
+    }
+
+    public BusRouteManager getBusRouteManager() {
+        return busRouteManager;
+    }
+
+    public void setBusRouteManager(BusRouteManager busRouteManager) {
+        this.busRouteManager = busRouteManager;
+    }
 }

@@ -12,7 +12,9 @@ import java.util.ArrayList;
 @Setter
 @Getter
 @ToString
+@Builder
 @Entity
+
 @Table(name = "times_tables", schema = "bus_timetabling")
 @Data
 
@@ -39,4 +41,5 @@ public class TimesTable {
     @ManyToOne
     @JoinColumn(name = "bus_id") // Defaults to primary key of Bus
     private Bus bus;
+
 }

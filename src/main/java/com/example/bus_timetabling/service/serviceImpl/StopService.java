@@ -1,4 +1,4 @@
-package com.example.bus_timetabling.service;
+package com.example.bus_timetabling.service.serviceImpl;
 
 import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.dto.BusResponseDto;

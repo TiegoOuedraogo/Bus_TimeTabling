@@ -18,6 +18,4 @@ public class TimesTableResponseDto {
     private StopDto toStop;
     private LocalTime departure;
     private LocalTime arrival;
-    private BusDto bus;
-    private RouteDto route;
 }

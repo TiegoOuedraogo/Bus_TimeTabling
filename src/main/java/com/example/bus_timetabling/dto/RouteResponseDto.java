@@ -17,6 +17,4 @@ public class RouteResponseDto {
     private Long id;
     private String routeName;
     private Double distance;
-    private RouteStopScheduleDto routeStopSchedule;
-    private BusRouteManagerDto busRouteManager;
 }

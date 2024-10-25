@@ -2,7 +2,7 @@ package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.service.BusService;
+import com.example.bus_timetabling.service.serviceImpl.BusService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

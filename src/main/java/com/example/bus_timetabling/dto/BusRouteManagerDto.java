@@ -12,6 +12,4 @@ import java.util.List;
 @Builder
 public class BusRouteManagerDto {
     private Long id;
-    private List<BusDto> bus;
-    private List<RouteDto> routes;
 }

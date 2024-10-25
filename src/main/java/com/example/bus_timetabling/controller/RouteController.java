@@ -12,7 +12,31 @@ import java.util.List;
 @RequestMapping("api/route")
 @CrossOrigin
 public class RouteController {
-    //private final RouteService routeService;
+
+    //constructor injection of Route Service
+    private final RouteService routeService;
+
+    public RouteController(RouteService routeService) {
+        this.routeService = routeService;
+    }
+
+    @GetMapping
+    public List<RouteResponseDto> getAllRoutes() {
+        return routeService.getAllRoutes();
+    }
+
+    @GetMapping("/route_id")
+    public RouteResponseDto findRouteById(@PathVariable Long route_id) {
+        return routeService.findRouteById(route_id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createRoute(@RequestBody RouteRequestDto routeRequestDto) {
+       routeService.createRoute(routeRequestDto);
+    }
+}
+//private final RouteService routeService;
 
 //    public RouteController(RouteService routeService) {
 //        this.routeService = routeService;
@@ -39,4 +63,3 @@ public class RouteController {
 //    public RouteResponseDto createRoute(RouteRequestDto routeRequestDto){
 //        return routeService.createRoute(routeRequestDto);
 //    }
-}

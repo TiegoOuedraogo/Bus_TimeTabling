@@ -1,75 +1,46 @@
-package com.example.bus_timetabling.mapper;
-
-import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.dto.TimesTableDto;
-import com.example.bus_timetabling.entities.Stop;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-@Component
-public class StopMapper {
-//    private final RouteMapper routeMapper;
-//    private final TimesTableMapper timesTableMapper;
-
-
-//    public StopMapper(RouteMapper routeMapper, TimesTableMapper timesTableMapper) {
-//        this.routeMapper = routeMapper;
-//        this.timesTableMapper = timesTableMapper;
-//    }
-
-    public Stop toStop(StopDto stopDto) {
-        if(stopDto == null) {
-            return null;
-        }
-
-        Stop stop = new Stop();
-        stop.setId(stopDto.getId());
-        stop.setStopName(stopDto.getStopName());
-//        stop.setOrderInRoute(stopDto.getOrderInRoute());
-//        stop.setRoute(routeMapper.toRoute(stopDto.getRoute()));
-        //??
-//        if (stopDto.getDepartureTimesTables()!= null) {
-//            stop.setDepartureTimesTables(stopDto.getDepartureTimesTables().stream()
-//                    .map(timesTableMapper::toTimesTable)
-//                    .collect(Collectors.toList()));
-//        }
-//        if (stopDto.getArrivalTimesTables() != null) {
-//            stop.setArrivalTimesTables(stopDto.getArrivalTimesTables().stream()
-//                    .map(timesTableMapper::toTimesTable)
-//                    .collect(Collectors.toList()));
-//        }
-        return stop;
-    }
-
-    public StopDto toStopDto(Stop stop) {
-        if (stop == null) {
-            return null;
-        }
-        //??
-//        List<TimesTableDto> departureTimesTables = stop.getDepartureTimesTables() != null
-//                ? stop.getDepartureTimesTables().stream()
-//                .map(timesTableMapper::toTimesTableDto)
-//                .collect(Collectors.toList())
-//                : null;
+//package com.example.bus_timetabling.mapper;
 //
-//        List<TimesTableDto> arrivalTimesTables = stop.getArrivalTimesTables()!= null
-//                ? stop.getArrivalTimesTables().stream()
-//                .map(timesTableMapper::toTimesTableDto)
-//                .collect(Collectors.toList())
-//                : null;
-
-        //fix this later
-        return new StopDto(
-                stop.getId(),
-                stop.getStopName()
-//                stop.getOrderInRoute(),
-//                routeMapper.toRouteDto(stop.getRoute()),
-//                departureTimesTables,
-//                arrivalTimesTables
-        );
-    }
-
-
-}
+//import com.example.bus_timetabling.dto.*;
+//import com.example.bus_timetabling.entities.Bus;
+//import com.example.bus_timetabling.entities.Stop;
+//import org.springframework.stereotype.Component;
+//
+//import java.util.stream.Collectors;
+//
+//@Component
+//public class StopMapper {
+//
+//    private final TimesTableMapper timesTableMapper;
+//    private final RouteStopScheduleMapper RSMapper;
+//
+//    public StopMapper(TimesTableMapper timesTableMapper, RouteStopScheduleMapper rsMapper, BusRouteManagerMapper brmMapper) {
+//        this.timesTableMapper = timesTableMapper;
+//        RSMapper = rsMapper;
+//    }
+//
+//    public Stop toStop(StopDto dto) {
+//        if(dto == null) {
+//            return null;
+//        }
+//
+//        Stop stop = new Stop();
+//        stop.setId(dto.getId());
+//        stop.setStopName(dto.getStopName());
+//        stop.setRouteStopSchedule(RSMapper.toRS(dto.getRouteStopSchedule()));
+////        stop.setArrivalTimesTables(dto.getArrivalTimesTable().stream().map(timesTableMapper::FromDTOtoTimesTable).collect(Collectors.toList()));
+////        stop.setDepartureTimesTables(dto.getDepartureTimesTable().stream().map(timesTableMapper::FromDTOtoTimesTable).collect(Collectors.toList()));
+//        return stop;
+//    }
+//
+//    public StopDto toStopDto(Stop stop) {
+//        if(stop == null) {
+//            return null;
+//        }
+//
+//        StopDto dto = new StopDto();
+//        dto.setId(stop.getId());
+//        dto.setStopName(stop.getStopName());
+//        dto.setRouteStopSchedule(RSMapper.toRSDto(stop.getRouteStopSchedule()));
+//        return dto;
+//    }
+//}

@@ -1,11 +1,10 @@
 package com.example.bus_timetabling.controller;
 
-import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.service.BusService;
+import com.example.bus_timetabling.dto.BusDto;
+import com.example.bus_timetabling.service.serviceImpl.BusService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -19,29 +18,18 @@ public class BusController {
     }
 
     @GetMapping("/{id}")
-    public BusResponseDto findBusById(@PathVariable("id") Long id) {
+    public BusDto findBusById(@PathVariable("id") Long id) {
         return busService.findBusById(id);
     }
 
-    @GetMapping("/{busNumber}")
-    public List<BusResponseDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
+    @GetMapping("/BusNumber/{busNumber}")
+    public List<BusDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
         return busService.findBusByNumber(busNumber);
     }
 
     @GetMapping
-    public List<BusResponseDto> getAllBuses() {
+    public List<BusDto> getAllBuses() {
         return busService.getAllBuses();
     }
-
-//    @GetMapping("/{routeId}")
-//    public List<BusResponseDto> findBusByRouteId(@PathVariable("routeId") Long routeId) {
-//        return busService.findBusByRouteId(routeId);
-//    }
-//
-//    @GetMapping("/{stopId}")
-//    public List<BusResponseDto> findBusByStopId(@PathVariable("stopId") Long stopId) {
-//        return busService.findBusByStopId(stopId);
-//    }
-
 
 }

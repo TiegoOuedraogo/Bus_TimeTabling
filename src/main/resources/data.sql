@@ -18,3 +18,12 @@ VALUES ('Bus 01', 'INSERVICE', 1, 2, 1),
 INSERT INTO bus_timetabling.times_tables (from_stop_id, to_stop_id, departure, arrival, bus_id)
 VALUES (1, 2, '08:00', '08:30', 1),
        (2, 3, '09:00', '09:30', 2);
+
+
+INSERT INTO bus_timetabling.route_stop_schedule(route_schedule_id, stop_num, route_id, stop_id)
+VALUES(),
+
+
+
+INSERT INTO bus_timetabling.bus_route_manager(bus_route_id)
+VALUES(),

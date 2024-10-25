@@ -1,5 +1,6 @@
 package com.example.bus_timetabling.controller;
 
+import com.example.bus_timetabling.dto.RouteDto;
 import com.example.bus_timetabling.dto.RouteRequestDto;
 import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.service.RouteService;
@@ -26,7 +27,7 @@ public class RouteController {
     }
 
     @GetMapping("/route_id")
-    public RouteResponseDto findRouteById(@PathVariable Long route_id) {
+    public RouteDto findRouteById(@PathVariable Long route_id) {
         return routeService.findRouteById(route_id);
     }
 

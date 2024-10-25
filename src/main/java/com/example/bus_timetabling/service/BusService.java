@@ -28,36 +28,43 @@ public class BusService {
         this.busMapper = busMapper;
     }
 
-    public List<BusResponseDto> findBusByNumber(String busNumber) {
+    public List<BusDto> findBusByNumber(String busNumber) {
         return busRepo.findByBusNumber(busNumber).stream()
-                .map(busMapper::toBusResponseDto)
+                .map(busMapper::toBusDto)
                 .collect(Collectors.toList());
     }
 
-    public List<BusResponseDto> getAllBuses() {
+    public BusDto findBusById(Long Id) {
+        return busMapper.toBusDto(busRepo.findBusById(Id));
+    }
+
+    public List<BusDto> getAllBuses() {
         return busRepo.findAll().stream()
-                .map(busMapper::toBusResponseDto)
+                .map(busMapper::toBusDto)
                 .collect(Collectors.toList());
     }
 
-    public BusResponseDto createBus(BusDto busDto) {
+    public void createBus(BusDto busDto) {
         Bus bus = busMapper.toBus(busDto);
         Bus savedBus = busRepo.save(bus);
-        return busMapper.toBusResponseDto(savedBus);
     }
 
-    public BusResponseDto updateBus(Long id, BusDto busDto) {
-        return busRepo.findById(id)
-                .map(existingBus -> {
-                    Bus updatedBus = busMapper.toBus(busDto);
-                    updatedBus.setId(id);
-                    return busMapper.toBusResponseDto(busRepo.save(updatedBus));
-                })
-                .orElse(null);
+    public Bus updateBus(Long id, BusRequestDto dto) {
+//        return busRepo.findById(id)
+//                .map(existingBus -> {
+//                    Bus updatedBus = busMapper.toBus(busDto);
+//                    updatedBus.setId(id);
+//                    return busMapper.toBusResponseDto(busRepo.save(updatedBus));
+//                })
+//                .orElse(null);
+        Bus bus = busRepo.findBusById(id);
+        bus.setBusNumber(dto.getBusNumber());
+        Bus updatedBus = busRepo.save(bus);
+        return bus;
     }
 
-    public BusResponseDto findBusById(Long id) {
-        return busRepo.findById(id).map(busMapper::toBusResponseDto).orElse(null);
-    }
+//    public BusResponseDto findBusById(Long id) {
+//        return busRepo.findById(id).map(busMapper::toBusResponseDto).orElse(null);
+//    }
 
 }

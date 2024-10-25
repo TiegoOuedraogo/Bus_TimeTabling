@@ -15,6 +15,6 @@ public class StopDto {
     private Long id;
     private String stopName;
     private RouteStopScheduleDto routeStopSchedule;
-//    private List<TimesTableDto> departureTimesTable;
-//    private List<TimesTableDto> arrivalTimesTable;
+    private List<TimesTableDto> departureTimesTable;
+    private List<TimesTableDto> arrivalTimesTable;
 }

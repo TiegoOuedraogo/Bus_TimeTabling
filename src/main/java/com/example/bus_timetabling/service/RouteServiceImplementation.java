@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RouteServiceImplentation implements RouteService {
+public class RouteServiceImplementation implements RouteService {
     @Override
     public RouteResponseDto createRoute(RouteRequestDto routeRequestDto) {
         return null;

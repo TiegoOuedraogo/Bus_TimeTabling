@@ -37,31 +37,6 @@ public class BusMapper {
         return bus;
     }
 
-    public Bus toBus(BusRequestDto dto) {
-        if(dto == null) {
-            return null;
-        }
-
-        Bus bus = new Bus();
-        bus.setBusNumber(dto.getBusNumber());
-        return bus;
-    }
-
-    public BusResponseDto toBusResponseDto(Bus bus) {
-        if (bus == null) {
-            return null;
-        }
-
-        return BusResponseDto.builder()
-                .id(bus.getId())
-                .busNumber(bus.getBusNumber())
-                .status(bus.getStatus())
-                .toStop(stopMapper.fromEntityToResponse(bus.getToStop()))
-                .fromStop(stopMapper.fromEntityToResponse(bus.getFromStop()))
-                .bus_Route(BRMMapper.toDto(bus.getBusRouteManager()))
-                .build();
-    }
-
     public BusDto toBusDto(Bus bus) {
         if (bus == null) {
             return null;

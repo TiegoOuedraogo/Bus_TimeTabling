@@ -11,6 +11,4 @@ import lombok.*;
 public class RouteStopScheduleResponseDto {
     private Long id;
     private int stopNum;
-    private StopDto stop;
-    private RouteDto route;
 }

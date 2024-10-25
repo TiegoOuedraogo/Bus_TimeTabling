@@ -43,6 +43,17 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.times_tables (
       bus_id BIGINT
 );
 
+CREATE TABLE IF NOT EXISTS bus_timetabling.route_stop_schedule (
+      bus_route_id SERIAL PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS bus_timetabling.bus_route_manager (
+      route_schedule_id SERIAL PRIMARY KEY,
+      stop_num int,
+      route_id BIGINT,
+      stop_id
+);
+
 
 -- ALTER TABLE  bus_timetabling.buses
 --     ADD CONSTRAINT fk_to_stop FOREIGN KEY (to_stop_id) REFERENCES bus_timetabling.stops (stop_id),

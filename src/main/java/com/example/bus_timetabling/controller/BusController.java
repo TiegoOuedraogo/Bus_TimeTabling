@@ -1,8 +1,9 @@
 package com.example.bus_timetabling.controller;
 
+import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.entities.Bus;
-import com.example.bus_timetabling.service.BusService;
+import com.example.bus_timetabling.service.serviceImpl.BusServiceImplementation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,36 +13,25 @@ import java.util.List;
 @RequestMapping("/api/buses")
 public class BusController {
 
-    private final BusService busService;
+    private final BusServiceImplementation busService;
 
-    public BusController(BusService busService) {
+    public BusController(BusServiceImplementation busService) {
         this.busService = busService;
     }
 
     @GetMapping("/{id}")
-    public BusResponseDto findBusById(@PathVariable("id") Long id) {
-        return busService.getBusById(id);
+    public ResponseEntity<BusResponseDto> findBusById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(busService.findBusById(id));
     }
 
-    @GetMapping("/{busNumber}")
+    @GetMapping("/BusNumber/{busNumber}")
     public List<BusResponseDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
-        return busService.getBusByNumber(busNumber);
+        return busService.findByBusNumber(busNumber);
     }
 
     @GetMapping
     public List<BusResponseDto> getAllBuses() {
         return busService.getAllBuses();
     }
-
-    @GetMapping("/{routeId}")
-    public List<BusResponseDto> findBusByRouteId(@PathVariable("routeId") Long routeId) {
-        return busService.findBusByRouteId(routeId);
-    }
-//
-//    @GetMapping("/{stopId}")
-//    public List<BusResponseDto> findBusByStopId(@PathVariable("stopId") Long stopId) {
-//        return busService.findBusByStopId(stopId);
-//    }
-
 
 }

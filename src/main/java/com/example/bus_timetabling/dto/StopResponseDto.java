@@ -1,6 +1,10 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.RouteStopSchedule;
+import com.example.bus_timetabling.entities.TimesTable;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -11,7 +15,4 @@ import lombok.*;
 public class StopResponseDto {
     private Long id;
     private String stopName;
-    private Integer orderInRoute;
-    private Long routeId;
-    private String routeName;
 }

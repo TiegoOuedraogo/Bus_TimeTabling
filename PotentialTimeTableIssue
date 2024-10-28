@@ -1,0 +1,5 @@
+There may be an issue where the ending destination/last stop
+of a route won't be displayed on the timestable endpoint
+without the addition of a 2nd Stop_Id field to times_tables
+will address if problem is present when we move to next phase of
+project development

@@ -1,5 +1,8 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.BusRouteManager;
+import com.example.bus_timetabling.entities.RouteStopSchedule;
+import com.example.bus_timetabling.entities.Stop;
 import lombok.*;
 
 import java.util.List;
@@ -13,9 +16,5 @@ import java.util.List;
 public class RouteResponseDto {
     private Long id;
     private String routeName;
-    private String origin;
-    private String destination;
     private Double distance;
-    private List<StopDto> stops;
-    private List<BusDto> buses;
 }

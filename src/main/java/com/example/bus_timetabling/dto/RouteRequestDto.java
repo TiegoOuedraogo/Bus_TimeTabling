@@ -9,7 +9,9 @@ import lombok.*;
 @Getter
 @Builder
 public class RouteRequestDto {
+    private Long id;
     private String routeName;
-    private String origin;
-    private String destination;
+    private Double distance;
+    private Long routeStopSchedule;
+    private Long busRouteManager;
 }

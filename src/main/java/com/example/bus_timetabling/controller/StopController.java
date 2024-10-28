@@ -1,31 +1,53 @@
 package com.example.bus_timetabling.controller;
 
-import com.example.bus_timetabling.dto.StopRequestDto;
-import com.example.bus_timetabling.dto.StopResponseDto;
+import com.example.bus_timetabling.dto.StopDto;
 import com.example.bus_timetabling.entities.Stop;
+import com.example.bus_timetabling.service.StopService;
+import com.example.bus_timetabling.service.serviceImpl.StopServiceImplementation;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
-@RequestMapping("/stops")
+@RequestMapping("/api/stops")
 public class StopController {
 
+    private final StopServiceImplementation stopService;
+
+    public StopController(StopServiceImplementation stopService) {
+        this.stopService = stopService;
+    }
+
     @GetMapping("")
-    //turn into DTO object response later
-    public String getStops() {
-        return "These are the stops";
+    public List<StopDto> findStops() {
+        return stopService.findAllStops();
     }
 
     @GetMapping("/{id}")
-    //turn into DTO object response later
-    public Long getStopDetail(@PathVariable Long id) {
-        return id;
+    public StopDto findStopDetail(@PathVariable Long id) {
+        return stopService.findByStopId(id);
     }
 
-//    @PostMapping(produces = "application/json")
-//    public ResponseEntity<StopResponseDto> createStop(@RequestBody StopRequestDto request ) {
-//        return "Your stop has been created";
-//    }
+    @GetMapping("/stopname/{stopName}")
+    public StopDto findStopDetail(@PathVariable String stopName) {
+        return stopService.findByStopName(stopName);
+    }
+
+    @PostMapping(produces = "application/json")
+    public ResponseEntity<HttpStatus> createStop(@RequestBody StopDto request ) {
+        stopService.createStop(request);
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<HttpStatus> updateStop(@PathVariable long id, @RequestBody StopDto request ) {
+        stopService.updateBus(id, request);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+
+    }
 }

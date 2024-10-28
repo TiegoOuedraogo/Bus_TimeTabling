@@ -1,6 +1,10 @@
 package com.example.bus_timetabling.dto;
 
+import com.example.bus_timetabling.entities.RouteStopSchedule;
 import lombok.*;
+
+import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -11,7 +15,7 @@ import lombok.*;
 public class StopDto {
     private Long id;
     private String stopName;
-    private Integer orderInRoute;
-    private String routeName;
-    private Long routeId;
+//    private RouteStopScheduleDto routeStopSchedule;
+//    private LocalTime departureTimesTable;
+//    private LocalTime arrivalTimesTable;
 }

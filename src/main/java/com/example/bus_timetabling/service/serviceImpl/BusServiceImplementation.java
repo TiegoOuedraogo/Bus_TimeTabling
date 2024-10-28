@@ -4,6 +4,7 @@ package com.example.bus_timetabling.service.serviceImpl;
 import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.entities.Bus;
 import com.example.bus_timetabling.repository.BusRepository;
+import com.example.bus_timetabling.service.BusService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,11 +13,11 @@ import java.util.stream.Collectors;
 
 @Transactional
 @Service
-public class BusService {
+public class BusServiceImplementation implements BusService {
 
     private final BusRepository busRepo;
 
-    public BusService(BusRepository busRepo) {
+    public BusServiceImplementation(BusRepository busRepo) {
         this.busRepo = busRepo;
     }
 
@@ -24,8 +25,8 @@ public class BusService {
         return busRepo.findById(id).map(this::toDto).orElse(null);
     }
 
-    public List<BusDto> findBusByNumber(String busNumber) {
-        return busRepo.findByBusNumber(busNumber).stream().map(this::toDto).collect(Collectors.toList());
+    public List<BusDto> findByBusNumber(String busNumber) {
+        return busRepo.findByBusNumber(busNumber);
     }
 
     public List<BusDto> getAllBuses() {
@@ -37,8 +38,8 @@ public class BusService {
         dto.setId(bus.getId());
         dto.setBus_Route(bus.getBusRouteManager());
         dto.setStatus(bus.getStatus());
-        dto.setToStop(bus.getToStop());
-        dto.setFromStop(bus.getFromStop());
+//        dto.setToStop(bus.getToStop());
+//        dto.setFromStop(bus.getFromStop());
         dto.setBusNumber(bus.getBusNumber());
         return dto;
     }

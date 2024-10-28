@@ -2,10 +2,9 @@ CREATE SCHEMA IF NOT EXISTS bus_timetabling;
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.buses (
        bus_id SERIAL PRIMARY KEY,
-       number VARCHAR(255),
+       bus_number VARCHAR(255),
        status VARCHAR(255),
-       to_stop_id BIGINT,
-       from_stop_id BIGINT,
+       times_table_id BIGINT,
        route_schedule_id BIGINT
 );
 
@@ -31,7 +30,8 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.routes (
         route_id SERIAL PRIMARY KEY,
         route_name VARCHAR(255),
         distance DOUBLE PRECISION,
-        bus_route_id BIGINT
+        bus_route_id BIGINT,
+        route_stop_id BIGINT
         );
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.times_tables (
@@ -42,6 +42,39 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.times_tables (
       arrival TIME,
       bus_id BIGINT
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--CREATE TABLE IF NOT EXISTS bus_timetabling.route_stop_schedule (
+--      bus_route_id SERIAL PRIMARY KEY
+--);
+--
+--CREATE TABLE IF NOT EXISTS bus_timetabling.bus_route_manager (
+--      route_schedule_id SERIAL PRIMARY KEY,
+--      stop_num int,
+--      route_id BIGINT,
+--      stop_id
+--);
 
 
 -- ALTER TABLE  bus_timetabling.buses

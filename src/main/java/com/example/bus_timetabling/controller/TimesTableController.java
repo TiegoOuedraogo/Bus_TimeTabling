@@ -1,15 +1,21 @@
 package com.example.bus_timetabling.controller;
 
+import com.example.bus_timetabling.dto.TimesTableRequestDto;
 import com.example.bus_timetabling.dto.TimesTableResponseDto;
+import com.example.bus_timetabling.entities.Stop;
 import com.example.bus_timetabling.service.serviceImpl.TimesTableServiceImpl;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api/timetables")
+@JsonFormat
 public class TimesTableController {
 
     @Autowired
@@ -38,6 +44,12 @@ public class TimesTableController {
     @GetMapping("/{id}")
     public TimesTableResponseDto getTimesTableById(@PathVariable Long id) {
         return timesTableService.getTimesTableById(id);
+    }
+
+    @GetMapping("buses/{stopId}")
+    public List<TimesTableResponseDto> get3buses(@PathVariable Long stopId) {
+        LocalTime time = LocalTime.of(07,50);
+        return timesTableService.findNextThreeBusesAtStop(stopId, time);
     }
 
 //    @DeleteMapping("/{id}")

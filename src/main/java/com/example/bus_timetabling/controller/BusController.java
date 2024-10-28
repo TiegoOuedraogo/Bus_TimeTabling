@@ -2,6 +2,7 @@ package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.BusDto;
 import com.example.bus_timetabling.service.serviceImpl.BusServiceImplementation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +19,8 @@ public class BusController {
     }
 
     @GetMapping("/{id}")
-    public BusDto findBusById(@PathVariable("id") Long id) {
-        return busService.findBusById(id);
+    public ResponseEntity<BusDto> findBusById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(busService.findBusById(id));
     }
 
     @GetMapping("/BusNumber/{busNumber}")

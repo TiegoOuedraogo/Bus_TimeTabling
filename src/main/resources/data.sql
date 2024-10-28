@@ -43,9 +43,9 @@ VALUES (1, 1, 1, 1),
        (2, 2, 1, 2),
        (3, 3, 1, 3);
 
-INSERT INTO bus_timetabling.buses (bus_id, bus_number, status, to_stop_id, from_stop_id, route_schedule_id)
-VALUES (1, 'Bus 01', 'INSERVICE', 1, 2, 1),
-       (2, 'Bus 02', 'OUTOFSERVICE', 2, 3, 1);
+INSERT INTO bus_timetabling.buses (bus_id, bus_number, status, times_table_id, route_schedule_id)
+VALUES (1, 'Bus 01', 'INSERVICE', 1, 1),
+       (2, 'Bus 02', 'OUTOFSERVICE', 2, 1);
 
 INSERT INTO bus_timetabling.times_tables (times_table_id, from_stop_id, to_stop_id, departure, arrival, bus_id)
 VALUES (1, 1, 2, '08:00', '08:30', 1),

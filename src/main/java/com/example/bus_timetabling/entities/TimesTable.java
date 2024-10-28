@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,8 +39,11 @@ public class TimesTable {
     @Column(name = "arrival")
     private LocalTime arrival;
 
-    @ManyToOne
-    @JoinColumn(name = "bus_id") // Defaults to primary key of Bus
-    private Bus bus;
+//    @ManyToOne
+//    @JoinColumn(name = "bus_id") // Defaults to primary key of Bus
+//    private Bus bus;
+
+    @OneToMany(mappedBy = "timestables", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Bus> buses = new ArrayList<>();
 
 }

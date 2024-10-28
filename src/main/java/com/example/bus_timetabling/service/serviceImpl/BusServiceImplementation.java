@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Transactional
 @Service
-public class BusServiceImplementation extends BusService {
+public class BusServiceImplementation implements BusService {
 
     private final BusRepository busRepo;
 
@@ -25,8 +25,8 @@ public class BusServiceImplementation extends BusService {
         return busRepo.findById(id).map(this::toDto).orElse(null);
     }
 
-    public List<Bus> findByBusNumber(String busNumber) {
-        return busRepo.findByBusNumber(busNumber).stream().map(this::toDto).collect(Collectors.toList());
+    public List<BusDto> findByBusNumber(String busNumber) {
+        return busRepo.findByBusNumber(busNumber);
     }
 
     public List<BusDto> getAllBuses() {

@@ -2,7 +2,7 @@ CREATE SCHEMA IF NOT EXISTS bus_timetabling;
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.buses (
        bus_id SERIAL PRIMARY KEY,
-       number VARCHAR(255),
+       bus_number VARCHAR(255),
        status VARCHAR(255),
        to_stop_id BIGINT,
        from_stop_id BIGINT,

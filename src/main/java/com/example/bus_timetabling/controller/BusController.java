@@ -1,7 +1,7 @@
 package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.BusDto;
-import com.example.bus_timetabling.service.serviceImpl.BusService;
+import com.example.bus_timetabling.service.serviceImpl.BusServiceImplementation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/buses")
 public class BusController {
 
-    private final BusService busService;
+    private final BusServiceImplementation busService;
 
-    public BusController(BusService busService) {
+    public BusController(BusServiceImplementation busService) {
         this.busService = busService;
     }
 
@@ -24,7 +24,7 @@ public class BusController {
 
     @GetMapping("/BusNumber/{busNumber}")
     public List<BusDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
-        return busService.findBusByNumber(busNumber);
+        return busService.findByBusNumber(busNumber);
     }
 
     @GetMapping

@@ -21,7 +21,7 @@ public class Bus {
     @Column(name = "bus_id")
     private Long id;
 
-    @Column(name = "number")
+    @Column(name = "bus_number")
     private String busNumber;
 
     @Enumerated(EnumType.STRING)

@@ -32,7 +32,7 @@ public class Route {
 
     @ManyToOne
     @JoinColumn(name = "route_stop_id")
-    private RouteStopSchedule routeStopSchedules;
+    private RouteStopSchedule routeStopSchedule;
 
     @ManyToOne
     @JoinColumn(name = "bus_route_id")

@@ -2,16 +2,16 @@ package com.example.bus_timetabling.service;
 
 import com.example.bus_timetabling.dto.RouteStopScheduleDto;
 import com.example.bus_timetabling.dto.RouteStopScheduleResponseDto;
-import com.example.bus_timetabling.entities.RouteStopSchedule;
+import com.example.bus_timetabling.exception.RouteStopScheduleNotFoundException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public interface RouteStopScheduleService {
+    void createRouteStopSchedule(RouteStopScheduleResponseDto routeStopScheduleResponseDto);
 
-    List<RouteStopScheduleResponseDto> getAllRouteStopSchedules();
+    List<RouteStopScheduleDto> retrieveAllRouteStopSchedules ();
 
-    RouteStopSchedule findRouteStopScheduleById(Long id);
+    RouteStopScheduleDto findRouteScheduleById(Long route_stop_id) throws RouteStopScheduleNotFoundException;
 
-    RouteStopScheduleResponseDto getRouteStopScheduleById(Long id);
+    void deleteRouteStopScheduleById(Long route_stop_id) throws RouteStopScheduleNotFoundException;
 }

@@ -31,7 +31,8 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.routes (
         route_id SERIAL PRIMARY KEY,
         route_name VARCHAR(255),
         distance DOUBLE PRECISION,
-        bus_route_id BIGINT
+        bus_route_id BIGINT,
+        route_stop_id BIGINT
         );
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.times_tables (
@@ -43,16 +44,38 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.times_tables (
       bus_id BIGINT
 );
 
-CREATE TABLE IF NOT EXISTS bus_timetabling.route_stop_schedule (
-      bus_route_id SERIAL PRIMARY KEY
-);
 
-CREATE TABLE IF NOT EXISTS bus_timetabling.bus_route_manager (
-      route_schedule_id SERIAL PRIMARY KEY,
-      stop_num int,
-      route_id BIGINT,
-      stop_id
-);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--CREATE TABLE IF NOT EXISTS bus_timetabling.route_stop_schedule (
+--      bus_route_id SERIAL PRIMARY KEY
+--);
+--
+--CREATE TABLE IF NOT EXISTS bus_timetabling.bus_route_manager (
+--      route_schedule_id SERIAL PRIMARY KEY,
+--      stop_num int,
+--      route_id BIGINT,
+--      stop_id
+--);
 
 
 -- ALTER TABLE  bus_timetabling.buses

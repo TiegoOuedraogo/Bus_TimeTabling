@@ -7,6 +7,8 @@ import com.example.bus_timetabling.service.TimeTableService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +54,13 @@ public class TimesTableServiceImpl implements TimeTableService {
         timesTableRepository.save(timesTable);
         return mapTimesTableResponseDto(timesTable);
     }
-
+    @Override
+    public List<TimesTableResponseDto> findNextThreeBusesAtStop(Long stopId, LocalTime currentTime) {
+        List<TimesTable> nextBuses = timesTableRepository.findNextThreeBusesAtStop(stopId, currentTime);
+        return nextBuses.stream()
+                .map(this::mapTimesTableResponseDto)
+                .collect(Collectors.toList());
+    }
 
     private TimesTableResponseDto mapTimesTableResponseDto(TimesTable timesTable) {
         return TimesTableResponseDto.builder()

@@ -3,7 +3,9 @@ package com.example.bus_timetabling.controller;
 import com.example.bus_timetabling.dto.StopDto;
 import com.example.bus_timetabling.entities.Stop;
 import com.example.bus_timetabling.service.StopService;
+import com.example.bus_timetabling.service.serviceImpl.BusServiceImplementation;
 import com.example.bus_timetabling.service.serviceImpl.StopServiceImplementation;
+import com.example.bus_timetabling.service.serviceImpl.TimesTableServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,9 +19,12 @@ import java.util.List;
 public class StopController {
 
     private final StopServiceImplementation stopService;
+//    private final BusServiceImplementation busService;
+//    private final TimesTableServiceImpl timesTableService;
 
     public StopController(StopServiceImplementation stopService) {
         this.stopService = stopService;
+
     }
 
     @GetMapping("")
@@ -50,4 +55,6 @@ public class StopController {
         return ResponseEntity.ok(HttpStatus.OK);
 
     }
+
+//    @GetMapping("/{id}/buses")
 }

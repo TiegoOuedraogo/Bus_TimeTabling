@@ -27,10 +27,10 @@ public class RouteStopScheduleController {
 //    public RouteStopScheduleResponseDto addRouteStopSchedule(@RequestBody RouteStopScheduleResponseDto routeStopScheduleResponseDto) {
 //        return routeStopScheduleService.addRouteStopSchedule(routeStopScheduleResponseDto);
 //    }
-    @GetMapping("/{id}")
-    public RouteStopScheduleResponseDto getRouteStopScheduleById(@PathVariable Long id) {
-        return routeStopScheduleService.getRouteStopScheduleById(id);
-    }
+//    @GetMapping("/{id}")
+//    public RouteStopScheduleResponseDto getRouteStopScheduleById(@PathVariable Long id) {
+//        return routeStopScheduleService.getRouteStopScheduleById(id);
+//    }
 //    @PutMapping("/{id}")
 //    public RouteStopScheduleResponseDto updateRouteStopSchedule(@PathVariable Long id, @RequestBody RouteStopScheduleResponseDto routeStopScheduleResponseDto) {
 //        return routeStopScheduleService.updateRouteStopSchedule(id, routeStopScheduleResponseDto);

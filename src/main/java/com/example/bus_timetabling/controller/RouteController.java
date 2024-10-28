@@ -26,8 +26,8 @@ public class RouteController {
         return routeService.getAllRoutes();
     }
 
-    @GetMapping("/route_id")
-    public RouteResponseDto findRouteById(@PathVariable Long route_id) {
+    @GetMapping("/{route_id}")
+    public RouteResponseDto findRouteById(@PathVariable("route_id") Long route_id) {
         return routeService.findRouteById(route_id);
     }
 

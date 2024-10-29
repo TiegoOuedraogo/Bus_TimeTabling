@@ -1,5 +1,6 @@
 package com.example.bus_timetabling.service;
 
+import com.example.bus_timetabling.dto.CustomDto;
 import com.example.bus_timetabling.dto.TimesTableResponseDto;
 import com.example.bus_timetabling.entities.TimesTable;
 import lombok.Setter;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -24,6 +26,8 @@ public interface TimeTableService {
 
     TimesTableResponseDto updateTimesTable(Long id, TimesTableResponseDto requestDto);
 
+    List<CustomDto> findNextThreeBusesAtStop(Long stopId, LocalTime currentTime);
 
-    List<TimesTableResponseDto> findNextThreeBusesAtStop(Long stopId, LocalTime currentTime);
+    Duration calculateTravelTime(Long stopX, Long stopY);
 }
+

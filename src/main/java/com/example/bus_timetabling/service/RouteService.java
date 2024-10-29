@@ -16,10 +16,4 @@ public interface RouteService {
   List<RouteResponseDto> getAllRoutes();
   RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException;
   void deleteRouteById(Long route_id);
-
-//  RouteResponseDto createRoute(RouteRequestDto routeRequestDto);
-//  List<RouteResponseDto> retrieveAllRoutes ();
-//    @Query("SELECT b FROM Bus b WHERE b.busRouteManager.id = :routeId")
-//    RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException;
-//  RouteResponseDto deleteRouteById (Long route_id) throws RouteNotFoundException;
 }

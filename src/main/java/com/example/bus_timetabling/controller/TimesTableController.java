@@ -1,16 +1,21 @@
 package com.example.bus_timetabling.controller;
 
+import com.example.bus_timetabling.dto.CustomDto;
 import com.example.bus_timetabling.dto.TimesTableRequestDto;
 import com.example.bus_timetabling.dto.TimesTableResponseDto;
 import com.example.bus_timetabling.entities.Stop;
+import com.example.bus_timetabling.entities.TimesTable;
 import com.example.bus_timetabling.service.serviceImpl.TimesTableServiceImpl;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -46,33 +51,24 @@ public class TimesTableController {
         return timesTableService.getTimesTableById(id);
     }
 
-//    @GetMapping("buses/{stopId}")
-//    public List<TimesTableResponseDto> get3buses(@PathVariable Long stopId) {
-//        LocalTime time = LocalTime.now();
-//        return timesTableService.findNextThreeBusesAtStop(stopId, time);
-//    }
+    @GetMapping("/next-bus/{stopId}")
+    public CustomDto getNextBusForRoute(@PathVariable Long stopId) {
+        LocalTime currentTime = LocalTime.now();
+        CustomDto nextBus = timesTableService.findNextBusForRoute(stopId, currentTime);
+        return nextBus;
+    }
 
     @GetMapping("buses/{stopId}")
-    public List<TimesTableResponseDto> get3buses(@PathVariable Long stopId) {
-        LocalTime time = LocalTime.of(7, 50);
+    public List<CustomDto> get3buses(@PathVariable Long stopId) {
+        LocalTime time = LocalTime.now();
         return timesTableService.findNextThreeBusesAtStop(stopId, time);
     }
 
+    @GetMapping("buses/betweenstops")
+    public String timeBetween2stops(@RequestParam Long stopX, @RequestParam Long stopY) {
+        Duration travelTime = timesTableService.calculateTravelTime(stopX, stopY);
+        return "Travel time: " + travelTime.toHours() + " hours " + travelTime.toMinutesPart() + " minutes";
+    }
 
-
-//    @DeleteMapping("/{id}")
-//    public void deleteTimesTable(@PathVariable Long id) {
-//        timesTableService.deleteTimesTable(id);
-//    }
-
-//    @GetMapping("/bus/{busId}")
-//    public List<TimesTableResponseDto> getTimesTablesByBusId(@PathVariable Long busId) {
-//        return timesTableService.getTimesTablesByBusId(busId);
-//    }
-//
-//    @GetMapping("/stop/{stopId}")
-//    public List<TimesTableResponseDto> getTimesTablesByStopId(@PathVariable Long stopId) {
-//        return timesTableService.getTimesTablesByStopId(stopId);
-//    }
 }
 

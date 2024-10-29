@@ -19,4 +19,5 @@ public class TimesTableResponseDto {
     private LocalTime arrival;
     private Long fromStopId;
     private Long toStopId;
+    private Long busId;
 }

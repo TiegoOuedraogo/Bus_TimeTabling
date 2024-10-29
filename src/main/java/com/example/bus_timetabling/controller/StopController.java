@@ -19,8 +19,6 @@ import java.util.List;
 public class StopController {
 
     private final StopServiceImplementation stopService;
-//    private final BusServiceImplementation busService;
-//    private final TimesTableServiceImpl timesTableService;
 
     public StopController(StopServiceImplementation stopService) {
         this.stopService = stopService;
@@ -56,5 +54,4 @@ public class StopController {
 
     }
 
-//    @GetMapping("/{id}/buses")
 }

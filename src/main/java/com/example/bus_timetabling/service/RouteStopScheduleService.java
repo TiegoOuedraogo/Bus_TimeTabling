@@ -11,17 +11,9 @@ import java.util.List;
 
 @Service
 public interface RouteStopScheduleService {
-//    void createRouteStopSchedule(RouteStopScheduleResponseDto routeStopScheduleResponseDto);
-//
-//    List<RouteStopScheduleDto> retrieveAllRouteStopSchedules ();
-//
-//    RouteStopScheduleDto findRouteScheduleById(Long route_stop_id) throws RouteStopScheduleNotFoundException;
-//
-//    void deleteRouteStopScheduleById(Long route_stop_id) throws RouteStopScheduleNotFoundException;
 
     List<RouteStopScheduleResponseDto> getAllRouteStopSchedules();
 
     RouteStopSchedule findRouteStopScheduleById(Long id);
 
-//    RouteStopScheduleResponseDto getRouteStopScheduleById(Long id);
 }

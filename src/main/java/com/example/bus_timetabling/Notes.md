@@ -204,3 +204,12 @@ public class TimesTableController {
 //    }
 }
 
+
+//    @Override
+//    public Duration calculateTravelTime(Long stopX, Long stopY) {
+//        List<TimesTable> Schedules = timesTableRepository.timesbetween2Stops(stopRepository.findById(stopX).orElse(null), stopRepository.findById(stopY).orElse(null));
+//              .orElseThrow(() -> new GlobalExceptionHandler());
+//     TimesTable endSchedule = timesTableRepository.findTimesTableByToStop(stopRepository.findById(stopY).orElse(null));
+//               .orElseThrow(() -> new GlobalExceptionHandler());
+//        return Duration.between(Schedules.get(0).getDeparture(), Schedules.get(0).getArrival());
+//        }

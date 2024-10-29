@@ -8,8 +8,8 @@ VALUES (1, 1, 1), (2, 1, 2), (3, 1, 3);
 
 INSERT INTO bus_timetabling.bus_route_manager (bus_route_id) VALUES (DEFAULT);
 
-INSERT INTO bus_timetabling.routes (route_name, distance, bus_route_id)
-VALUES ('Route 101', 12.5, 1);
+INSERT INTO bus_timetabling.routes (route_name, distance,route_stop_id, bus_route_id)
+VALUES ('Route 101', 12.5, 1,1);
 
 INSERT INTO bus_timetabling.buses (number, status, to_stop_id, from_stop_id, route_schedule_id)
 VALUES ('Bus 01', 'INSERVICE', 1, 2, 1),

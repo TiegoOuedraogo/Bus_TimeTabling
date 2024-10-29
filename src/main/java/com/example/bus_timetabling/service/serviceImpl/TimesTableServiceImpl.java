@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -103,6 +104,8 @@ public class TimesTableServiceImpl implements TimeTableService {
 
         TimesTable firstSchedule = schedules.get(0);
         TimesTable lastSchedule = schedules.get(schedules.size() - 1);
+
+        long diff = ChronoUnit.MINUTES.between(firstSchedule.getDeparture(), lastSchedule.getArrival());
 
         Duration duration = Duration.between(firstSchedule.getDeparture(), lastSchedule.getArrival());
         return duration;

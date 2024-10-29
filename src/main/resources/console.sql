@@ -16,8 +16,10 @@ where tt1_0.route_id=1
 order by tt1_0.departure;
 
 
-SELECT t FROM bus_timetabling.times_tables t WHERE from_stop_id = :stopX AND to_stop_id = :stopY;
+SELECT t FROM bus_timetabling.times_tables t WHERE from_stop_id = :stopX OR to_stop_id = :stopY;
 
 SELECT t FROM bus_timetabling.times_table t WHERE t.fromStop = :stopX AND t.toStop = :stopY;
 
-SELECT s FROM TimesTable s WHERE s.fromStop = :fromStop AND s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC
+SELECT s FROM TimesTable s WHERE s.fromStop = :fromStop AND s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC;
+
+SELECT s FROM bus_timetabling.times_tables s WHERE s.fromStop = :stopX OR s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC

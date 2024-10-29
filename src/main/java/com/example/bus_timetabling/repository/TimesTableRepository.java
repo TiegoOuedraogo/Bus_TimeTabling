@@ -26,9 +26,9 @@ public interface TimesTableRepository extends JpaRepository<TimesTable, Long> {
             "LIMIT 1", nativeQuery = true)
     Optional<TimesTable> findNextBusForRoute(@Param("stopId") Long stopId, @Param("currentTime") LocalTime currentTime);
 
-    @Query("SELECT s FROM TimesTable s WHERE s.fromStop = :stopX OR s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC")
+    @Query(value = "SELECT t FROM TimesTable t WHERE t.fromStop = :stopX OR t.toStop = :stopY ORDER BY t.departure ASC")
     List<TimesTable> findSchedulesForStops(@Param("stopX") Stop stopX, @Param("stopY") Stop stopY);
-
 }
+
 
 

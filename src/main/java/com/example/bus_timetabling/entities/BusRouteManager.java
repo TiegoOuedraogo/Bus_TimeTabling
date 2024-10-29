@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 @Builder
 @Entity
-@Table(name = "bus_route_manager", schema = "bus_timetabling")
+@Table(name = "bus_route_manager",  schema = "bus_timetabling")
 
 public class BusRouteManager {
 

@@ -27,3 +27,4 @@ public interface TimeTableService {
 
     List<TimesTableResponseDto> findNextThreeBusesAtStop(Long stopId, LocalTime currentTime);
 }
+

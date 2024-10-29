@@ -46,11 +46,19 @@ public class TimesTableController {
         return timesTableService.getTimesTableById(id);
     }
 
+//    @GetMapping("buses/{stopId}")
+//    public List<TimesTableResponseDto> get3buses(@PathVariable Long stopId) {
+//        LocalTime time = LocalTime.now();
+//        return timesTableService.findNextThreeBusesAtStop(stopId, time);
+//    }
+
     @GetMapping("buses/{stopId}")
     public List<TimesTableResponseDto> get3buses(@PathVariable Long stopId) {
-        LocalTime time = LocalTime.of(07,50);
+        LocalTime time = LocalTime.of(7, 50);
         return timesTableService.findNextThreeBusesAtStop(stopId, time);
     }
+
+
 
 //    @DeleteMapping("/{id}")
 //    public void deleteTimesTable(@PathVariable Long id) {

@@ -26,11 +26,11 @@ public class TimesTable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "from_stop_id") // Defaults to primary key of Stop
+    @JoinColumn(name = "from_stop_id",nullable = false) // Defaults to primary key of Stop
     private Stop fromStop;
 
     @ManyToOne
-    @JoinColumn(name = "to_stop_id") // Defaults to primary key of Stop
+    @JoinColumn(name = "to_stop_id", referencedColumnName = "stop_id", nullable = false)
     private Stop toStop;
 
     @Column(name = "departure")
@@ -47,3 +47,4 @@ public class TimesTable {
     private List<Bus> buses = new ArrayList<>();
 
 }
+

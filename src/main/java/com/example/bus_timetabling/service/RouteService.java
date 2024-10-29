@@ -5,6 +5,7 @@ import com.example.bus_timetabling.dto.RouteRequestDto;
 import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.exception.RouteNotFoundException;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 //
 import java.util.List;
@@ -15,10 +16,4 @@ public interface RouteService {
   List<RouteResponseDto> getAllRoutes();
   RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException;
   void deleteRouteById(Long route_id);
-
-//  RouteResponseDto createRoute(RouteRequestDto routeRequestDto);
-//  List<RouteResponseDto> retrieveAllRoutes ();
-//    @Query("SELECT b FROM Bus b WHERE b.busRouteManager.id = :routeId")
-//    RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException;
-//  RouteResponseDto deleteRouteById (Long route_id) throws RouteNotFoundException;
 }

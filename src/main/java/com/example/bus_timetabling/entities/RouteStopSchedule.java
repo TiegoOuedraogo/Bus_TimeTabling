@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.List;
 
 @Entity
-@Table(name = "route_stop_schedule", schema = "bus_timetabling")
+@Table(name = "route_stop_schedule",  schema = "bus_timetabling")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

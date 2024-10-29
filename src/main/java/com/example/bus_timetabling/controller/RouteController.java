@@ -26,8 +26,8 @@ public class RouteController {
         return routeService.getAllRoutes();
     }
 
-    @GetMapping("/route_id")
-    public RouteResponseDto findRouteById(@PathVariable Long route_id) {
+    @GetMapping("/{route_id}")
+    public RouteResponseDto findRouteById(@PathVariable("route_id") Long route_id) {
         return routeService.findRouteById(route_id);
     }
 
@@ -37,30 +37,3 @@ public class RouteController {
        routeService.createRoute(routeRequestDto);
     }
 }
-//private final RouteService routeService;
-
-//    public RouteController(RouteService routeService) {
-//        this.routeService = routeService;
-//    }
-//    @GetMapping
-//    public List<RouteResponseDto> retrieveAllRoutes (){
-//        return routeService.retrieveAllRoutes();
-//
-//    }
-////    @GetMapping ("/route_id")
-//    @GetMapping("/{id}")
-//    public RouteResponseDto findRouteById (@PathVariable Long id){
-//        return routeService.findRouteById(id);
-//    }
-//
-////    @GetMapping("/route_id")
-//    @DeleteMapping("/{id}")
-//    public RouteResponseDto deleteRouteById (@PathVariable Long id){
-//        return routeService.deleteRouteById(id);
-//    }
-//
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public RouteResponseDto createRoute(RouteRequestDto routeRequestDto){
-//        return routeService.createRoute(routeRequestDto);
-//    }

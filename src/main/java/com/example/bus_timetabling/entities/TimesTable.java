@@ -6,13 +6,16 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
 @ToString
+@Builder
 @Entity
+
 @Table(name = "times_tables", schema = "bus_timetabling")
 @Data
 
@@ -23,11 +26,11 @@ public class TimesTable {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "from_stop_id") // Defaults to primary key of Stop
+    @JoinColumn(name = "from_stop_id",nullable = false) // Defaults to primary key of Stop
     private Stop fromStop;
 
     @ManyToOne
-    @JoinColumn(name = "to_stop_id") // Defaults to primary key of Stop
+    @JoinColumn(name = "to_stop_id", referencedColumnName = "stop_id", nullable = false)
     private Stop toStop;
 
     @Column(name = "departure")
@@ -39,4 +42,8 @@ public class TimesTable {
     @ManyToOne
     @JoinColumn(name = "bus_id") // Defaults to primary key of Bus
     private Bus bus;
+
+    @OneToMany(mappedBy = "timestables", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Bus> buses = new ArrayList<>();
+
 }

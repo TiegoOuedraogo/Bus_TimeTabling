@@ -15,7 +15,4 @@ import java.util.List;
 public class StopDto {
     private Long id;
     private String stopName;
-    private RouteStopScheduleDto routeStopSchedule;
-    private LocalTime departureTimesTable;
-    private LocalTime arrivalTimesTable;
 }

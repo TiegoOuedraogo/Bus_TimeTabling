@@ -1,7 +1,9 @@
 package com.example.bus_timetabling.controller;
 
 import com.example.bus_timetabling.dto.BusDto;
-import com.example.bus_timetabling.service.serviceImpl.BusService;
+import com.example.bus_timetabling.dto.BusResponseDto;
+import com.example.bus_timetabling.service.serviceImpl.BusServiceImplementation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,25 +13,25 @@ import java.util.List;
 @RequestMapping("/api/buses")
 public class BusController {
 
-    private final BusService busService;
+    private final BusServiceImplementation busService;
 
-    public BusController(BusService busService) {
+    public BusController(BusServiceImplementation busService) {
         this.busService = busService;
     }
 
-//    @GetMapping("/{id}")
-//    public BusDto findBusById(@PathVariable("id") Long id) {
-//        return busService.findBusById(id);
-//    }
-//
-//    @GetMapping("/BusNumber/{busNumber}")
-//    public List<BusDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
-//        return busService.findBusByNumber(busNumber);
-//    }
-//
-//    @GetMapping
-//    public List<BusDto> getAllBuses() {
-//        return busService.getAllBuses();
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<BusResponseDto> findBusById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(busService.findBusById(id));
+    }
+
+    @GetMapping("/BusNumber/{busNumber}")
+    public List<BusResponseDto> findBusByNumber(@PathVariable("busNumber") String busNumber) {
+        return busService.findByBusNumber(busNumber);
+    }
+
+    @GetMapping
+    public List<BusResponseDto> getAllBuses() {
+        return busService.getAllBuses();
+    }
 
 }

@@ -16,7 +16,9 @@ import java.util.List;
 @Getter
 @ToString
 @Builder
+
 public class Route {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "route_id")
@@ -25,19 +27,14 @@ public class Route {
     @Column(name = "route_name")
     private String routeName;
 
-    @Column(name = "origin")
-    private String routeOrigin;
-
-    @Column(name = "destination", nullable = false)
-    private String destination;
-
-    @Column(name="distance")
+    @Column(name = "distance")
     private Double distance;
 
-    // Relationships
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Stop> stops = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "route_stop_id")
+    private RouteStopSchedule routeStopSchedule;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Bus> buses = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "bus_route_id")
+    private BusRouteManager busRouteManager;
 }

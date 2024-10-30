@@ -18,4 +18,5 @@ public class BusResponseDto {
     private Long id;
     private String busNumber;
     private ServiceStatus status;
+    private List<Stop> stops;
 }

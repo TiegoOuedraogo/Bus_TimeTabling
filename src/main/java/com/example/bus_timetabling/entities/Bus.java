@@ -80,7 +80,8 @@ public class Bus {
     @OneToMany(mappedBy = "bus", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TimesTable> timesTables = new ArrayList<>();
 
+
     @ManyToOne
-    @JoinColumn(name = "route_schedule_id")
+    @JoinColumn(name = "bus_route_id")
     private BusRouteManager busRouteManager;
 }

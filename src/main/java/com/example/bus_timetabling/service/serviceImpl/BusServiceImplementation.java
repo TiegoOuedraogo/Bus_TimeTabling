@@ -48,6 +48,7 @@ public class BusServiceImplementation implements BusService {
         newDto.setId(dto.getId());
         newDto.setBusNumber(dto.getBusNumber());
         newDto.setStatus(dto.getStatus());
+        newDto.setStops(dto.getStops());
         return newDto;
     }
 

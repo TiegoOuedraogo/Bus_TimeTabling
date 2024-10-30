@@ -60,7 +60,7 @@ public class RouteStopScheduleServiceImpl implements RouteStopScheduleService {
         return RouteStopScheduleResponseDto.builder()
                 .id(routeStopSchedule.getId())
                 .stopNum(routeStopSchedule.getStopNum())
-                .stops(routeStopSchedule.getStops())
+//                .stops(routeStopSchedule.getStops())
                 .route(routeStopSchedule.getRoute())
                 .build();
     }

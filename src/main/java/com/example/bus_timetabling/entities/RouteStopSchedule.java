@@ -25,8 +25,8 @@ public class RouteStopSchedule {
     @Column(name = "stop_num")
     private int stopNum;
 
-    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Stop> stops;
+//    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//    private List<Stop> stops;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "route_id")

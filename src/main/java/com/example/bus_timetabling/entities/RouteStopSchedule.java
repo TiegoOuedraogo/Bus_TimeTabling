@@ -15,21 +15,20 @@ import java.util.List;
 @ToString
 @Builder
 
+
 public class RouteStopSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "route_stop_id")
+    @Column(name = "route_stop_id", nullable = false)
     private Long id;
 
     @Column(name = "stop_num")
     private int stopNum;
 
-    //Relationships
-    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Stop> stops;
 
-    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Route> routes;
-
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "route_id")
+    private Route route;
 }

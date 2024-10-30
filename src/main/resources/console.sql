@@ -22,4 +22,38 @@ SELECT t FROM bus_timetabling.times_table t WHERE t.fromStop = :stopX AND t.toSt
 
 SELECT s FROM TimesTable s WHERE s.fromStop = :fromStop AND s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC;
 
-SELECT s FROM bus_timetabling.times_tables s WHERE s.fromStop = :stopX OR s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC
+SELECT s FROM bus_timetabling.times_tables s WHERE s.fromStop = :stopX OR s.toStop IN (:stopX, :stopY) ORDER BY s.departure ASC;
+
+
+SELECT * FROM route_stop_schedule;
+SELECT * FROM stop WHERE route_stop_schedule_id = 1;
+SELECT * FROM route WHERE route_stop_schedule_id = 1;
+
+SELECT * FROM bus_timetabling.bus_route_manager;
+
+SELECT * FROM bus_timetabling.bus WHERE bus_route_manager_id IS NOT NULL;
+
+SELECT * FROM bus_timetabling.route WHERE bus_route_manager_id IS NOT NULL;
+
+
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'bus_timetabling';
+
+SELECT * FROM bus_timetabling.routes WHERE bus_route_manager_id IS NOT NULL;
+
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'bus_timetabling';
+
+select s1_0.route_stop_id,s1_0.stop_id,s1_0.stop_name from bus_timetabling.stops s1_0 where s1_0.route_stop_id=2
+
+SELECT s1_0.route_stop_id, s1_0.stop_id, s1_0.stop_name
+FROM bus_timetabling.stops s1_0
+WHERE s1_0.route_stop_id = 1;
+
+SELECT * FROM bus_timetabling.stops;
+
+select b1_0.route_schedule_id,b1_0.bus_id,b1_0.bus_number,b1_0.status
+from bus_timetabling.buses b1_0
+where b1_0.route_schedule_id=1

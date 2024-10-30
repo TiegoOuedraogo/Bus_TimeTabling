@@ -16,4 +16,5 @@ public interface RouteStopScheduleService {
 
     RouteStopSchedule findRouteStopScheduleById(Long id);
 
+    RouteStopScheduleResponseDto getRouteStopScheduleById(Long id);
 }

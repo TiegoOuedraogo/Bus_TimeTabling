@@ -1,6 +1,5 @@
 package com.example.bus_timetabling.service.serviceImpl;
 
-import com.example.bus_timetabling.dto.RouteDto;
 import com.example.bus_timetabling.dto.RouteRequestDto;
 import com.example.bus_timetabling.dto.RouteResponseDto;
 import com.example.bus_timetabling.entities.Route;
@@ -57,14 +56,10 @@ public class RouteServiceImplementation implements RouteService {
     }
 
     @Override
-    public RouteResponseDto findRouteById(Long route_id) throws RouteNotFoundException {
-        return routeRepository.findById(route_id).map(route -> new RouteResponseDto(
-                        route.getId(),
-                        route.getRouteName(),
-                        route.getDistance()
-                ))
-                .orElse(null);
+    public List<Route> findRouteById(Long route_id) throws RouteNotFoundException {
+        return List.of();
     }
+
     @Override
     public void deleteRouteById(Long route_id) {
         routeRepository.deleteById(route_id);

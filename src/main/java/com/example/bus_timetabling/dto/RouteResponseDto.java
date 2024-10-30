@@ -1,6 +1,7 @@
 package com.example.bus_timetabling.dto;
 
 import com.example.bus_timetabling.entities.BusRouteManager;
+import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.entities.RouteStopSchedule;
 import com.example.bus_timetabling.entities.Stop;
 import lombok.*;
@@ -17,4 +18,5 @@ public class RouteResponseDto {
     private Long id;
     private String routeName;
     private Double distance;
+
 }

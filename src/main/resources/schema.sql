@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.buses (
        bus_number VARCHAR(255),
        status VARCHAR(255),
        times_table_id BIGINT,
-       route_schedule_id BIGINT
+--        bus_route_id BIGINT
+        route_schedule_id BIGINT
 );
 
 CREATE TABLE IF NOT EXISTS bus_timetabling.stops (
@@ -43,3 +44,5 @@ CREATE TABLE IF NOT EXISTS bus_timetabling.times_tables (
       bus_id BIGINT
 );
 
+-- ALTER TABLE bus_timetabling.buses
+--     ADD COLUMN route_schedule_id BIGINT;

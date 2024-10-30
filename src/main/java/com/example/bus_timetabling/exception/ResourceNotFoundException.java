@@ -4,4 +4,8 @@ public class ResourceNotFoundException {
     public ResourceNotFoundException(String schedule, String stopId, Long stopX) {
         super();
     }
+
+    public ResourceNotFoundException(String schedule) {
+        super();
+    }
 }

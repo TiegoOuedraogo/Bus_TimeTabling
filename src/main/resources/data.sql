@@ -63,6 +63,20 @@ VALUES (1, 'Bus 01', 'INSERVICE', 1, 1),
        (10, 'Bus 10', 'INSERVICE', 10, 10)
     ON CONFLICT DO NOTHING;
 
+-- INSERT INTO bus_timetabling.buses (bus_id, bus_number, status, times_table_id)
+-- VALUES (1, 'Bus 01', 'INSERVICE', 1),
+--        (2, 'Bus 02', 'OUTOFSERVICE', 2),
+--        (3, 'Bus 03', 'INSERVICE', 3),
+--        (4, 'Bus 04', 'INSERVICE', 4),
+--        (5, 'Bus 05', 'OUTOFSERVICE', 5),
+--        (6, 'Bus 06', 'INSERVICE', 6),
+--        (7, 'Bus 07', 'INSERVICE', 7),
+--        (8, 'Bus 08', 'OUTOFSERVICE', 8),
+--        (9, 'Bus 09', 'INSERVICE', 9),
+--        (10, 'Bus 10', 'INSERVICE', 10)
+--     ON CONFLICT DO NOTHING;
+
+
 INSERT INTO bus_timetabling.times_tables (times_table_id, from_stop_id, to_stop_id, departure, arrival, bus_id)
 VALUES (1, 1, 2, '08:00', '08:30', 1),
        (2, 2, 3, '09:00', '09:30', 2),
@@ -80,3 +94,4 @@ VALUES (1, 1, 2, '08:00', '08:30', 1),
        (14, 2, 9, '16:00', '16:30', 3),
        (15, 10, 1, '17:00', '17:30', 10)
     ON CONFLICT DO NOTHING;
+

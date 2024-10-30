@@ -14,13 +14,13 @@ public class RouteStopScheduleController {
     @Autowired
     private RouteStopScheduleServiceImpl routeStopScheduleService;
 
-    public RouteStopScheduleController(RouteStopScheduleServiceImpl routeStopScheduleService) {
-        this.routeStopScheduleService = routeStopScheduleService;
-    }
-
     @GetMapping
     public List<RouteStopScheduleResponseDto> getAllRouteStopSchedules() {
         return routeStopScheduleService.getAllRouteStopSchedules();
     }
 
+    @GetMapping("/{id}")
+    public RouteStopScheduleResponseDto getRouteStopScheduleById(@PathVariable Long id) {
+        return routeStopScheduleService.getRouteStopScheduleById(id);
+    }
 }

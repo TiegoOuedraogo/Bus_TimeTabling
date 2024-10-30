@@ -37,4 +37,6 @@ public class Route {
     @ManyToOne
     @JoinColumn(name = "bus_route_id")
     private BusRouteManager busRouteManager;
+
 }
+

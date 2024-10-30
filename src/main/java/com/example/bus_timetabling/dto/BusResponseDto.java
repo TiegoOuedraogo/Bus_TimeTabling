@@ -17,5 +17,7 @@ import java.util.List;
 public class BusResponseDto {
     private Long id;
     private String busNumber;
-    private ServiceStatus status;
+    private String status;
+    private Long routeId;
 }
+

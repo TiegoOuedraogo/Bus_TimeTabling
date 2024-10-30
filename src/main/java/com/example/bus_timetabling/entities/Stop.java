@@ -3,6 +3,7 @@ package com.example.bus_timetabling.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,8 +24,17 @@ public class Stop {
     @Column(name = "stop_name")
     private String stopName;
 
-    @ManyToOne
-    @JoinColumn(name = "route_stop_id")
-    private RouteStopSchedule routeStopSchedule;
+    // Relationship with RouteStop
+    @OneToMany(mappedBy = "stop", cascade = CascadeType.ALL)
+    private List<RouteStop> routeStops = new ArrayList<>();
+
+//    @ManyToOne
+//    @JoinColumn(name = "route_stop_id")
+//    private RouteStop routeStopSchedule;
+
+    // Relationship with Timetable
+    @OneToMany(mappedBy = "stop", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<TimesTable> timesTables;
 }
+
 

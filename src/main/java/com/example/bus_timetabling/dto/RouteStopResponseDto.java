@@ -8,9 +8,9 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
-public class RouteResponseDto {
-    private Long id;
-    private String routeName;
-    private Double distance;
+public class RouteStopResponseDto {
+    private Long routeId;
+    private Long stopId;
+    private Integer stopNum;
 }
 

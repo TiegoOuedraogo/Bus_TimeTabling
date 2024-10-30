@@ -1,5 +1,6 @@
 package com.example.bus_timetabling.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Data
@@ -9,9 +10,9 @@ import lombok.*;
 @Getter
 @Builder
 public class RouteRequestDto {
-    private Long id;
+    @NotBlank
     private String routeName;
+
     private Double distance;
-    private Long routeStopSchedule;
-    private Long busRouteManager;
 }
+

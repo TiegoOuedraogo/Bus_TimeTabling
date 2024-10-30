@@ -15,11 +15,11 @@ import java.time.LocalTime;
 @Builder
 public class TimesTableDto {
     private Long id;
-    private LocalTime departure;
+    private Long busId;
+    private Long routeId;
+    private Long stopId;
     private LocalTime arrival;
-    private BusDto bus;
-    private Long fromStopId;
-    private Long toStopId;
+    private LocalTime departure;
 
 }
 

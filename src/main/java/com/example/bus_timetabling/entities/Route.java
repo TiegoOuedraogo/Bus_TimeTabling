@@ -7,6 +7,7 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
 @Table(name = "routes", schema = "bus_timetabling")
 @Data
@@ -29,14 +30,24 @@ public class Route {
 
     @Column(name = "distance")
     private Double distance;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "route_stop_id")
+//    private RouteStop routeStopSchedule;
 
-    @ManyToOne
-    @JoinColumn(name = "route_stop_id")
-    private RouteStopSchedule routeStopSchedule;
+//    @ManyToOne
+//    @JoinColumn(name = "bus_route_id")
+//    private BusRouteManager busRouteManager;
 
-    @ManyToOne
-    @JoinColumn(name = "bus_route_id")
-    private BusRouteManager busRouteManager;
+    // Relationship with RouteStop
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    private List<RouteStop> routeStops = new ArrayList<>();
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY ,cascade = CascadeType.ALL)
+    private List<Bus> buses = new ArrayList<>();
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<TimesTable> timesTables = new ArrayList<>();
 
 }
 

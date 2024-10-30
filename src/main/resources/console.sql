@@ -52,7 +52,9 @@ SELECT s1_0.route_stop_id, s1_0.stop_id, s1_0.stop_name
 FROM bus_timetabling.stops s1_0
 WHERE s1_0.route_stop_id = 1;
 
-SELECT * FROM bus_timetabling.stops;
+SELECT * FROM bus_timetabling.route_stop_schedule;
+
+SELECT * FROM bus_timetabling.buses;
 
 select b1_0.route_schedule_id,b1_0.bus_id,b1_0.bus_number,b1_0.status
 from bus_timetabling.buses b1_0

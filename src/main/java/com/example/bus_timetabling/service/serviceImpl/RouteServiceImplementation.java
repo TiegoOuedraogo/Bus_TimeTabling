@@ -6,7 +6,7 @@ import com.example.bus_timetabling.entities.Route;
 import com.example.bus_timetabling.exception.RouteNotFoundException;
 import com.example.bus_timetabling.repository.BusRouteManagerRepository;
 import com.example.bus_timetabling.repository.RouteRepository;
-import com.example.bus_timetabling.repository.RouteStopScheduleRepository;
+import com.example.bus_timetabling.repository.RouteStopRepository;
 import com.example.bus_timetabling.service.RouteService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class RouteServiceImplementation implements RouteService {
 
     //constructor injection of Route Repository
     private final RouteRepository routeRepository;
-    private final RouteStopScheduleRepository routeStopScheduleRepository;
+    private final RouteStopRepository routeStopRepository;
     private final BusRouteManagerRepository busRouteManagerRepository;
 
-    public RouteServiceImplementation(RouteRepository routeRepository, RouteStopScheduleRepository routeStopScheduleRepository, BusRouteManagerRepository busRouteManagerRepository) {
+    public RouteServiceImplementation(RouteRepository routeRepository, RouteStopRepository routeStopRepository, BusRouteManagerRepository busRouteManagerRepository) {
         this.routeRepository = routeRepository;
-        this.routeStopScheduleRepository = routeStopScheduleRepository;
+        this.routeStopRepository = routeStopRepository;
         this.busRouteManagerRepository = busRouteManagerRepository;
     }
 
@@ -37,7 +37,7 @@ public class RouteServiceImplementation implements RouteService {
         route.setId(routeRequestDto.getId());
         route.setRouteName(routeRequestDto.getRouteName());
         route.setDistance(routeRequestDto.getDistance());
-        route.setRouteStopSchedule(routeStopScheduleRepository.findById(routeRequestDto.getRouteStopSchedule()).orElse(null));
+        route.setRouteStopSchedule(routeStopRepository.findById(routeRequestDto.getRouteStopSchedule()).orElse(null));
         route.setBusRouteManager(busRouteManagerRepository.findById(routeRequestDto.getBusRouteManager()).orElse(null));
 
         //Save route in database
@@ -66,3 +66,4 @@ public class RouteServiceImplementation implements RouteService {
 
     }
 }
+

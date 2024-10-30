@@ -1,12 +1,26 @@
 package com.example.bus_timetabling.service;
 
-import com.example.bus_timetabling.dto.BusDto;
+import com.example.bus_timetabling.dto.BusRequestDto;
 import com.example.bus_timetabling.dto.BusResponseDto;
-import com.example.bus_timetabling.entities.Bus;
-import org.springframework.stereotype.Service;
+import com.example.bus_timetabling.dto.RouteWithStopsDto;
+import com.example.bus_timetabling.exception.ResourceNotFoundException;
 
 import java.util.List;
-@Service
+
 public interface BusService {
-    BusResponseDto findBusById(Long Id);
+
+    BusResponseDto findBusById(Long id) throws ResourceNotFoundException;
+
+    List<BusResponseDto> findByBusNumber(String busNumber);
+
+    List<BusResponseDto> getAllBuses();
+
+    BusResponseDto createBus(BusRequestDto busRequestDto) throws ResourceNotFoundException;
+
+    BusResponseDto updateBus(Long id, BusRequestDto busRequestDto) throws ResourceNotFoundException;
+
+    void deleteBus(Long id) throws ResourceNotFoundException;
+
+    RouteWithStopsDto getRouteWithStopsByBusId(Long id) throws ResourceNotFoundException;
 }
+

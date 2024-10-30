@@ -24,7 +24,7 @@ public class RouteStopSchedule {
     @Column(name = "stop_num")
     private int stopNum;
 
-    // Relationships
+    //Relationships
     @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Stop> stops;
 

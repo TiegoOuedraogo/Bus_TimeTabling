@@ -1,37 +1,20 @@
 package com.example.bus_timetabling.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.io.Serializable;
 
 @Entity
-@Table(name = "route_stop_schedule",  schema = "bus_timetabling")
+@Table(name = "route_stops", schema = "bus_timetabling")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
-@ToString
+@AllArgsConstructor
 @Builder
-
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 
 public class RouteStop implements Serializable {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "route_stop_id", nullable = false)
-//    private Long id;
-//
-//    @Column(name = "stop_num")
-//    private int stopNum;
-//    @Column(name = "stop_route")
-//
-//    @OneToMany(mappedBy = "routeStopSchedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-//    private List<Stop> stops;
-//
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "route_id")
-//    private Route route;
 
     @EmbeddedId
     private RouteStopId id;
@@ -49,4 +32,3 @@ public class RouteStop implements Serializable {
     @Column(name = "stop_num", nullable = false)
     private Integer stopNum;
 }
-

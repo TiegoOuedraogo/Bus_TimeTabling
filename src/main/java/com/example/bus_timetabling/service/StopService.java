@@ -1,21 +1,22 @@
 package com.example.bus_timetabling.service;
 
-import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.entities.Stop;
-import org.springframework.stereotype.Service;
+import com.example.bus_timetabling.dto.StopRequestDto;
+import com.example.bus_timetabling.dto.StopResponseDto;
+import com.example.bus_timetabling.exception.ResourceNotFoundException;
 
 import java.util.List;
 
-@Service
 public interface StopService {
-    StopDto findByStopId(Long id);
 
-    StopDto findByStopName(String stopName);
+    StopResponseDto findByStopId(Long id) throws ResourceNotFoundException;
 
-    List<StopDto> findAllStops();
+    StopResponseDto findByStopName(String stopName) throws ResourceNotFoundException;
 
-    void createStop(StopDto stopDto);
+    List<StopResponseDto> findAllStops();
 
-    void updateBus(Long id, StopDto stopDto);
+    StopResponseDto createStop(StopRequestDto stopRequestDto);
 
+    StopResponseDto updateStop(Long id, StopRequestDto stopRequestDto) throws ResourceNotFoundException;
+
+    void deleteStop(Long id) throws ResourceNotFoundException;
 }

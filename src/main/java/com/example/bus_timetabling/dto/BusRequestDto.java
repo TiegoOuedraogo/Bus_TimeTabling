@@ -11,7 +11,6 @@ import lombok.*;
 @Builder
 public class BusRequestDto {
 
-    private String busNumber;
     @NotBlank
     private String busNumber;
 

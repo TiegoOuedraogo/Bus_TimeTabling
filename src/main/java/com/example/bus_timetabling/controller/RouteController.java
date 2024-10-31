@@ -1,45 +1,19 @@
 package com.example.bus_timetabling.controller;
 
-import com.example.bus_timetabling.dto.RouteDto;
 import com.example.bus_timetabling.dto.RouteRequestDto;
 import com.example.bus_timetabling.dto.RouteResponseDto;
+import com.example.bus_timetabling.exception.ResourceNotFoundException;
 import com.example.bus_timetabling.service.RouteService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+        import java.util.List;
 
-@RestController
-@RequestMapping("api/route")
 @CrossOrigin
-//public class RouteController {
-//
-//    //constructor injection of Route Service
-//    private final RouteService routeService;
-//
-//    public RouteController(RouteService routeService) {
-//        this.routeService = routeService;
-//    }
-//
-//    @GetMapping
-//    public List<RouteResponseDto> getAllRoutes() {
-//        return routeService.getAllRoutes();
-//    }
-//
-//    @GetMapping("/{route_id}")
-//    public RouteResponseDto findRouteById(@PathVariable("route_id") Long route_id) {
-//        return (RouteResponseDto) routeService.findRouteById(route_id);
-//    }
-//
-//    @PostMapping
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public void createRoute(@RequestBody RouteRequestDto routeRequestDto) {
-//       routeService.createRoute(routeRequestDto);
-//    }
-//}
-
-
+@RestController
+@RequestMapping("/api/routes")
 public class RouteController {
 
     private final RouteService routeService;
@@ -55,7 +29,7 @@ public class RouteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RouteResponseDto> findRouteById(@PathVariable("id") Long id) {
+    public ResponseEntity<RouteResponseDto> findRouteById(@PathVariable("id") Long id) throws ResourceNotFoundException {
         RouteResponseDto route = routeService.findRouteById(id);
         return ResponseEntity.ok(route);
     }
@@ -67,15 +41,14 @@ public class RouteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RouteResponseDto> updateRoute(@PathVariable Long id, @RequestBody @Valid RouteRequestDto routeRequestDto) {
+    public ResponseEntity<RouteResponseDto> updateRoute(@PathVariable Long id, @RequestBody @Valid RouteRequestDto routeRequestDto) throws ResourceNotFoundException {
         RouteResponseDto updatedRoute = routeService.updateRoute(id, routeRequestDto);
         return ResponseEntity.ok(updatedRoute);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRoute(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRoute(@PathVariable Long id) throws ResourceNotFoundException {
         routeService.deleteRoute(id);
         return ResponseEntity.noContent().build();
     }
 }
-

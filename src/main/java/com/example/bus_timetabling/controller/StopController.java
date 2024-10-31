@@ -1,62 +1,18 @@
 package com.example.bus_timetabling.controller;
 
-import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.entities.Stop;
+import com.example.bus_timetabling.dto.StopRequestDto;
+import com.example.bus_timetabling.dto.StopResponseDto;
+import com.example.bus_timetabling.exception.ResourceNotFoundException;
 import com.example.bus_timetabling.service.StopService;
-import com.example.bus_timetabling.service.serviceImpl.BusServiceImplementation;
-import com.example.bus_timetabling.service.serviceImpl.StopServiceImplementation;
-import com.example.bus_timetabling.service.serviceImpl.TimesTableServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+        import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api/stops")
-//public class StopController {
-//
-//    private final StopServiceImplementation stopService;
-//
-//    public StopController(StopServiceImplementation stopService) {
-//        this.stopService = stopService;
-//
-//    }
-//
-//    @GetMapping("")
-//    public List<StopDto> findStops() {
-//        return stopService.findAllStops();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public StopDto findStopDetail(@PathVariable Long id) {
-//        return stopService.findByStopId(id);
-//    }
-//
-//    @GetMapping("/stopname/{stopName}")
-//    public StopDto findStopDetail(@PathVariable String stopName) {
-//        return stopService.findByStopName(stopName);
-//    }
-//
-//    @PostMapping(produces = "application/json")
-//    public ResponseEntity<HttpStatus> createStop(@RequestBody StopDto request ) {
-//        stopService.createStop(request);
-//        return ResponseEntity.ok(HttpStatus.OK);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public ResponseEntity<HttpStatus> updateStop(@PathVariable long id, @RequestBody StopDto request ) {
-//        stopService.updateBus(id, request);
-//
-//        return ResponseEntity.ok(HttpStatus.OK);
-//
-//    }
-//
-//}
-
-
 public class StopController {
 
     private final StopService stopService;
@@ -72,13 +28,13 @@ public class StopController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StopResponseDto> findStopById(@PathVariable Long id) {
+    public ResponseEntity<StopResponseDto> findStopById(@PathVariable Long id) throws ResourceNotFoundException {
         StopResponseDto stop = stopService.findByStopId(id);
         return ResponseEntity.ok(stop);
     }
 
     @GetMapping("/stopname/{stopName}")
-    public ResponseEntity<StopResponseDto> findStopByName(@PathVariable String stopName) {
+    public ResponseEntity<StopResponseDto> findStopByName(@PathVariable String stopName) throws ResourceNotFoundException {
         StopResponseDto stop = stopService.findByStopName(stopName);
         return ResponseEntity.ok(stop);
     }
@@ -90,13 +46,13 @@ public class StopController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StopResponseDto> updateStop(@PathVariable Long id, @RequestBody @Valid StopRequestDto requestDto) {
+    public ResponseEntity<StopResponseDto> updateStop(@PathVariable Long id, @RequestBody @Valid StopRequestDto requestDto) throws ResourceNotFoundException {
         StopResponseDto updatedStop = stopService.updateStop(id, requestDto);
         return ResponseEntity.ok(updatedStop);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteStop(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteStop(@PathVariable Long id) throws ResourceNotFoundException {
         stopService.deleteStop(id);
         return ResponseEntity.noContent().build();
     }

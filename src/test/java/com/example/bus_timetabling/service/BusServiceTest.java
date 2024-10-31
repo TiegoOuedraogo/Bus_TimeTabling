@@ -2,10 +2,10 @@
 //
 //import com.example.bus_timetabling.entities.Bus;
 //import com.example.bus_timetabling.entities.Route;
-//import com.example.bus_timetabling.entities.TimesTable;
+//import com.example.bus_timetabling.entities.Timetable;
 //import com.example.bus_timetabling.repository.BusRepository;
 //import com.example.bus_timetabling.repository.RouteRepository;
-//import com.example.bus_timetabling.repository.TimesTableRepository;
+//import com.example.bus_timetabling.repository.TimetableRepository;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.InjectMocks;
@@ -27,14 +27,14 @@
 //    private RouteRepository routeRepository;
 //
 //    @Mock
-//    private TimesTableRepository timesTableRepository;
+//    private TimetableRepository timesTableRepository;
 //
 //    @InjectMocks
 //    private BusService busService;
 //
 //    private Bus validBus;
 //    private Route validRoute;
-//    private TimesTable validTimesTable;
+//    private Timetable validTimesTable;
 //
 //    @BeforeEach
 //    void setUp() {
@@ -44,7 +44,7 @@
 //        validBus.setId(1L);
 //        validRoute = new Route();
 //        validRoute.setId(1L);
-//        validTimesTable = new TimesTable();
+//        validTimesTable = new Timetable();
 //        validTimesTable.setBus(validBus);
 //        validTimesTable.setDepartures(LocalTime.of(14, 8, 0, 0)),
 //        validTimesTable.setArrival(LocalTime.of(4,45,5)),

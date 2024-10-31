@@ -1,22 +1,20 @@
 package com.example.bus_timetabling.dto;
 
-import com.example.bus_timetabling.entities.BusRouteManager;
-import com.example.bus_timetabling.entities.Stop;
-import com.example.bus_timetabling.entities.TimesTable;
-import com.example.bus_timetabling.enums.ServiceStatus;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class BusDto {
+
     private Long id;
+    @NotBlank(message = "Bus number is mandatory")
     private String busNumber;
     private String status;
     private Long routeId;
+    private String routeName;
 
 }
 

@@ -1,10 +1,7 @@
 package com.example.bus_timetabling.dto;
 
-import com.example.bus_timetabling.entities.Bus;
-import com.example.bus_timetabling.entities.Route;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalTime;
 
@@ -14,7 +11,7 @@ import java.time.LocalTime;
 @Setter
 @Getter
 @Builder
-public class TimesTableRequestDto {
+public class TimetableRequestDto {
     @NotNull
     private Long busId;
 

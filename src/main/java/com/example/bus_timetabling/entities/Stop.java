@@ -1,5 +1,7 @@
 package com.example.bus_timetabling.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,6 +17,8 @@ import java.util.List;
 @ToString
 @Builder
 @Table(name = "stops", schema = "bus_timetabling")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+
 public class Stop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,13 +32,9 @@ public class Stop {
     @OneToMany(mappedBy = "stop", cascade = CascadeType.ALL)
     private List<RouteStop> routeStops = new ArrayList<>();
 
-//    @ManyToOne
-//    @JoinColumn(name = "route_stop_id")
-//    private RouteStop routeStopSchedule;
-
     // Relationship with Timetable
     @OneToMany(mappedBy = "stop", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<TimesTable> timesTables;
+    private List<Timetable> timetables;
 }
 
 

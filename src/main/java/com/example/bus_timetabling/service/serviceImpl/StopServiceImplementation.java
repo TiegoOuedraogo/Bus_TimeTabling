@@ -1,7 +1,10 @@
 package com.example.bus_timetabling.service.serviceImpl;
 
-import com.example.bus_timetabling.dto.StopDto;
-import com.example.bus_timetabling.entities.Stop;import com.example.bus_timetabling.repository.StopRepository;
+import com.example.bus_timetabling.dto.StopRequestDto;
+import com.example.bus_timetabling.dto.StopResponseDto;
+import com.example.bus_timetabling.entities.Stop;
+import com.example.bus_timetabling.exception.ResourceNotFoundException;
+import com.example.bus_timetabling.repository.StopRepository;
 import com.example.bus_timetabling.service.StopService;
 import org.springframework.stereotype.Service;
 
@@ -10,55 +13,65 @@ import java.util.stream.Collectors;
 
 @Service
 public class StopServiceImplementation implements StopService {
-    private final StopRepository stopRepo;
 
-    public StopServiceImplementation(StopRepository stopRepo) {
-        this.stopRepo = stopRepo;
+    private final StopRepository stopRepository;
+
+    public StopServiceImplementation(StopRepository stopRepository) {
+        this.stopRepository = stopRepository;
     }
 
-    public StopDto findByStopId(Long id) {
-        Stop stop = stopRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Stop not found"));
-        return convertToStopDto(stop);
+    @Override
+    public StopResponseDto findByStopId(Long id) throws ResourceNotFoundException {
+        Stop stop = stopRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Stop not found with id " + id));
+        return toResponseDto(stop);
     }
 
-    public StopDto findByStopName(String stopName) {
-        Stop stop = stopRepo.findByStopName(stopName);
-        return convertToStopDto(stop);
-
+    @Override
+    public StopResponseDto findByStopName(String stopName) throws ResourceNotFoundException {
+        Stop stop = stopRepository.findByStopName(stopName);
+        if (stop == null) {
+            throw new ResourceNotFoundException("Stop not found with name " + stopName);
+        }
+        return toResponseDto(stop);
     }
 
-    public List<StopDto> findAllStops() {
-        return stopRepo.findAll().stream()
-                .map(this::convertToStopDto)
+    @Override
+    public List<StopResponseDto> findAllStops() {
+        return stopRepository.findAll().stream()
+                .map(this::toResponseDto)
                 .collect(Collectors.toList());
     }
 
-    public void createStop(StopDto stopDto) {
-        stopRepo.save(convertToStopEntity(stopDto));
+    @Override
+    public StopResponseDto createStop(StopRequestDto stopRequestDto) {
+        Stop stop = new Stop();
+        stop.setStopName(stopRequestDto.getStopName());
+        Stop savedStop = stopRepository.save(stop);
+        return toResponseDto(savedStop);
     }
 
-    public void updateBus(Long id, StopDto stopDto) {
-        Stop stop = stopRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Stop not found"));
-        stopRepo.save(convertToStopEntity(stopDto));
+    @Override
+    public StopResponseDto updateStop(Long id, StopRequestDto stopRequestDto) throws ResourceNotFoundException {
+        Stop stop = stopRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Stop not found with id " + id));
+        stop.setStopName(stopRequestDto.getStopName());
+        Stop updatedStop = stopRepository.save(stop);
+        return toResponseDto(updatedStop);
     }
 
-    public StopDto convertToStopDto(Stop stop) {
-        StopDto dto = new StopDto();
+    @Override
+    public void deleteStop(Long id) throws ResourceNotFoundException {
+        if (!stopRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Stop not found with id " + id);
+        }
+        stopRepository.deleteById(id);
+    }
+
+    private StopResponseDto toResponseDto(Stop stop) {
+        StopResponseDto dto = new StopResponseDto();
         dto.setId(stop.getId());
         dto.setStopName(stop.getStopName());
-
         return dto;
-    }
-
-    public Stop convertToStopEntity(StopDto dto) {
-        if(dto == null) {
-            return null;
-        }
-        Stop stop = new Stop();
-        stop.setId(dto.getId());
-        stop.setStopName(dto.getStopName());
-        return stop;
     }
 }

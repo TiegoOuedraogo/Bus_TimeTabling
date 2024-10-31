@@ -8,26 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+        import java.util.List;
 
 @RestController
-@CrossOrigin
-@RequestMapping("/api/route-stop-schedules")
-//public class RouteStopController {
-//    @Autowired
-//    private RouteStopServiceImpl routeStopScheduleService;
-//
-//    @GetMapping
-//    public List<RouteStopResponseDto> getAllRouteStopSchedules() {
-//        return routeStopScheduleService.getAllRouteStopSchedules();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public RouteStopResponseDto getRouteStopScheduleById(@PathVariable Long id) {
-//        return routeStopScheduleService.getRouteStopScheduleById(id);
-//    }
-//}
-
+@RequestMapping("/api/route-stops")
 public class RouteStopController {
 
     private final RouteStopService routeStopService;

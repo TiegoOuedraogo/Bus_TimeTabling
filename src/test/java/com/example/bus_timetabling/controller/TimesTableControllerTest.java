@@ -1,7 +1,7 @@
 //package com.example.bus_timetabling.controller;
 //
-//import com.example.bus_timetabling.dto.TimesTableRequestDto;
-//import com.example.bus_timetabling.dto.TimesTableResponseDto;
+//import com.example.bus_timetabling.dto.TimetableRequestDto;
+//import com.example.bus_timetabling.dto.TimetableResponseDto;
 //import com.example.bus_timetabling.service.TimesTableServiceImpl;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.Mockito;
@@ -31,12 +31,12 @@
 //
 //    @Test
 //    public void testGetAllTimesTables() throws Exception {
-//        TimesTableResponseDto responseDto = new TimesTableResponseDto(
+//        TimetableResponseDto responseDto = new TimetableResponseDto(
 //                1L, LocalTime.of(14, 8, 0),
 //                LocalTime.of(14, 10, 30),
 //                1L, "Bus 27", 2L, "Stop A", null
 //        );
-//        List<TimesTableResponseDto> responseList = Arrays.asList(responseDto);
+//        List<TimetableResponseDto> responseList = Arrays.asList(responseDto);
 //
 //        Mockito.when(timesTableService.getAllTimesTables()).thenReturn(responseList);
 //
@@ -50,19 +50,19 @@
 //
 //    @Test
 //    public void testCreateTimesTable() throws Exception {
-//        TimesTableRequestDto requestDto = new TimesTableRequestDto(
+//        TimetableRequestDto requestDto = new TimetableRequestDto(
 //                LocalTime.of(14, 8, 0),
 //                LocalTime.of(14, 10, 30),
 //                1L, 2L
 //        );
 //
-//        TimesTableResponseDto responseDto = new TimesTableResponseDto(
+//        TimetableResponseDto responseDto = new TimetableResponseDto(
 //                1L, requestDto.getDepartures(), requestDto.getArrival(),
 //                requestDto.getBusId(), "Bus 27", requestDto.getStopId(),
 //                "Stop A", null
 //        );
 //
-//        Mockito.when(timesTableService.createTimesTable(Mockito.any(TimesTableRequestDto.class)))
+//        Mockito.when(timesTableService.createTimesTable(Mockito.any(TimetableRequestDto.class)))
 //                .thenReturn(responseDto);
 //
 //        mockMvc.perform(post("/api/timetables")
@@ -83,7 +83,7 @@
 //
 //    @Test
 //    public void testGetTimesTableById() throws Exception {
-//        TimesTableResponseDto responseDto = new TimesTableResponseDto(
+//        TimetableResponseDto responseDto = new TimetableResponseDto(
 //                1L, LocalTime.of(14, 8, 0),
 //                LocalTime.of(14, 10, 30),
 //                1L, "Bus 27", 2L, "Stop A", null
@@ -126,12 +126,12 @@
 //    @Test
 //    public void testGetTimesTableById_NotFound() throws Exception {
 //        Mockito.when(timesTableService.getTimesTableById(100L))
-//                .thenThrow(new IllegalArgumentException("TimesTable not found with id: 100"));
+//                .thenThrow(new IllegalArgumentException("Timetable not found with id: 100"));
 //
 //        mockMvc.perform(get("/api/timetables/100")
 //                        .contentType(MediaType.APPLICATION_JSON))
 //                .andExpect(status().isNotFound())
-//                .andExpect(jsonPath("$.message", is("TimesTable not found with id: 100")));
+//                .andExpect(jsonPath("$.message", is("Timetable not found with id: 100")));
 //    }
 //
 //    @Test
@@ -160,13 +160,13 @@
 //        mockMvc.perform(delete("/api/timetables/1")
 //                        .contentType(MediaType.APPLICATION_JSON))
 //                .andExpect(status().isOk());
-//        Mockito.doThrow(new IllegalArgumentException("TimesTable not found with id: 1"))
+//        Mockito.doThrow(new IllegalArgumentException("Timetable not found with id: 1"))
 //                .when(timesTableService).deleteTimesTable(1L);
 //
 //        mockMvc.perform(delete("/api/timetables/1")
 //                        .contentType(MediaType.APPLICATION_JSON))
 //                .andExpect(status().isNotFound())
-//                .andExpect(jsonPath("$.message", containsString("TimesTable not found")));
+//                .andExpect(jsonPath("$.message", containsString("Timetable not found")));
 //    }
 //
 //

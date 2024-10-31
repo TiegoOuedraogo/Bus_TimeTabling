@@ -1,13 +1,13 @@
 //package com.example.bus_timetabling.service;
 //
-//import com.example.bus_timetabling.dto.TimesTableRequestDto;
-//import com.example.bus_timetabling.dto.TimesTableResponseDto;
+//import com.example.bus_timetabling.dto.TimetableRequestDto;
+//import com.example.bus_timetabling.dto.TimetableResponseDto;
 //import com.example.bus_timetabling.entities.Bus;
 //import com.example.bus_timetabling.entities.Stop;
-//import com.example.bus_timetabling.entities.TimesTable;
+//import com.example.bus_timetabling.entities.Timetable;
 //import com.example.bus_timetabling.repository.BusRepository;
 //import com.example.bus_timetabling.repository.StopRepository;
-//import com.example.bus_timetabling.repository.TimesTableRepository;
+//import com.example.bus_timetabling.repository.TimetableRepository;
 //import org.junit.jupiter.api.BeforeEach;
 //import org.junit.jupiter.api.Test;
 //import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@
 //class TimesTableServiceTest {
 //
 //    @Mock
-//    private TimesTableRepository timesTableRepository;
+//    private TimetableRepository timesTableRepository;
 //
 //    @Mock
 //    private BusRepository busRepository;
@@ -37,7 +37,7 @@
 //
 //    private Bus validBus;
 //    private Stop validStop;
-//    private TimesTable validTimesTable;
+//    private Timetable validTimesTable;
 //
 //    @BeforeEach
 //    void setUp() {
@@ -49,7 +49,7 @@
 //        validStop = new Stop();
 //        validStop.setId(2L);
 //
-//        validTimesTable = new TimesTable();
+//        validTimesTable = new Timetable();
 //        validTimesTable.setId(1L);
 //        validTimesTable.setDepartures(LocalTime.of(14, 8, 0));
 //        validTimesTable.setArrival(LocalTime.of(14, 10, 0));
@@ -61,7 +61,7 @@
 //    void getAllTimesTables() {
 //        when(timesTableRepository.findAll()).thenReturn(List.of(validTimesTable));
 //
-//        List<TimesTableResponseDto> result = timesTableService.getAllTimesTables();
+//        List<TimetableResponseDto> result = timesTableService.getAllTimesTables();
 //
 //        assertEquals(1, result.size());
 //        assertEquals(validTimesTable.getDepartures(), result.get(0).getDepartures());
@@ -72,7 +72,7 @@
 //    void getTimesTableById() {
 //        when(timesTableRepository.findById(1L)).thenReturn(Optional.of(validTimesTable));
 //
-//        TimesTableResponseDto result = timesTableService.getTimesTableById(1L);
+//        TimetableResponseDto result = timesTableService.getTimesTableById(1L);
 //
 //        assertNotNull(result);
 //        assertEquals(validTimesTable.getDepartures(), result.getDepartures());
@@ -86,13 +86,13 @@
 //        Exception exception = assertThrows(IllegalArgumentException.class, () ->
 //                timesTableService.getTimesTableById(1L));
 //
-//        assertEquals("TimesTable not found with id: 1", exception.getMessage());
+//        assertEquals("Timetable not found with id: 1", exception.getMessage());
 //        verify(timesTableRepository, times(1)).findById(1L);
 //    }
 //
 //    @Test
 //    void createTimesTable() {
-//        TimesTableRequestDto requestDto = new TimesTableRequestDto(
+//        TimetableRequestDto requestDto = new TimetableRequestDto(
 //                LocalTime.of(14, 8, 0),
 //                LocalTime.of(14, 10, 0),
 //                1L, 2L
@@ -100,13 +100,13 @@
 //
 //        when(busRepository.findById(1L)).thenReturn(Optional.of(validBus));
 //        when(stopRepository.findById(2L)).thenReturn(Optional.of(validStop));
-//        when(timesTableRepository.save(any(TimesTable.class))).thenReturn(validTimesTable);
+//        when(timesTableRepository.save(any(Timetable.class))).thenReturn(validTimesTable);
 //
-//        TimesTableResponseDto result = timesTableService.createTimesTable(requestDto);
+//        TimetableResponseDto result = timesTableService.createTimesTable(requestDto);
 //
 //        assertNotNull(result);
 //        assertEquals(validTimesTable.getDepartures(), result.getDepartures());
-//        verify(timesTableRepository, times(1)).save(any(TimesTable.class));
+//        verify(timesTableRepository, times(1)).save(any(Timetable.class));
 //    }
 //
 //    @Test
@@ -126,7 +126,7 @@
 //        Exception exception = assertThrows(IllegalArgumentException.class, () ->
 //                timesTableService.deleteTimesTable(1L));
 //
-//        assertEquals("TimesTable not found with id: 1", exception.getMessage());
+//        assertEquals("Timetable not found with id: 1", exception.getMessage());
 //        verify(timesTableRepository, times(0)).deleteById(1L);
 //    }
 //
@@ -135,7 +135,7 @@
 //    void getTimesTablesByBusId() {
 //        when(timesTableRepository.findByBusId(1L)).thenReturn(List.of(validTimesTable));
 //
-//        List<TimesTableResponseDto> result = timesTableService.getTimesTablesByBusId(1L);
+//        List<TimetableResponseDto> result = timesTableService.getTimesTablesByBusId(1L);
 //
 //        assertEquals(1, result.size());
 //        assertEquals(validTimesTable.getDepartures(), result.get(0).getDepartures());
@@ -146,7 +146,7 @@
 //    void getTimesTablesByStopId() {
 //        when(timesTableRepository.findByStopId(2L)).thenReturn(List.of(validTimesTable));
 //
-//        List<TimesTableResponseDto> result = timesTableService.getTimesTablesByStopId(2L);
+//        List<TimetableResponseDto> result = timesTableService.getTimesTablesByStopId(2L);
 //
 //        assertEquals(1, result.size());
 //        assertEquals(validTimesTable.getDepartures(), result.get(0).getDepartures());
@@ -155,7 +155,7 @@
 //
 //    @Test
 //    void updateTimesTable() {
-//        TimesTableRequestDto requestDto = new TimesTableRequestDto(
+//        TimetableRequestDto requestDto = new TimetableRequestDto(
 //                LocalTime.of(14, 9, 0),
 //                LocalTime.of(14, 11, 0),
 //                1L, 2L
@@ -164,18 +164,18 @@
 //        when(timesTableRepository.findById(1L)).thenReturn(Optional.of(validTimesTable));
 //        when(busRepository.findById(1L)).thenReturn(Optional.of(validBus));
 //        when(stopRepository.findById(2L)).thenReturn(Optional.of(validStop));
-//        when(timesTableRepository.save(any(TimesTable.class))).thenReturn(validTimesTable);
+//        when(timesTableRepository.save(any(Timetable.class))).thenReturn(validTimesTable);
 //
-//        TimesTableResponseDto result = timesTableService.updateTimesTable(1L, requestDto);
+//        TimetableResponseDto result = timesTableService.updateTimesTable(1L, requestDto);
 //
 //        assertNotNull(result);
 //        assertEquals(requestDto.getDepartures(), result.getDepartures());
-//        verify(timesTableRepository, times(1)).save(any(TimesTable.class));
+//        verify(timesTableRepository, times(1)).save(any(Timetable.class));
 //    }
 //
 //    @Test
 //    void updateTimesTable_NotFound() {
-//        TimesTableRequestDto requestDto = new TimesTableRequestDto(
+//        TimetableRequestDto requestDto = new TimetableRequestDto(
 //                LocalTime.of(14, 9, 0),
 //                LocalTime.of(14, 11, 0),
 //                1L, 2L
@@ -186,7 +186,7 @@
 //        Exception exception = assertThrows(IllegalArgumentException.class, () ->
 //                timesTableService.updateTimesTable(99L, requestDto));
 //
-//        assertEquals("TimesTable not found with id: 99", exception.getMessage());
-//        verify(timesTableRepository, times(0)).save(any(TimesTable.class));
+//        assertEquals("Timetable not found with id: 99", exception.getMessage());
+//        verify(timesTableRepository, times(0)).save(any(Timetable.class));
 //    }
 //}

@@ -1,17 +1,16 @@
 package com.example.bus_timetabling.service;
 
+import com.example.bus_timetabling.dto.RouteStopRequestDto;
 import com.example.bus_timetabling.dto.RouteStopResponseDto;
-import com.example.bus_timetabling.entities.RouteStop;
-import org.springframework.stereotype.Service;
+import com.example.bus_timetabling.exception.ResourceNotFoundException;
 
 import java.util.List;
 
-@Service
 public interface RouteStopService {
 
-    List<RouteStopResponseDto> getAllRouteStopSchedules();
+    List<RouteStopResponseDto> getAllRouteStops();
 
-    RouteStop findRouteStopScheduleById(Long id);
+    RouteStopResponseDto createRouteStop(RouteStopRequestDto requestDto) throws ResourceNotFoundException;
 
-    RouteStopResponseDto getRouteStopScheduleById(Long id);
+    void deleteRouteStop(Long routeId, Long stopId) throws ResourceNotFoundException;
 }

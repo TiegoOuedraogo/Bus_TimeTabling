@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/timetables")
+@CrossOrigin
 public class TimetableController {
 
     private final TimetableService timetableService;

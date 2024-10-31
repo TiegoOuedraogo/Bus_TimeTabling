@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/stops")
+@CrossOrigin
 public class StopController {
 
     private final StopService stopService;

@@ -101,7 +101,7 @@ public class TimetableServiceImplementation implements TimetableService {
             Timetable timetable = nextBus.get();
             return new CustomDto(timetable.getBus().getBusNumber(), timetable.getArrival());
         } else {
-            throw new ResourceNotFoundException("No upcoming bus found for stop id " + stopId);
+            throw new ResourceNotFoundException("No upcoming bus found for stop:  " + stopRepository.findById(stopId).get().getStopName() );
         }
     }
 

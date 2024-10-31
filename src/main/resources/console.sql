@@ -76,3 +76,22 @@ where t1_0.times_table_id=1;
 SELECT * FROM bus_timetabling.routes;
 SELECT * FROM bus_timetabling.stops;
 SELECT * FROM bus_timetabling.buses;
+
+
+SELECT t.bus_id
+FROM bus_timetabling.timetables t
+         LEFT JOIN bus_timetabling.buses b ON t.bus_id = b.bus_id
+WHERE b.bus_id IS NULL;
+
+SELECT t.stop_id
+FROM bus_timetabling.timetables t
+         LEFT JOIN bus_timetabling.stops s ON t.stop_id = s.stop_id
+WHERE s.stop_id IS NULL;
+
+SELECT t.timetable_id, t.bus_id
+FROM bus_timetabling.timetables t
+         LEFT JOIN bus_timetabling.buses b ON t.bus_id = b.bus_id
+WHERE b.bus_id IS NULL;
+
+
+SELECT timetable_id, bus_id, stop_id, arrival, departure FROM bus_timetabling.timetables ORDER BY bus_id, stop_id;

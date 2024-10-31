@@ -75,6 +75,84 @@ VALUES
 (2, 9, '09:55:00', '10:00:00'),
 (2, 10, '10:10:00', '10:15:00');
 
+-- Insert Data into Timetables for Bus 3
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(3, 11, '08:00:00', '08:05:00'),
+(3, 12, '08:15:00', '08:20:00'),
+(3, 13, '08:30:00', '08:35:00'),
+(3, 14, '08:45:00', '08:50:00'),
+(3, 15, '09:00:00', '09:05:00');
+
+
+-- Insert Data into Timetables for Bus 4
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(4, 16, '09:10:00', '09:15:00'),
+(4, 17, '09:25:00', '09:30:00'),
+(4, 18, '09:40:00', '09:45:00'),
+(4, 19, '09:55:00', '10:00:00'),
+(4, 20, '10:10:00', '10:15:00');
+
+-- Insert Data into Timetables for Bus 5
+
+
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(5, 21, '08:00:00', '08:05:00'),
+(5, 22, '08:15:00', '08:20:00'),
+(5, 23, '08:30:00', '08:35:00'),
+(5, 24, '08:45:00', '08:50:00'),
+(5, 25, '09:00:00', '09:05:00');
+
+-- Insert Data into Timetables for Bus 6
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(6, 26, '09:10:00', '09:15:00'),
+(6, 27, '09:25:00', '09:30:00'),
+(6, 28, '09:40:00', '09:45:00'),
+(6, 29, '09:55:00', '10:00:00'),
+(6, 30, '10:10:00', '10:15:00');
+
+-- Insert Data into Timetables for Bus 7
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(7, 31, '08:00:00', '08:05:00'),
+(7, 32, '08:15:00', '08:20:00'),
+(7, 33, '08:30:00', '08:35:00'),
+(7, 34, '08:45:00', '08:50:00'),
+(7, 35, '09:00:00', '09:05:00');
+
+-- Insert Data into Timetables for Bus 8
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(8, 36, '09:10:00', '09:15:00'),
+(8, 37, '09:25:00', '09:30:00'),
+(8, 38, '09:40:00', '09:45:00'),
+(8, 39, '09:55:00', '10:00:00'),
+(8, 40, '10:10:00', '10:15:00');
+
+-- Insert Data into Timetables for Bus 9
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(9, 41, '08:00:00', '08:05:00'),
+(9, 42, '08:15:00', '08:20:00'),
+(9, 43, '08:30:00', '08:35:00'),
+(9, 44, '08:45:00', '08:50:00'),
+(9, 45, '09:00:00', '09:05:00');
+
+-- Insert Data into Timetables for Bus 10
+INSERT INTO bus_timetabling.timetables (bus_id, stop_id, arrival, departure)
+VALUES
+(10, 46, '09:10:00', '09:15:00'),
+(10, 47, '09:25:00', '09:30:00'),
+(10, 48, '09:40:00', '09:45:00'),
+(10, 49, '09:55:00', '10:00:00'),
+(10, 50, '10:10:00', '10:15:00');
+
+-- Insert Data into Timetables for Bus 11
+
+
 
 
 

@@ -50,10 +50,10 @@ import java.util.Optional;
 @Repository
 public interface TimetableRepository extends JpaRepository<Timetable, Long> {
 
-    @Query("SELECT t FROM Timetable t WHERE t.stop.id = :stopId AND t.arrival > :currentTime ORDER BY t.arrival ASC")
+    @Query("SELECT t FROM Timetable t WHERE t.stop.id = :stopId AND t.arrival > :currentTime ORDER BY t.arrival ASC LIMIT 3")
     List<Timetable> findNextThreeBusesAtStop(Long stopId, LocalTime currentTime);
 
-    @Query("SELECT t FROM Timetable t WHERE t.stop.id = :stopId AND t.departure > :currentTime ORDER BY t.departure ASC")
+    @Query("SELECT t FROM Timetable t WHERE t.stop.id = :stopId AND t.departure > :currentTime ORDER BY t.departure ASC LIMIT 1")
     Optional<Timetable> findNextBusForRoute(Long stopId, LocalTime currentTime);
 
     @Query("SELECT t FROM Timetable t WHERE t.stop = :stopX OR t.stop = :stopY ORDER BY t.departure ASC")

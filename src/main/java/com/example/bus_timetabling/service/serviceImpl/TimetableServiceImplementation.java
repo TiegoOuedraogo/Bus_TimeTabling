@@ -131,7 +131,7 @@ public class TimetableServiceImplementation implements TimetableService {
         Timetable firstSchedule = schedules.get(0);
         Timetable lastSchedule = schedules.get(schedules.size() - 1);
 
-        return Duration.between(firstSchedule.getDeparture(), lastSchedule.getArrival());
+        return Duration.between(firstSchedule.getDeparture(), lastSchedule.getArrival()).minus(Duration.ofHours(7));
     }
 
     private TimetableResponseDto toResponseDto(Timetable timetable) {
